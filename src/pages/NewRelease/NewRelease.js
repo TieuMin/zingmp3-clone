@@ -55,13 +55,17 @@ const NewRelease = ({ lists }) => {
   return (
     <div className="animation__new__release" ref={newRelease}>
       {lists.items.map((item, index) => {
+        console.log(item);
         return (
           <div key={index} className="item__new__release">
             <div className="item__release__child">
               <div className="media__release">
                 <div className="media__left__release">
                   <div className="img__media">
-                    <img src={item.album.thumbnail} alt="" />
+                    <img
+                      src={item.album ? item.album.thumbnail : item.thumbnail}
+                      alt=""
+                    />
                     <div className="option__playlist__selection">
                       <div className="option__selection item__play__selection">
                         <i className="fa-solid fa-play"></i>
@@ -79,9 +83,13 @@ const NewRelease = ({ lists }) => {
                       {item.title}
                     </a>
                     <div className="name__singer__all">
-                      {item.album.artists.map((artist, index) => {
-                        return <NameSinger key={index} artist={artist} />;
-                      })}
+                      {item.album
+                        ? item.album.artists.map((artist, index) => {
+                            return <NameSinger key={index} artist={artist} />;
+                          })
+                        : item.artists.map((artist, index) => {
+                            return <NameSinger key={index} artist={artist} />;
+                          })}
                     </div>
                   </div>
                   <div className="rank__release">
