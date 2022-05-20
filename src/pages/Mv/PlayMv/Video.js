@@ -20,8 +20,9 @@ const Video = () => {
   const [timeOutPlay, setTimeOutPlay] = useState(false);
   const [timeStart, setTimeStart] = useState("00:00");
   const [stepTime, setStepTime] = useState("0");
-  const [volume, setVolume] = useState("0");
-  const [muntedAudio, setMuntedAudio] = useState(true);
+  const volumeMV = JSON.parse(localStorage.getItem("volumeMV"));
+  const [volume, setVolume] = useState(volumeMV ? volumeMV : "0");
+  const [muntedAudio, setMuntedAudio] = useState(volume === "0" ? true : false);
   const [prevVolume, setPrevVolume] = useState("50");
   const [enableQuality, setEnableQuality] = useState(false);
   const [videoQuality, setVideoQuality] = useState("");
@@ -82,7 +83,6 @@ const Video = () => {
   useEffect(() => {
     if (video && activeQuality) {
       handleEvent.playVideo();
-      console.log("asd");
     }
   }, [video, activeQuality]);
 
@@ -91,6 +91,12 @@ const Video = () => {
       video.paused ? setVideoPlay(false) : setVideoPlay(true);
     }
   });
+
+  useEffect(() => {
+    if (videoPlay) {
+      localStorage.setItem("volumeMV", JSON.stringify(volume));
+    }
+  }, [videoPlay, volume]);
 
   const handleEvent = {
     playVideo: () => {
