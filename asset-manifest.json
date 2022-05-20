@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/zingmp3-clone/static/css/main.92e9872e.css",
+    "main.js": "/zingmp3-clone/static/js/main.c50fc37b.js",
+    "static/media/avatar.jpg": "/zingmp3-clone/static/media/avatar.9f05a3d5bb003a14d01c.jpg",
+    "static/media/loading.gif": "/zingmp3-clone/static/media/loading.81453d27bc56443373e9.gif",
+    "index.html": "/zingmp3-clone/index.html",
+    "main.92e9872e.css.map": "/zingmp3-clone/static/css/main.92e9872e.css.map",
+    "main.c50fc37b.js.map": "/zingmp3-clone/static/js/main.c50fc37b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.92e9872e.css",
+    "static/js/main.c50fc37b.js"
+  ]
+}
