@@ -1,0 +1,264 @@
+.List__song__main {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.List__song__right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.List__song__img {
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.List__song__img > img {
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: transform 0.5s;
+}
+
+.List__song__img:hover > img {
+  transform: scale(1.1);
+}
+
+.List__song__img:hover > .option__playlist__selection {
+  opacity: 1;
+}
+
+.List__song__description {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.List__song__left {
+  flex: 2.5;
+}
+
+.item__title__album {
+  display: -webkit-box;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: unset;
+  color: var(--white);
+  text-transform: capitalize;
+}
+
+.subtitle__sumenu__content,
+.description__singer,
+.description__name,
+.item__title__album1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: unset;
+  text-transform: capitalize;
+}
+
+.subtitle__sumenu__content {
+  text-align: center;
+}
+
+.list__song__item {
+  margin: 0;
+}
+
+.List__song__subTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-opacity);
+}
+
+.List__song__subTitle > span {
+  color: var(--spotlight-item);
+}
+
+.description__name {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.description__count__like,
+.description__singer,
+.description__date {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-opacity);
+}
+
+.description__singer {
+  cursor: pointer;
+}
+
+.description__singer > a {
+  color: var(--text-opacity);
+}
+
+.description__singer > a:hover {
+  color: var(--link-text-hover);
+}
+
+.description__play__song {
+  margin: 15px auto;
+}
+
+.description__play__song > span {
+  background: var(--purple-primary);
+  padding: 8px 25px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--spotlight-item);
+}
+
+.description__play__song > span > i {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.description__play__song > span:hover {
+  opacity: 0.9;
+}
+
+.img__load {
+  width: 100%;
+  height: 280px;
+}
+
+.title__load > .name__loader {
+  margin-top: 10px;
+  height: 15px;
+}
+
+.title__load1 > .name__loader {
+  margin-top: 10px;
+  height: 10px;
+  width: 150px;
+}
+
+.title__load2 > .name__loader {
+  margin-top: 20px;
+  border-radius: 50px;
+  width: 180px;
+  height: 40px;
+}
+
+.item__load {
+  min-width: 700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.center__load {
+  padding: 0 10px;
+}
+
+.left__load > .header__playlist__selection > span {
+  width: 40px;
+  height: 40px;
+}
+
+.center__item > .name__loader {
+  width: 300px;
+}
+
+.center__load1 > .header__playlist__selection > .name__loader {
+  width: 40px;
+  height: 10px;
+  margin-left: 50px;
+}
+
+.right__load {
+  display: flex;
+  justify-content: flex-end;
+  width: 200px;
+}
+
+.right__load > .header__playlist__selection > span {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  margin: 0 5px;
+}
+
+.popup__bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  background: var(--dark-alpha-50);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.popup__vip {
+  width: 300px;
+  height: 120px;
+  background-color: var(--black);
+  border-radius: 5px;
+  color: var(--text-opacity);
+  padding: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  position: relative;
+}
+
+.popup__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--spotlight-item);
+  margin-bottom: 10px;
+}
+
+.popup__login__vip {
+  margin-top: 10px;
+  background-color: var(--yellow);
+  color: var(--alpha-layout-bg);
+  padding: 5px 0;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.popup__login__vip:hover {
+  opacity: 0.8;
+}
+
+.close__popup {
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}

@@ -1,0 +1,74 @@
+.banner-top100 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.bg-alpha2,
+.bg-blur2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 42.5%;
+  z-index: -1;
+}
+.bg-blur2 {
+  background: url("https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.6.24/static/media/banner-100.33cafe6b.png")
+    center top / cover no-repeat;
+  opacity: 0.3;
+}
+.bg-alpha2 {
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 37%, #010101);
+  inset: 0px;
+}
+
+.top__100__item {
+  width: 17.13%;
+  padding: 0 15px;
+}
+
+.name__singer__all,
+.title__playlist__selection {
+  display: -webkit-box;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 10px;
+  text-decoration: unset;
+  color: var(--white);
+  text-transform: capitalize;
+}
+
+.name__singer__all {
+  margin-top: 0px;
+}
+
+.play__100 > a {
+  font-size: 27px;
+  color: var(--spotlight-item);
+  border: 1px solid var(--spotlight-item);
+  padding: 2px 12px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.gif__100:hover,
+.play__100:hover > a {
+  background: var(--kara-btn-bg);
+}
+
+.gif__100 {
+  margin: 0 18px;
+  height: 40px;
+  padding: 2px 12px;
+  color: var(--spotlight-item);
+}
+
+.active__100 > .figure-cate > .icon__top__song {
+  display: flex;
+  background-color: var(--dark-alpha-30);
+  margin-top: 0;
+}

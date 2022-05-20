@@ -1,0 +1,337 @@
+.chart__title {
+  position: relative;
+  margin: 40px 0;
+}
+.chart__title > .title {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--spotlight-item);
+  display: inline;
+  margin-right: 5px;
+  text-transform: capitalize;
+}
+.chart__title > button {
+  position: absolute;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--link-text-hover);
+  cursor: pointer;
+}
+.chart__title > button:hover {
+  background-color: var(--text-item-hover);
+}
+.chart__title > button > i {
+  color: var(--spotlight-item);
+  font-size: 15px;
+}
+.list__zing__chart {
+  margin-bottom: 90px;
+}
+
+.top__song {
+  display: flex;
+  padding: 5px;
+  border-radius: 7px;
+  background-color: transparent;
+  height: 60px;
+  border-bottom: 1px solid var(--alpha-bg);
+}
+.top__song:hover,
+.top__vn:hover {
+  background-color: var(--alpha-bg);
+}
+.top__song:hover .thumbnail__children > img {
+  opacity: 0.4;
+}
+.top__song:hover .thumbnail__children > i {
+  display: block;
+}
+.top__song:hover .icon__top__song {
+  display: flex;
+}
+.top__song:hover .duration__time__song {
+  display: none;
+}
+.top__song__left {
+  margin-left: 20px;
+  display: flex;
+  width: 40%;
+  cursor: default;
+}
+
+.top__song__right {
+  margin-right: 20px;
+}
+.number__top_song {
+  font-size: 40px;
+  font-weight: 800;
+  -webkit-text-stroke: 2px #4a90e2;
+  opacity: 0.7;
+  color: transparent;
+}
+.line__ {
+  font-size: 40px;
+  text-indent: 25px;
+  color: var(--text-opacity);
+}
+.song__content {
+  display: flex;
+}
+.thumbnail__children {
+  width: 42px;
+  height: 42px;
+  position: relative;
+  cursor: pointer;
+}
+.thumbnail__children > i {
+  font-size: 18px;
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  color: var(--spotlight-item);
+  display: none;
+}
+.song__content .thumbnail__children {
+  margin: 10px;
+}
+.song__track__singer {
+  margin-top: 10px;
+}
+.top__song__content {
+  width: 30%;
+  line-height: 60px;
+}
+
+a.item__single {
+  text-decoration: none;
+}
+
+a.item__single:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--link-text-hover);
+}
+.top__song_right {
+  position: relative;
+  width: 30%;
+  margin-right: 20px;
+  justify-content: right;
+}
+.icon__top__song {
+  display: none;
+  margin-top: 10px;
+  justify-content: right;
+  position: absolute;
+  right: -37px;
+}
+.duration__time__song {
+  display: flex;
+  justify-content: right;
+  line-height: 60px;
+  font-size: 12px;
+  color: var(--text-opacity);
+}
+
+.jus__content {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.zm__btn {
+  width: 150px;
+  height: 40px;
+  border: 1px solid var(--contrast-color);
+  background-color: transparent;
+  border-radius: 50px;
+  cursor: pointer;
+  color: var(--contrast-color);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 20px 0 20px 0;
+  align-items: center;
+}
+
+.zm__btn:hover {
+  background-color: var(--alpha-bg);
+}
+.zingchart__weekly {
+  padding-bottom: 30px;
+  position: relative;
+}
+.bg__blur,
+.bg__alpha {
+  margin: 0 calc(var(--padding-section) * -1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.bg__alpha {
+  background-color: var(--bg-alpha);
+}
+
+.bg__blur {
+  z-index: 0;
+  background: url(https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.6.22/static/media/week-chart-bg.edf332e5.jpg)
+    top/cover no-repeat;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.bxh__week {
+  padding-top: 30px;
+}
+
+.bxh__week > a {
+  position: absolute;
+  top: 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 40px;
+  color: var(--tab-active-bg);
+  font-weight: 600;
+}
+.rank__weekly {
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+}
+.zingchart__bxh__vn,
+.zingchart__bxh__us,
+.zingchart__bxh__kpop {
+  flex: 1;
+  height: 450px;
+  border-radius: 10px;
+  background-color: var(--bxh-vn-us-kpop);
+  margin: 90px 10px 0 10px;
+}
+
+.rank__weekly > div > div > a {
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  font-weight: 600;
+}
+.rank__weekly > div > div > button.circle {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  top: 2px;
+  margin-left: 5px;
+  background-color: var(--link-text-hover);
+  cursor: pointer;
+}
+.rank__weekly > div > div > button.circle:hover {
+  background-color: var(--text-item-hover);
+}
+.rank__weekly > div > div > button > i {
+  color: var(--spotlight-item);
+}
+.chart__title__bxh {
+  margin: 15px 0 10px 50px;
+  cursor: pointer;
+  position: relative;
+}
+.chart__title__bxh > a:hover {
+  color: var(--link-text-hover);
+}
+.top__vn {
+  display: flex;
+  margin: 0 10px;
+  border-radius: 10px;
+}
+.top__vn:hover .thumbnail__children > img {
+  opacity: 0.4;
+}
+.top__vn:hover .thumbnail__children > i {
+  display: block;
+}
+.top__vn:hover .icon__top__song {
+  display: flex;
+}
+.top__vn:hover .duration__time__song {
+  display: none;
+}
+.top__vn .top__song__left__vn {
+  margin-left: 10px;
+  display: flex;
+  width: 80%;
+  position: relative;
+}
+.top__song__left__vn {
+  cursor: default;
+}
+
+.top__vn .top__song__left__vn .line__vn {
+  font-size: 40px;
+  color: var(--text-opacity);
+  margin: 0 5px;
+}
+
+.top__song__left__vn .number__top_song {
+  -webkit-text-stroke: 1.5px #f9f9f9;
+}
+
+.menu__etc {
+  left: -190px;
+  bottom: -80px;
+  z-index: 999;
+}
+
+.menu__etc__bxh {
+  z-index: 999;
+}
+
+.up__bxh,
+.down__bxh {
+  margin: 10px 10px 0 30px;
+}
+
+.up__bxh > i {
+  font-size: 20px;
+  color: green;
+}
+.up__bxh > p,
+.down__bxh > p {
+  font-size: 12px;
+  text-indent: 3px;
+  font-weight: 800;
+}
+
+.down__bxh > i {
+  color: orangered;
+  font-size: 20px;
+}
+
+.down__bxh__vn,
+.up__bxh__vn {
+  margin: 10px;
+}
+
+.top__song_right__vn {
+  position: relative;
+}
+.top__song_right .icon__top__song {
+  right: -10px;
+}
+
+.menu__etc__vn {
+  bottom: -100px;
+  left: 75px;
+}
+.menu__etc_kpop {
+  bottom: -100px;
+  left: -233px;
+}
+.zingchart__size {
+  height: 415px;
+}

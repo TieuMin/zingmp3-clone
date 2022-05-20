@@ -1,0 +1,222 @@
+.zm__navbar__skin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    
+}
+
+.zm__navbar__menu{
+    display: flex;
+    background-color: var(--alpha-bg);
+    width: 600px;
+    height: 25px;
+    border: none;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+.zm__navbar__item{
+    flex: 1;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 50px;
+    border: none;
+    text-align: center;
+    padding: 5px;
+    background-color: transparent;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--gray);
+}
+
+.zm__navbar__item:hover{
+    color: white;
+}
+
+.zm__active__bar{
+    color: white;
+    background-color: #646060;
+}
+
+.carousel__singer{
+    position: relative;
+    overflow: hidden;
+    margin: 0 -15px 90px -15px;
+}
+.carousel__list{
+    display: flex;
+    transition: transform .8s;
+}
+.carousel__singer__item{
+    width: 11.5%;
+    padding: 0 14px;
+    flex-shrink: 0;
+}
+.carousel__singer__item a figure img {
+    width: 100%;
+}
+.carousel__singer__item:hover a figure img{
+    opacity: 0.8;
+}
+.prev__carousel{
+    position: absolute;
+    top: 57px;
+    left: 5px;
+    cursor: pointer;
+}
+.next__carousel{
+    position: absolute;
+    top: 57px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.prev__carousel>div,.next__carousel>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--white);
+    width: 35px;
+    height: 35px;
+}
+
+.prev__carousel>div>i, .next__carousel>div>i{
+    color: black;
+    font-size: 16px;
+}
+.follower__container{
+    display: flex;
+    min-width: 650px;
+    margin-bottom: 40px;
+}
+.follower__left{
+    flex: 1;
+    margin-right: 10px;
+}
+.follower__right{
+    flex: 1;
+    margin-left: 10px;
+}
+
+.follower__item{
+    width: 100%;
+    background-color: var(--alpha-bg);
+    border: none;
+    border-radius: 10px;
+}
+.item__follower{
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.head__follower{
+    display: flex;
+    padding-bottom: 0;
+}
+.avatar__follower{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    overflow: hidden;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.avatar__follower:hover img{
+    transform: scale(1.1);
+}
+.avatar__follower > img{
+    width: 100%;
+    border: none;
+    border-radius: 50%;
+    transition: transform .7s;
+}
+.follwer__name{
+    position: relative;
+}
+.follwer__name > a, .follwer__name>button>a{
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+.follwer__name > a>span{
+    color: var(--white);
+    margin-right: 5px;
+}
+.follwer__name > a>span:hover, .follower__time:hover{
+    color: var(--link-text-hover);
+}
+.follwer__name>button{
+    border: none;
+    background-color: transparent;
+    margin-left: 12px;
+}
+.follwer__name>button>a{
+    color: var(--link-text-hover);
+}
+.follwer__name>button>a:hover{
+    opacity: 0.9;
+}
+.follwer__name > span{
+    font-size: 20px;
+    font-weight: 800;
+    position: absolute;
+    top: -7px;
+}
+.follower__time{
+    cursor: pointer;
+    color: var(--text-placeholder);
+    font-size: 12px;
+}
+.content__follower{
+    margin: 10px 0;
+    padding: 0 20px;
+}
+.content__follower > span{
+    font-size: 16px;
+    font-weight: 500;
+}
+.video__follower{
+    margin-top: 10px; 
+}
+.feed-video-follower{
+    display: flex;
+    border: none;
+    border-radius: 10px;
+    padding-bottom: 180.556%;
+    position: relative;
+}
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.center>i:hover{
+    color: aliceblue;
+    opacity: 0.9;
+}
+.follower__comment__like{
+    display: flex;
+    padding-top: 0;
+}
+.follower__like, .follower__comment{
+    margin-right: 40px;
+    cursor: pointer;
+}
+.follower__like > i, .follower__comment > i, .follower__comment, .follower__like {
+    font-size: 16px;
+}
+.follower__comment:hover, .follower__like:hover{
+    opacity: 0.9;
+}
+.disabled{
+    opacity: .1;
+    cursor: default;
+}
+

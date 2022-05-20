@@ -1,0 +1,27 @@
+.main{
+    position: relative;
+}
+.bg__blur1, .bg__alpha1{
+    margin: 0 calc(var(--padding-section)*-1);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 106%;
+    height: 60%;
+}
+.bg__alpha1{
+    z-index: -1;
+    background: linear-gradient(to bottom, #ffffff -21%, #000000 92%);
+    opacity: .2;
+}
+
+.bg__blur1{
+    z-index: -1;
+    background: url(https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.6.23/static/media/new-release-bg.73d8f976.jpg) top/cover no-repeat;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    opacity: .2;
+}
+.list__zing__chart{
+    z-index: 999;
+}
