@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
 import { VideoContext } from "../../../context/GetVideoProvider";
+import { GetSongContext } from "../../../context/GetSongProvider";
 
 const Video = () => {
   const {
@@ -15,6 +16,7 @@ const Video = () => {
     fullWidthScreen,
     setFullWidthScreen,
   } = useContext(VideoContext);
+  const { setBtnPlay } = useContext(GetSongContext);
   const Ref = useRef(null);
   const [video, setVideo] = useState("");
   const [timeOutPlay, setTimeOutPlay] = useState(false);
@@ -65,6 +67,7 @@ const Video = () => {
     if (video) {
       handleEvent.playVideo();
       setVideoPlay(true);
+      setBtnPlay(false);
     }
   }, [video]);
 
