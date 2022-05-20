@@ -7,6 +7,7 @@
   z-index: 999;
   background: linear-gradient(to right, #232526, #414345);
   transition: 1s;
+  visibility: hidden;
 }
 
 .playmv__container {
@@ -427,6 +428,7 @@
 
 .playmv__active {
   top: 0;
+  visibility: visible;
 }
 
 .playmv__singer__load,

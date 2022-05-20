@@ -992,6 +992,7 @@
 }
 
 .list__playlist__ft {
+  visibility: hidden;
   position: absolute;
   width: 320px;
   height: calc(100vh - 90px);
@@ -1005,6 +1006,7 @@
 
 .display__list__ft {
   right: -21px;
+  visibility: visible;
 }
 
 .list__next__ft {
