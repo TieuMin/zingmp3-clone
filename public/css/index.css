@@ -1136,6 +1136,10 @@
   margin-right: 14px;
 }
 
+.active__search__item
+  > .item__list__ft
+  > .img__list__ft
+  > .option__playlist__selection,
 .list__item__ft:hover
   > .item__list__ft
   > .img__list__ft

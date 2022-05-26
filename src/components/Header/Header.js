@@ -118,7 +118,9 @@ function Header() {
                         return (
                           <div
                             key={index}
-                            className="list__item__ft item__noactive"
+                            className={`list__item__ft item__noactive ${
+                              idPlay === item.encodeId && "active__search__item"
+                            }`}
                           >
                             <div className="item__list__ft">
                               <a className="img__list__ft">
