@@ -10,7 +10,7 @@ const NewSong = () => {
     <MainLayout>
       <div
         className="content"
-        style={{ height: `${prevSongDefaul ? "" : "100vh"}` }}
+        style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
       >
         <div className="bg__blur1"></div>
         <div className="bg__alpha1"></div>

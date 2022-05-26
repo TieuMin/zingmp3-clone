@@ -17,7 +17,7 @@ const Top100 = () => {
       ) : (
         <div
           className="content"
-          style={{ height: `${prevSongDefaul ? "" : "100vh"}` }}
+          style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
         >
           <div className="bg-blur2"></div>
           <div className="bg-alpha2"></div>

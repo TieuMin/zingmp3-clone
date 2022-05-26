@@ -16,6 +16,8 @@ const GetSongProvider = ({ children }) => {
   const [btnPlay, setBtnPlay] = useState(false);
   const [playSong, setPlaySong] = useState(false);
   const [enableFooter, setEnableFooter] = useState(false);
+  const [close, setclose] = useState(false);
+  const [popupNotification, setPopupNotification] = useState(true);
 
   useEffect(() => {
     if (idSong !== "") {
@@ -71,6 +73,10 @@ const GetSongProvider = ({ children }) => {
     enableFooter,
     playSong,
     setPlaySong,
+    close,
+    setclose,
+    popupNotification,
+    setPopupNotification,
   };
   return (
     <GetSongContext.Provider value={datas}>{children}</GetSongContext.Provider>

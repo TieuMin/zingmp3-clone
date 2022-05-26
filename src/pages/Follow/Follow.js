@@ -9,7 +9,7 @@ const Follow = () => {
     <MainLayout>
       <div
         className="content"
-        style={{ height: `${prevSongDefaul ? "" : "100vh"}` }}
+        style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
       >
         <div className="zm__navbar">
           <div className="zm__navbar__skin">

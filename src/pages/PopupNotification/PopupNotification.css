@@ -1,0 +1,15 @@
+.popup__notification {
+  text-align: start;
+  height: 370px;
+  -webkit-mask-image: unset;
+  overflow-y: scroll;
+  color: hsla(0, 0%, 100%, 0.7);
+}
+
+.item__notification {
+  margin-left: 10px;
+}
+
+.messenger__popup {
+  color: var(--yellow);
+}

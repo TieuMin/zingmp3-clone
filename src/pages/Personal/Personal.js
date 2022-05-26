@@ -1,9 +1,11 @@
 import MainLayout from "../../layouts/MainLayout";
-import React from "react";
+import React, { useContext } from "react";
 import { Outlet, NavLink, useLocation } from "react-router-dom";
 import "./personal.css";
+import { PlaylistContext } from "../../context/GetPlaylistProvider";
 
 const Personal = () => {
+  const { setIdPlaylist } = useContext(PlaylistContext);
   const location = useLocation();
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
 
@@ -11,7 +13,7 @@ const Personal = () => {
     <MainLayout>
       <div
         className="content"
-        style={{ height: `${prevSongDefaul ? "" : "100vh"}` }}
+        style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
       >
         <div className="title__library">
           Thư viện
@@ -48,11 +50,12 @@ const Personal = () => {
                       <i className="fa-solid fa-xmark"></i>
                     </div>
                     <div className="option__selection item__play__selection">
-                      <i className="fa-solid fa-play"></i>
-                      {/* <span className="gif__play">
-                                        <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                            alt=""/>
-                                    </span> */}
+                      <NavLink to="/album/Love/ZWZB969E.html">
+                        <i
+                          className="fa-solid fa-play"
+                          onClick={() => setIdPlaylist("ZWZB969E")}
+                        ></i>
+                      </NavLink>
                     </div>
                     <div className="option__selection item__option__selection">
                       <div className="option__icon__selection">● ● ●</div>
@@ -61,9 +64,14 @@ const Personal = () => {
                 </div>
               </a>
               <div className="title__playlist__selection">
-                <a href="#" className="title__one__line">
+                <NavLink
+                  to="/album/Top-100-Bai-Hat-Nhac-Tre-Hay-Nhat-Hong-Thanh-DJ-Mie-Dinh-Tung-Huy-Thieu-Bao-Tram/ZWZB969E.html"
+                  className="title__one__line"
+                  onClick={() => setIdPlaylist("ZWZB969E")}
+                >
                   love
-                </a>
+                </NavLink>
+
                 <div>Trần minh</div>
               </div>
             </div>

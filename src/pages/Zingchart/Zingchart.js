@@ -18,7 +18,7 @@ const ZingChart = () => {
       ) : (
         <div
           className="content"
-          style={{ height: `${prevSongDefaul ? "" : "100vh"}` }}
+          style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
         >
           <div className="content__item zingchart__size">
             <div className="chart__title">

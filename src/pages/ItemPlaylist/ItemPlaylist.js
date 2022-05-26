@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import NameSinger from "../NameSinger/NameSinger";
 import { PlaylistContext } from "../../context/GetPlaylistProvider";
 import { GetSongContext } from "../../context/GetSongProvider";
@@ -7,6 +7,7 @@ import { GetSongContext } from "../../context/GetSongProvider";
 const ItemPlaylist = ({ lists, p = true }) => {
   const { idPlaylist, setIdPlaylist } = useContext(PlaylistContext);
   const { btnPlay, setBtnPlay } = useContext(GetSongContext);
+
   return (
     <>
       {lists.items.map((item, index) => {

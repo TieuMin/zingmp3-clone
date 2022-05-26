@@ -6,6 +6,7 @@ import HomeProvider from "./context/HomeProvider";
 import GetSongProvider from "./context/GetSongProvider";
 import PlaylistProvider from "./context/GetPlaylistProvider";
 import VideoProvider from "./context/GetVideoProvider";
+import SearchProvider from "./context/SearchProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +15,9 @@ root.render(
     <GetSongProvider>
       <PlaylistProvider>
         <VideoProvider>
-          <App />
+          <SearchProvider>
+            <App />
+          </SearchProvider>
         </VideoProvider>
       </PlaylistProvider>
     </GetSongProvider>

@@ -1,6 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { SearchContext } from "../../context/SearchProvider";
 import logo from "../../assets/images/avatar.jpg";
+import NameSinger from "../../pages/NameSinger/NameSinger";
+import { GetSongContext } from "../../context/GetSongProvider";
+import { PlaylistContext } from "../../context/GetPlaylistProvider";
+import loading from "../../assets/images/loading.gif";
 
 let useClickOutSide = (handler) => {
   let domNote = useRef();
@@ -23,14 +27,55 @@ let useClickOutSide = (handler) => {
 };
 
 function Header() {
-  let [isClickMenu, setIsClickMenu] = useState(false);
+  const { key, setKey, dataSearch } = useContext(SearchContext);
+  const { setIdPlaylist } = useContext(PlaylistContext);
+  const {
+    setIdSong,
+    btnPlay,
+    setBtnPlay,
+    idSong,
+    loaderPlay,
+    playSong,
+    setclose,
+  } = useContext(GetSongContext);
+  const playId = JSON.parse(localStorage.getItem("prevSongDefaul"));
+  const [isClickMenu, setIsClickMenu] = useState(false);
   const [isPlayingFullscreen, setIsPlayingFullscreen] = useState(false);
   const [isEffect, setIsEffect] = useState(false);
   const [isMusicQuality, setIsMusicQuality] = useState(true);
+  const [enableSearch, setEnableSearch] = useState(false);
+  const [value, setValue] = useState("");
+  const [idPlay, setIdPlay] = useState("");
+
+  useEffect(() => {
+    if (idSong) {
+      setIdPlay(idSong);
+    } else {
+      setIdPlay(playId ? playId.id : "");
+    }
+  }, [idSong]);
 
   let domNote = useClickOutSide(() => {
     setIsClickMenu(false);
   });
+
+  let suggestSearch = useClickOutSide(() => {
+    setEnableSearch(false);
+  });
+
+  useEffect(() => {
+    let timeout;
+    if (value !== "") {
+      timeout = setTimeout(() => {
+        setKey(value);
+      }, 200);
+    } else {
+      setKey("");
+      clearTimeout(timeout);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [value]);
 
   return (
     <div className="header">
@@ -44,14 +89,160 @@ function Header() {
               <i className="fa-solid fa-arrow-right"></i>
             </a>
           </div>
-          <div className="search__input">
+          <div className="search__input" ref={suggestSearch}>
             <i className="fa-solid fa-magnifying-glass"></i>
             <input
               type="text"
               name="search"
               autoComplete="off"
               placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV..."
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onFocus={(e) => setEnableSearch(true)}
             />
+            {value && (
+              <div className="delete__text__search">
+                <i
+                  className="fa-solid fa-xmark"
+                  onClick={() => setValue("")}
+                ></i>
+              </div>
+            )}
+            {enableSearch && (
+              <div className="suggest__search">
+                <span>Gợi ý kết quả</span>
+                <div className="sidebar__scrollbar list__item__all__ft">
+                  {dataSearch && key
+                    ? dataSearch.songs &&
+                      dataSearch.songs.map((item, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className="list__item__ft item__noactive"
+                          >
+                            <div className="item__list__ft">
+                              <a className="img__list__ft">
+                                <img src={item.thumbnail} alt="thumbnail" />
+                                <div className="option__playlist__selection">
+                                  {item.artists &&
+                                  item.streamingStatus === 1 ? (
+                                    <>
+                                      {idPlay === item.encodeId ? (
+                                        <div className="option__selection">
+                                          {loaderPlay === false ? (
+                                            <>
+                                              {btnPlay &&
+                                              playSong &&
+                                              idPlay === item.encodeId ? (
+                                                <span
+                                                  style={{ border: "unset" }}
+                                                  className="gif__play"
+                                                  onClick={() =>
+                                                    setBtnPlay(false)
+                                                  }
+                                                >
+                                                  <img
+                                                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                                    alt=""
+                                                  />
+                                                </span>
+                                              ) : (
+                                                <i
+                                                  className="fa-solid fa-play"
+                                                  onClick={() =>
+                                                    setBtnPlay(true)
+                                                  }
+                                                ></i>
+                                              )}
+                                            </>
+                                          ) : (
+                                            <span className="controller__itemmedia loader__audio">
+                                              <img
+                                                style={{ border: "unset" }}
+                                                src={loading}
+                                                alt="loading"
+                                              />
+                                            </span>
+                                          )}
+                                        </div>
+                                      ) : (
+                                        <div
+                                          className="option__selection"
+                                          onClick={() => {
+                                            setIdSong(item.encodeId);
+                                            item.album &&
+                                              setIdPlaylist(
+                                                item.album.encodeId
+                                              );
+                                          }}
+                                        >
+                                          {btnPlay &&
+                                          playSong &&
+                                          idPlay === item.encodeId ? (
+                                            <span
+                                              style={{ border: "unset" }}
+                                              className="gif__play"
+                                            >
+                                              <img
+                                                src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                                alt=""
+                                              />
+                                            </span>
+                                          ) : (
+                                            <i
+                                              className="fa-solid fa-play"
+                                              onClick={() => setBtnPlay(true)}
+                                            ></i>
+                                          )}
+                                        </div>
+                                      )}
+                                    </>
+                                  ) : (
+                                    <div
+                                      className="option__selection"
+                                      onClick={() => setclose(true)}
+                                    >
+                                      <i className="fa-solid fa-play"></i>
+                                    </div>
+                                  )}
+                                </div>
+                              </a>
+                              <div className="subtitle__list__ft">
+                                <div className="item__title__album item__title__search">
+                                  {item.title}{" "}
+                                  {item.artists &&
+                                  item.streamingStatus === 1 ? (
+                                    ""
+                                  ) : (
+                                    <img
+                                      src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.6.25/static/media/vip-label.3dd6ac7e.svg"
+                                      style={{ width: "23px" }}
+                                    />
+                                  )}
+                                </div>
+                                <nav className="subsinger__music__library item__title__album1">
+                                  {item.artists ? (
+                                    item.artists.map((artist, index) => {
+                                      return (
+                                        <NameSinger
+                                          key={index}
+                                          artist={artist}
+                                        />
+                                      );
+                                    })
+                                  ) : (
+                                    <a href="#">{item.artistsNames}</a>
+                                  )}
+                                </nav>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })
+                    : ""}
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <div className="header__right">

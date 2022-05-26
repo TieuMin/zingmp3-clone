@@ -19,7 +19,7 @@ const Mv = () => {
         ) : (
           <div
             className="content"
-            style={{ height: `${prevSongDefaul ? "" : "100vh"}` }}
+            style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
           >
             <div className="navbar__mv">
               <h3>mv</h3>

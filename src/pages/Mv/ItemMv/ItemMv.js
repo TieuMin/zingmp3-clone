@@ -31,7 +31,7 @@ const ItemMv = () => {
               </p>
               <div className="angle-icon-all">
                 {menuFilter ? (
-                  <i class="fa-solid fa-chevron-up"></i>
+                  <i className="fa-solid fa-chevron-up"></i>
                 ) : (
                   <i className="fa-solid fa-angle-down"></i>
                 )}
@@ -68,7 +68,7 @@ const ItemMv = () => {
             <p className="mr-20">nghe nhiều</p>
             <div className="angle-icon-most">
               {menuFilter1 ? (
-                <i class="fa-solid fa-chevron-up"></i>
+                <i className="fa-solid fa-chevron-up"></i>
               ) : (
                 <i className="fa-solid fa-angle-down"></i>
               )}

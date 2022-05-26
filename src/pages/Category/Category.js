@@ -17,7 +17,7 @@ const Category = () => {
       ) : (
         <div
           className="content"
-          style={{ height: `${prevSongDefaul ? "" : "100vh"}` }}
+          style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
         >
           <div className="banner__vip">
             <figure>

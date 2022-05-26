@@ -3,9 +3,16 @@ import NameSinger from "../../NameSinger/NameSinger";
 import { GetSongContext } from "../../../context/GetSongProvider";
 import loading from "../../../assets/images/loading.gif";
 
-const MusicItem = ({ datas, vip, setclose }) => {
-  const { setIdSong, btnPlay, setBtnPlay, idSong, loaderPlay, playSong } =
-    useContext(GetSongContext);
+const MusicItem = ({ datas, vip }) => {
+  const {
+    setIdSong,
+    btnPlay,
+    setBtnPlay,
+    idSong,
+    loaderPlay,
+    playSong,
+    setclose,
+  } = useContext(GetSongContext);
   const playId = JSON.parse(localStorage.getItem("prevSongDefaul"));
   const [idPlay, setIdPlay] = useState("");
 

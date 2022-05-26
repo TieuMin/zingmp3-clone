@@ -27,7 +27,7 @@ const LoadList = () => {
   return (
     <div
       className="content"
-      style={{ height: `${prevSongDefaul ? "" : "100vh"}` }}
+      style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
     >
       <div className="List__song__main">
         <div className="List__song__right">

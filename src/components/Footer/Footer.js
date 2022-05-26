@@ -5,7 +5,6 @@ import loading from "../../assets/images/loading.gif";
 import NameSinger from "../../pages/NameSinger/NameSinger";
 import { useNavigate } from "react-router-dom";
 import ItemListFooter from "./ItemListFooter";
-import { VideoContext } from "../../context/GetVideoProvider";
 
 let useClickOutSide = (handler) => {
   let domNote = useRef();
@@ -28,7 +27,6 @@ let useClickOutSide = (handler) => {
 const Footer = () => {
   let navigate = useNavigate();
   let [isClickOption, setIsClickOption] = useState(false);
-  const { setVideoPlay } = useContext(VideoContext);
   const {
     songData,
     infoSong,
@@ -41,7 +39,6 @@ const Footer = () => {
     setPlaySong,
   } = useContext(GetSongContext);
   const {
-    idPlaylist,
     setIdPlaylist,
     listIdSong,
     setIndexListIdSong,
@@ -310,6 +307,7 @@ const Footer = () => {
       }
     },
   };
+
   return (
     <div className="footer">
       <audio src={songData} ref={Audio} />
