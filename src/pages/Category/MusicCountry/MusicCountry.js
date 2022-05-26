@@ -4,7 +4,7 @@ const MusicCountry = () => {
   return (
     <div className="columns">
       <div className="column">
-        <a href="">
+        <a href="#">
           <figure className="img__">
             <img
               src="https://photo-zmp3.zmdcdn.me/cover/9/a/5/4/9a547c214248610d4907fa5b60b1b3b5.jpg"
@@ -16,7 +16,7 @@ const MusicCountry = () => {
         </a>
       </div>
       <div className="column">
-        <a href="">
+        <a href="#">
           <figure className="img__">
             <img
               src="https://photo-zmp3.zmdcdn.me/cover/d/8/5/6/d856eafd7198e0f534ef400d088c7cda.jpg"
@@ -33,7 +33,7 @@ const MusicCountry = () => {
         </a>
       </div>
       <div className="column">
-        <a href="">
+        <a href="#">
           <figure className="img__">
             <img
               src="https://photo-zmp3.zmdcdn.me/cover/e/1/8/d/e18dbedd369af1866454302658c2c1a7.jpg"
@@ -51,7 +51,7 @@ const MusicCountry = () => {
         </a>
       </div>
       <div className="column">
-        <a href="">
+        <a href="#">
           <figure className="img__">
             <img
               src="https://photo-zmp3.zmdcdn.me/cover/4/0/7/0/407056603b2048fe1c1ed6e05bda95d0.jpg"

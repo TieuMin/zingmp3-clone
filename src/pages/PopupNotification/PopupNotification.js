@@ -18,11 +18,15 @@ const PopupNotification = () => {
           ></i>
         </div>
         <div className="popup__title">Thông Báo</div>
-        <div
-          className="sidebar__scrollbar popup__notification"
-          style={{ textAlign: "start" }}
-        >
+        <div className="sidebar__scrollbar popup__notification">
           <div>Zingmin phiên bản 1.0.0 cập nhật các chức năng sau.</div>
+          <div>- Các danh mục đang hoạt động:</div>
+          <div className="item__notification">+ Cá nhân</div>
+          <div className="item__notification">+ Khám phá</div>
+          <div className="item__notification">+ Thể loại</div>
+          <div className="item__notification">+ Top 100</div>
+          <div className="item__notification">+ MV</div>
+
           <div>- Chức năng nghe nhạc:</div>
           <div className="item__notification">+ Play & Pause bài hát</div>
           <div className="item__notification">+ Next & Prev bài hát</div>

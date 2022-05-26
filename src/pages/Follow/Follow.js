@@ -37,12 +37,12 @@ const Follow = () => {
                 </div>
                 <div className="follower">
                   <div className="follwer__name">
-                    <a href="">
+                    <a href="#">
                       <span>ninh dương lan ngọc</span>
                     </a>
                     <span>.</span>
-                    <button href="">
-                      <a href="">quan tâm</a>
+                    <button href="#">
+                      <a href="#">quan tâm</a>
                     </button>
                   </div>
                   <div className="follower__time">
@@ -85,12 +85,12 @@ const Follow = () => {
                 </div>
                 <div className="follower">
                   <div className="follwer__name">
-                    <a href="">
+                    <a href="#">
                       <span>jang mi</span>
                     </a>
                     <span>.</span>
-                    <button href="">
-                      <a href="">quan tâm</a>
+                    <button href="#">
+                      <a href="#">quan tâm</a>
                     </button>
                   </div>
                   <div className="follower__time">
@@ -136,12 +136,12 @@ const Follow = () => {
                 </div>
                 <div className="follower">
                   <div className="follwer__name">
-                    <a href="">
+                    <a href="#">
                       <span>jang mi</span>
                     </a>
                     <span>.</span>
-                    <button href="">
-                      <a href="">quan tâm</a>
+                    <button href="#">
+                      <a href="#">quan tâm</a>
                     </button>
                   </div>
                   <div className="follower__time">
@@ -185,12 +185,12 @@ const Follow = () => {
                 </div>
                 <div className="follower">
                   <div className="follwer__name">
-                    <a href="">
+                    <a href="#">
                       <span>ninh dương lan ngọc</span>
                     </a>
                     <span>.</span>
-                    <button href="">
-                      <a href="">quan tâm</a>
+                    <button href="#">
+                      <a href="#">quan tâm</a>
                     </button>
                   </div>
                   <div className="follower__time">

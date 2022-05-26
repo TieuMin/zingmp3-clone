@@ -6,7 +6,7 @@ const MusicTheme = () => {
       <div className="columns">
         <div className="column">
           <div>
-            <a href="">
+            <a href="#">
               <div className="topic-item">
                 <figure>
                   <img
@@ -42,7 +42,7 @@ const MusicTheme = () => {
                 </div>
               </div>
             </a>
-            <a href="">
+            <a href="#">
               <div className="topic-item">
                 <figure>
                   <img
@@ -82,7 +82,7 @@ const MusicTheme = () => {
         </div>
         <div className="column">
           <div>
-            <a href="">
+            <a href="#">
               <div className="topic-item">
                 <figure>
                   <img
@@ -118,7 +118,7 @@ const MusicTheme = () => {
                 </div>
               </div>
             </a>
-            <a href="">
+            <a href="#">
               <div className="topic-item">
                 <figure>
                   <img
@@ -158,7 +158,7 @@ const MusicTheme = () => {
         </div>
         <div className="column">
           <div>
-            <a href="">
+            <a href="#">
               <div className="topic-item">
                 <figure>
                   <img
@@ -194,7 +194,7 @@ const MusicTheme = () => {
                 </div>
               </div>
             </a>
-            <a href="">
+            <a href="#">
               <div className="topic-item">
                 <figure>
                   <img
@@ -234,7 +234,7 @@ const MusicTheme = () => {
         </div>
         <div className="column">
           <div>
-            <a href="">
+            <a href="#">
               <div className="topic-item">
                 <figure>
                   <img
@@ -270,7 +270,7 @@ const MusicTheme = () => {
                 </div>
               </div>
             </a>
-            <a href="">
+            <a href="#">
               <div className="topic-item">
                 <figure>
                   <img

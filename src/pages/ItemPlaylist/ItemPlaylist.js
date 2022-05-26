@@ -74,7 +74,7 @@ const ItemPlaylist = ({ lists, p = true }) => {
                         return <NameSinger key={index} artist={artist} />;
                       })
                     ) : (
-                      <a href="">{item.artistsNames}</a>
+                      <a href="#">{item.artistsNames}</a>
                     )
                   ) : (
                     <p className="subtitle">{item.sortDescription}</p>

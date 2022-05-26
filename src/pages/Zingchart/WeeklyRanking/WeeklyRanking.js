@@ -6,7 +6,7 @@ const WeeklyRanking = () => {
       <div className="bg__blur"></div>
       <div className="bg__alpha"></div>
       <div className="bxh__week">
-        <a href="">bảng xếp hạng tuần</a>
+        <a href="#">bảng xếp hạng tuần</a>
       </div>
       <div className="rank__weekly">
         <div className="zingchart__bxh__vn">
