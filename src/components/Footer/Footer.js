@@ -116,7 +116,7 @@ const Footer = () => {
 
   useEffect(() => {
     if (audio) {
-      if (btnPlay) {
+      if (audio.src && btnPlay) {
         handleEvent.playAudio();
         listIdSong.find((item, index) => {
           if (item === (idSong ? idSong : prevSongDefaul.id)) {
