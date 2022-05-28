@@ -184,6 +184,10 @@
   overflow: hidden;
   border: none;
   border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .image__mv > img {
   width: 100%;
@@ -191,8 +195,6 @@
 }
 .image__mv > span {
   position: absolute;
-  top: 30%;
-  left: 39%;
   display: none;
 }
 .image__mv:hover img {

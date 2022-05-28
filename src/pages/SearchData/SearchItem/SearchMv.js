@@ -4,7 +4,7 @@ import { VideoContext } from "../../../context/GetVideoProvider";
 import { GetSongContext } from "../../../context/GetSongProvider";
 
 const SearchMv = ({ datas }) => {
-  const { setActivePlayVideo, setIdVideo, setLoadList } =
+  const { setActivePlayVideo, setIdVideo, setLoadList, idVideo } =
     useContext(VideoContext);
   const { setclose } = useContext(GetSongContext);
 
@@ -25,24 +25,41 @@ const SearchMv = ({ datas }) => {
                     style={{ width: "30px" }}
                   />
                 )}
-                {item.artists && item.streamingStatus === 1 ? (
-                  <span
-                    className="controller__itemmedia play__item"
-                    onClick={() => {
-                      setActivePlayVideo(true);
-                      setLoadList(true);
-                      setIdVideo(item.encodeId);
-                    }}
+                {idVideo === item.encodeId ? (
+                  <div
+                    className="option__playlist__selection"
+                    style={{ opacity: "1", cursor: "default" }}
                   >
-                    <i className="far fa-play-circle"></i>
-                  </span>
+                    <div className="option__selection">
+                      <a>
+                        <span className="active__play__list__video">
+                          Đang phát
+                        </span>
+                      </a>
+                    </div>
+                  </div>
                 ) : (
-                  <span
-                    className="controller__itemmedia play__item"
-                    onClick={() => setclose(true)}
-                  >
-                    <i className="far fa-play-circle"></i>
-                  </span>
+                  <>
+                    {item.artists && item.streamingStatus === 1 ? (
+                      <span
+                        className="controller__itemmedia play__mv"
+                        onClick={() => {
+                          setActivePlayVideo(true);
+                          setLoadList(true);
+                          setIdVideo(item.encodeId);
+                        }}
+                      >
+                        <i class="fa-solid fa-play"></i>
+                      </span>
+                    ) : (
+                      <span
+                        className="controller__itemmedia play__mv"
+                        onClick={() => setclose(true)}
+                      >
+                        <i className="far fa-play-circle"></i>
+                      </span>
+                    )}
+                  </>
                 )}
               </div>
               <div className="profile">

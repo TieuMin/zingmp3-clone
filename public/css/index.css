@@ -1445,3 +1445,15 @@ input:checked + .slider:before {
   > .option__playlist__selection {
   opacity: 1;
 }
+
+.play__mv > i {
+  font-size: 25px;
+  padding: 8px 11px;
+  border: 1px solid;
+  height: unset;
+  width: unset;
+}
+
+.play__mv > i:hover {
+  background-color: var(--kara-btn-bg);
+}
