@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { GetSongContext } from "../../context/GetSongProvider";
 import { PlaylistContext } from "../../context/GetPlaylistProvider";
+import { VideoContext } from "../../context/GetVideoProvider";
 import loading from "../../assets/images/loading.gif";
 import NameSinger from "../../pages/NameSinger/NameSinger";
 import { useNavigate } from "react-router-dom";
@@ -45,6 +46,8 @@ const Footer = () => {
     indexListIdSong,
     dataPlaylist,
   } = useContext(PlaylistContext);
+  const { setMiniatureVideo, setActivePlayVideo, miniatureVideo } =
+    useContext(VideoContext);
   const [noneBtn, setNoneBtn] = useState(false);
   const [audio, setAudio] = useState("");
   const [timePlay, setTimePlay] = useState("00:00");
@@ -60,7 +63,9 @@ const Footer = () => {
   const repeat_random = JSON.parse(localStorage.getItem("repeat_random"));
   const listId = JSON.parse(localStorage.getItem("listIdSong"));
   const timeEnd =
-    loaderSong !== false ? infoSong.duration : prevSongDefaul.duration;
+    loaderSong !== false && infoSong
+      ? infoSong.duration
+      : prevSongDefaul.duration;
   const [repeat, setRepeat] = useState(
     repeat_random ? repeat_random.repeat : "noRepeat"
   );
@@ -118,11 +123,13 @@ const Footer = () => {
     if (audio) {
       if (audio.src && btnPlay) {
         handleEvent.playAudio();
-        listIdSong.find((item, index) => {
-          if (item === (idSong ? idSong : prevSongDefaul.id)) {
-            setIndexListIdSong(index);
-          }
-        });
+        if (listIdSong) {
+          listIdSong.find((item, index) => {
+            if (item === (idSong ? idSong : prevSongDefaul.id)) {
+              setIndexListIdSong(index);
+            }
+          });
+        }
       } else {
         handleEvent.pauseAudio();
       }
@@ -146,8 +153,8 @@ const Footer = () => {
   }, [loaderSong, audio]);
 
   useEffect(() => {
-    setIdSong(listIdSong[0]);
-    setIndexListIdSong(0);
+    setIdSong(listIdSong[indexListIdSong]);
+    setIndexListIdSong(indexListIdSong);
   }, [listIdSong]);
 
   const handleEvent = {
@@ -308,8 +315,18 @@ const Footer = () => {
     },
   };
 
+  useEffect(() => {
+    if (songData) {
+      setMiniatureVideo(false);
+      setActivePlayVideo(false);
+    }
+  }, [songData]);
+
   return (
-    <div className="footer">
+    <div
+      className="footer"
+      style={{ display: `${miniatureVideo ? "none" : "flex"}` }}
+    >
       <audio src={songData} ref={Audio} />
       <div className="media__left">
         <div className="media__left__item">
@@ -322,7 +339,7 @@ const Footer = () => {
                 setIdPlaylist(listId.idPlaylist);
               }}
             >
-              {loaderSong !== false ? (
+              {loaderSong !== false && infoSong ? (
                 <img src={infoSong.thumbnail} alt="thumbnail" />
               ) : (
                 <img src={prevSongDefaul.thumbnail} alt="thumbnail" />
@@ -330,14 +347,14 @@ const Footer = () => {
             </div>
           </div>
           <div className="content__left">
-            {loaderSong !== false ? (
+            {loaderSong !== false && infoSong ? (
               <div className="item__song">{infoSong.title}</div>
             ) : (
               <div className="item__song">{prevSongDefaul.title}</div>
             )}
             <div className="item__single">
               <div>
-                {loaderSong !== false
+                {loaderSong !== false && infoSong
                   ? infoSong.artists.map((artist, index) => {
                       return <NameSinger key={index} artist={artist} />;
                     })
@@ -363,7 +380,7 @@ const Footer = () => {
                   <div className="option__chindren__one">
                     <div className="option__chindren__img">
                       <div>
-                        {loaderSong !== false ? (
+                        {loaderSong !== false && infoSong ? (
                           <img src={infoSong.thumbnail} alt="thumbnail" />
                         ) : (
                           <img src={prevSongDefaul.thumbnail} alt="thumbnail" />
@@ -371,14 +388,14 @@ const Footer = () => {
                       </div>
                     </div>
                     <div className="option__chindren__sub">
-                      {loaderSong !== false ? (
+                      {loaderSong !== false && infoSong ? (
                         <h2>{infoSong.title}</h2>
                       ) : (
                         <h2>{prevSongDefaul.title}</h2>
                       )}
                       <div>
                         <span>
-                          {loaderSong !== false ? (
+                          {loaderSong !== false && infoSong ? (
                             <>
                               <i className="fa-regular fa-heart"></i>{" "}
                               {convertLike(infoSong.like)}
@@ -391,7 +408,7 @@ const Footer = () => {
                           )}
                         </span>
                         <span>
-                          {loaderSong !== false ? (
+                          {loaderSong !== false && infoSong ? (
                             <>
                               <i className="fa-solid fa-headphones"></i>{" "}
                               {convertLike(infoSong.listen)}
@@ -506,27 +523,25 @@ const Footer = () => {
           >
             <i className="fas fa-step-backward"></i>
           </span>
-          {loaderPlay === false ? (
+          {loaderPlay === false && audio?.src ? (
             <>
               <span
                 className={`controller__itemmedia play__item ${
                   noneBtn && "none__btn"
                 }`}
+                onClick={() => {
+                  handleEvent.playAudio();
+                }}
               >
-                <i
-                  className="far fa-play-circle"
-                  onClick={() => handleEvent.playAudio()}
-                ></i>
+                <i className="far fa-play-circle"></i>
               </span>
               <span
                 className={`controller__itemmedia play__item ${
                   !noneBtn && "none__btn"
                 }`}
+                onClick={() => handleEvent.pauseAudio()}
               >
-                <i
-                  className="far fa-pause-circle"
-                  onClick={() => handleEvent.pauseAudio()}
-                ></i>
+                <i className="far fa-pause-circle"></i>
               </span>
             </>
           ) : (
@@ -654,7 +669,7 @@ const Footer = () => {
             <div className="list__item__ft active__playlist__ft">
               <div className="item__list__ft">
                 <div className="img__list__ft">
-                  {loaderSong !== false ? (
+                  {loaderSong !== false && infoSong ? (
                     <img src={infoSong.thumbnail} alt="thumbnail" />
                   ) : (
                     <img src={prevSongDefaul.thumbnail} alt="thumbnail" />
@@ -688,14 +703,14 @@ const Footer = () => {
                 </div>
                 <div className="subtitle__list__ft">
                   <div className="item__title__album">
-                    {loaderSong !== false ? (
+                    {loaderSong !== false && infoSong ? (
                       <div className="item__song">{infoSong.title}</div>
                     ) : (
                       <div className="item__song">{prevSongDefaul.title}</div>
                     )}
                   </div>
                   <nav className="subsinger__music__library item__title__album1">
-                    {loaderSong !== false
+                    {loaderSong !== false && infoSong
                       ? infoSong.artists.map((artist, index) => {
                           return <NameSinger key={index} artist={artist} />;
                         })

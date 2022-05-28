@@ -1,22 +1,61 @@
 import React, { useContext } from "react";
+import { PlaylistContext } from "../../context/GetPlaylistProvider";
+import { GetSongContext } from "../../context/GetSongProvider";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const LoveSinger = ({ lists }) => {
+  const { idPlaylist, setIdPlaylist, setIndexListIdSong } =
+    useContext(PlaylistContext);
+  const { btnPlay, setBtnPlay } = useContext(GetSongContext);
   return (
     <>
       {lists.items.map((item, index) => {
         if (index < 3) {
           return (
             <div key={index} className="item__favorite__artist">
-              <div href="#">
+              <div
+                className={` ${
+                  btnPlay && idPlaylist === item.encodeId
+                    ? "active__playlist__home"
+                    : ""
+                }`}
+              >
                 <img src={item.thumbnail} alt="" />
                 <span className="opacity__img__channel"></span>
                 <div className="option__playlist__selection">
                   <div className="option__selection item__play__selection favorite__artist__option">
-                    <i className="fa-solid fa-play"></i>
-                    {/* <span className="gif__play">
-                            <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                                alt=""/>
-                        </span>  */}
+                    {idPlaylist === item.encodeId ? (
+                      <>
+                        {btnPlay ? (
+                          <span
+                            className="gif__play"
+                            onClick={() => setBtnPlay(false)}
+                          >
+                            <img
+                              src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                              alt=""
+                            />
+                          </span>
+                        ) : (
+                          <a>
+                            <i
+                              className="fa-solid fa-play"
+                              onClick={() => setBtnPlay(true)}
+                            ></i>
+                          </a>
+                        )}
+                      </>
+                    ) : (
+                      <NavLink to={item.link}>
+                        <i
+                          className="fa-solid fa-play"
+                          onClick={() => {
+                            setIdPlaylist(item.encodeId);
+                            setIndexListIdSong(0);
+                          }}
+                        ></i>
+                      </NavLink>
+                    )}
                   </div>
                 </div>
                 <div className="mix__content">

@@ -5,8 +5,6 @@ import { GetSongContext } from "../../../context/GetSongProvider";
 const Video = () => {
   const {
     dataVideo,
-    setVideoPlay,
-    videoPlay,
     setRepeat,
     repeat,
     listVideo,
@@ -15,13 +13,18 @@ const Video = () => {
     indexVideo,
     fullWidthScreen,
     setFullWidthScreen,
+    timeStart,
+    setTimeStart,
+    stepTime,
+    setStepTime,
+    currentTime,
+    setCurrentTime,
+    miniatureVideo,
   } = useContext(VideoContext);
-  const { setBtnPlay } = useContext(GetSongContext);
+  const { setBtnPlay, setclose } = useContext(GetSongContext);
   const Ref = useRef(null);
   const [video, setVideo] = useState("");
   const [timeOutPlay, setTimeOutPlay] = useState(false);
-  const [timeStart, setTimeStart] = useState("00:00");
-  const [stepTime, setStepTime] = useState("0");
   const volumeMV = JSON.parse(localStorage.getItem("volumeMV"));
   const [volume, setVolume] = useState(volumeMV ? volumeMV : "0");
   const [muntedAudio, setMuntedAudio] = useState(volume === "0" ? true : false);
@@ -29,7 +32,8 @@ const Video = () => {
   const [enableQuality, setEnableQuality] = useState(false);
   const [videoQuality, setVideoQuality] = useState("");
   const [activeQuality, setActiveQuality] = useState("auto");
-  const [currentTime, setCurrentTime] = useState(0);
+  const [enableOptionVideo, setEnableOptionVideo] = useState(true);
+  const [videoPlay, setVideoPlay] = useState(false);
 
   function convertMS(value) {
     const sec = parseInt(value, 10); // convert value to number if it's string
@@ -64,24 +68,38 @@ const Video = () => {
   }, [timeOutPlay]);
 
   useEffect(() => {
+    let timeOut;
+    if (enableOptionVideo && videoPlay) {
+      timeOut = setTimeout(() => {
+        setEnableOptionVideo(false);
+      }, 2000);
+    } else clearTimeout(timeOut);
+    return () => clearTimeout(timeOut);
+  }, [enableOptionVideo, videoPlay]);
+
+  useEffect(() => {
+    if (dataVideo) {
+      if (dataVideo.streamingStatus === 1 && dataVideo.streaming.mp4) {
+        setVideoQuality(dataVideo.streaming.mp4["720p"]);
+      } else {
+        setclose(true);
+      }
+    }
+  }, [dataVideo]);
+
+  useEffect(() => {
+    if (video) {
+      video.paused ? setVideoPlay(false) : setVideoPlay(true);
+    }
+  });
+
+  useEffect(() => {
     if (video) {
       handleEvent.playVideo();
       setVideoPlay(true);
       setBtnPlay(false);
     }
   }, [video]);
-
-  useEffect(() => {
-    if (dataVideo) {
-      setVideoQuality(dataVideo.streaming.mp4["720p"]);
-    }
-  }, [dataVideo]);
-
-  useEffect(() => {
-    if (!videoPlay) {
-      handleEvent.pauseVideo();
-    }
-  }, [videoPlay]);
 
   useEffect(() => {
     if (video && activeQuality) {
@@ -91,9 +109,20 @@ const Video = () => {
 
   useEffect(() => {
     if (video) {
-      video.paused ? setVideoPlay(false) : setVideoPlay(true);
+      video.currentTime = currentTime;
+      if (miniatureVideo) {
+        handleEvent.pauseVideo();
+      } else {
+        handleEvent.playVideo();
+      }
     }
-  });
+  }, [video, miniatureVideo]);
+
+  useEffect(() => {
+    if (!videoPlay) {
+      handleEvent.pauseVideo();
+    }
+  }, [videoPlay]);
 
   useEffect(() => {
     if (videoPlay) {
@@ -192,15 +221,19 @@ const Video = () => {
     <>
       <div
         className="playmv__video"
-        style={{ height: `${fullWidthScreen ? "514px" : ""}` }}
+        style={{
+          height: `100%`,
+          backgroundColor: "black",
+        }}
       >
-        <video ref={Ref} src={videoQuality}></video>
+        <video ref={Ref} src={videoQuality ? videoQuality : ""}></video>
       </div>
       <div
         className="playmv__btn__video"
         onClick={() => {
           setTimeOutPlay(true);
           videoPlay ? handleEvent.pauseVideo() : handleEvent.playVideo();
+          setEnableOptionVideo(true);
         }}
       >
         <div
@@ -217,7 +250,11 @@ const Video = () => {
           </div>
         </div>
       </div>
-      <div className="playmv__btn__video2">
+      <div
+        className={`playmv__btn__video2 ${
+          enableOptionVideo ? "enabledOptionVideo" : ""
+        }`}
+      >
         <div className="media__duration__bar playmv__btn__duration">
           <input
             type="range"

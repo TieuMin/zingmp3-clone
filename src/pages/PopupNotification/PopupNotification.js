@@ -19,36 +19,31 @@ const PopupNotification = () => {
         </div>
         <div className="popup__title">Thông Báo</div>
         <div className="sidebar__scrollbar popup__notification">
+          <div>Zingmin phiên bản 1.0.1 cập nhật các chức năng sau.</div>
+          <div>- Cập nhật tính năng tìm kiếm.</div>
+          <div>- Tối ưu trình phát nhạc.</div>
+          <div>- Tối ưu hóa trình phát MV.</div>
+          <div>- Tối ưu danh sách phát nhạc.</div>
+          <div>- Cập nhật trình phát thu nhỏ MV.</div>
+
+          <div className="popup__version"></div>
+
           <div>Zingmin phiên bản 1.0.0 cập nhật các chức năng sau.</div>
           <div>- Các danh mục đang hoạt động:</div>
-          <div className="item__notification">+ Cá nhân</div>
-          <div className="item__notification">+ Khám phá</div>
-          <div className="item__notification">+ Thể loại</div>
-          <div className="item__notification">+ Top 100</div>
-          <div className="item__notification">+ MV</div>
+          <div className="item__notification">+ Cá nhân.</div>
+          <div className="item__notification">+ Khám phá.</div>
+          <div className="item__notification">+ Thể loại.</div>
+          <div className="item__notification">+ Top 100.</div>
+          <div className="item__notification">+ MV.</div>
 
-          <div>- Chức năng nghe nhạc:</div>
-          <div className="item__notification">+ Play & Pause bài hát</div>
-          <div className="item__notification">+ Next & Prev bài hát</div>
-          <div className="item__notification">+ Lặp bài hát</div>
-          <div className="item__notification">+ Phát ngẫu nhiên bài hát</div>
-          <div className="item__notification">+ Tua bài hát</div>
-          <div className="item__notification">+ Điều chỉnh Volume</div>
-
-          <div>- Chức năng MV:</div>
-          <div className="item__notification">+ Play & Pause MV</div>
-          <div className="item__notification">+ Next & Prev MV</div>
-          <div className="item__notification">+ Lặp MV</div>
-          <div className="item__notification">+ Phát ngẫu nhiên MV</div>
-          <div className="item__notification">+ Tua MV</div>
-          <div className="item__notification">+ Điều chỉnh Volume</div>
-
-          <div>- Chức năng tìm kiếm</div>
-          <div>- Chức năng xem danh bài hát</div>
+          <div>- Cập nhật trình nghe nhạc và các chức năng liên quan.</div>
+          <div>- Cập nhật trình phát MV và các chức năng liên quan.</div>
+          <div>- Cập nhật gợi ý tìm kiếm.</div>
+          <div>- Cập nhật xem danh sách bài hát.</div>
         </div>
         <div className="messenger__popup">
-          Quan trọng: Trang web được tạo ra để học tập ngôn ngữ React JS và
-          không có mục đích thương mại.
+          Quan trọng: Trang web được tạo ra để học tập cá nhân và không có mục
+          đích thương mại.
         </div>
       </div>
     </div>

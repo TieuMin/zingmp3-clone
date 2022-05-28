@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import MainLayout from "../../layouts/MainLayout";
 import "./follow.css";
 import ItemSinger from "../ItemSinger/ItemSinger";
+import { VideoContext } from "../../context/GetVideoProvider";
 
 const Follow = () => {
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
+  const { miniatureVideo } = useContext(VideoContext);
+
   return (
     <MainLayout>
       <div
         className="content"
-        style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
+        style={{
+          height: `${
+            prevSongDefaul && !miniatureVideo ? "" : "calc(100vh - 70px)"
+          }`,
+        }}
       >
         <div className="zm__navbar">
           <div className="zm__navbar__skin">

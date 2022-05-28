@@ -1,7 +1,19 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import NameSinger from "../NameSinger/NameSinger";
+import { PlaylistContext } from "../../context/GetPlaylistProvider";
+import { GetSongContext } from "../../context/GetSongProvider";
 
 const NewRelease = ({ lists }) => {
+  const { setIdPlaylist, setDataPlaylist } = useContext(PlaylistContext);
+  const {
+    setIdSong,
+    btnPlay,
+    setBtnPlay,
+    idSong,
+    loaderPlay,
+    playSong,
+    setclose,
+  } = useContext(GetSongContext);
   const newRelease = useRef();
 
   useEffect(() => {
@@ -67,11 +79,37 @@ const NewRelease = ({ lists }) => {
                     />
                     <div className="option__playlist__selection">
                       <div className="option__selection item__play__selection">
-                        <i className="fa-solid fa-play"></i>
-                        {/* <span className="gif__play">
-                          <img src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                              alt=""/>
-                      </span> */}
+                        {idSong === item.encodeId ? (
+                          <>
+                            {btnPlay && playSong ? (
+                              <span
+                                className="gif__play"
+                                onClick={() => setBtnPlay(false)}
+                              >
+                                <img
+                                  src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
+                                  alt=""
+                                />
+                              </span>
+                            ) : (
+                              <i
+                                className="fa-solid fa-play"
+                                onClick={() => setBtnPlay(true)}
+                              ></i>
+                            )}
+                          </>
+                        ) : (
+                          <i
+                            className="fa-solid fa-play"
+                            onClick={() => {
+                              setIdSong(item.encodeId);
+                              item.album
+                                ? setIdPlaylist(item.album.encodeId)
+                                : setDataPlaylist("");
+                              setBtnPlay(true);
+                            }}
+                          ></i>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -82,13 +120,21 @@ const NewRelease = ({ lists }) => {
                       {item.title}
                     </a>
                     <div className="name__singer__all">
-                      {item.album
-                        ? item.album.artists.map((artist, index) => {
-                            return <NameSinger key={index} artist={artist} />;
-                          })
-                        : item.artists.map((artist, index) => {
-                            return <NameSinger key={index} artist={artist} />;
-                          })}
+                      {item.album ? (
+                        item.album.artists.map((artist, index) => {
+                          return <NameSinger key={index} artist={artist} />;
+                        })
+                      ) : (
+                        <>
+                          {item.artists ? (
+                            item.artists.map((artist, index) => {
+                              return <NameSinger key={index} artist={artist} />;
+                            })
+                          ) : (
+                            <a href="#">{item.artistsNames}</a>
+                          )}
+                        </>
+                      )}
                     </div>
                   </div>
                   <div className="rank__release">

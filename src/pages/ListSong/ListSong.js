@@ -3,14 +3,19 @@ import MainLayout from "../../layouts/MainLayout";
 import "./listSong.css";
 import { PlaylistContext } from "../../context/GetPlaylistProvider";
 import { GetSongContext } from "../../context/GetSongProvider";
+import { VideoContext } from "../../context/GetVideoProvider";
 import LoadList from "./LoadList";
 import NameSinger from "../NameSinger/NameSinger";
 import MusicItem from "./MusicItem/MusicItem";
+import { useParams } from "react-router-dom";
 
 const ListSong = () => {
-  const { loadDataList, dataPlaylist, playlist } = useContext(PlaylistContext);
+  const { loadDataList, dataPlaylist, playlist, setIdPlaylist } =
+    useContext(PlaylistContext);
   const { btnPlay, setBtnPlay, playSong } = useContext(GetSongContext);
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
+  const params = useParams();
+  const { miniatureVideo } = useContext(VideoContext);
 
   const convertLike = (likes) => {
     const like = likes.toString();
@@ -27,7 +32,7 @@ const ListSong = () => {
 
   useEffect(() => {
     if (dataPlaylist === "") {
-      playlist();
+      setIdPlaylist(params.id.split(".")[0]);
     }
   }, [dataPlaylist]);
 
@@ -38,7 +43,11 @@ const ListSong = () => {
       ) : (
         <div
           className="content"
-          style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
+          style={{
+            height: `${
+              prevSongDefaul && !miniatureVideo ? "" : "calc(100vh - 70px)"
+            }`,
+          }}
         >
           <div className="List__song__main">
             <div className="List__song__right">
@@ -134,10 +143,7 @@ const ListSong = () => {
                   <div className="title__sumenu__content">album</div>
                   <div className="title__sumenu__right">thời gian</div>
                 </li>
-                <MusicItem
-                  datas={dataPlaylist.song}
-                  vip={dataPlaylist.artists ? true : false}
-                />
+                <MusicItem datas={dataPlaylist.song} />
               </ul>
             </div>
           </div>

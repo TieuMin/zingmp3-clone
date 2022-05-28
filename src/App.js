@@ -15,12 +15,17 @@ import PersonalALBUM from "./pages/Personal/PersonalALBUM/PersonalALBUM";
 import ItemMv from "./pages/Mv/ItemMv/ItemMv";
 import ListSong from "./pages/ListSong/ListSong";
 import Footer from "./components/Footer/Footer";
+import SearchData from "./pages/SearchData/SearchData";
 import React, { useEffect, useContext } from "react";
 import { GetSongContext } from "./context/GetSongProvider";
+import { HomeContext } from "./context/HomeProvider";
+import MiniatureVideo from "./pages/MiniatureVideo/MiniatureVideo";
+import PlayMv from "./pages/Mv/PlayMv/PlayMv";
 
 function App() {
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
   const { enableFooter } = useContext(GetSongContext);
+
   return (
     <div className="container">
       <BrowserRouter>
@@ -43,7 +48,13 @@ function App() {
             <Route path=":id" element={<ItemMv />} />
           </Route>
           <Route path="/:album/:aliasTitle/:id" element={<ListSong />}></Route>
+          <Route
+            path="/tim-kiem/tat-ca/:keyword"
+            element={<SearchData />}
+          ></Route>
         </Routes>
+        <PlayMv />
+        <MiniatureVideo />
         {prevSongDefaul && <Footer />}
       </BrowserRouter>
     </div>

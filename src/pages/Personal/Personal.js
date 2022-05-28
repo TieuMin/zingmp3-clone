@@ -3,17 +3,23 @@ import React, { useContext } from "react";
 import { Outlet, NavLink, useLocation } from "react-router-dom";
 import "./personal.css";
 import { PlaylistContext } from "../../context/GetPlaylistProvider";
+import { VideoContext } from "../../context/GetVideoProvider";
 
 const Personal = () => {
   const { setIdPlaylist } = useContext(PlaylistContext);
   const location = useLocation();
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
+  const { miniatureVideo } = useContext(VideoContext);
 
   return (
     <MainLayout>
       <div
         className="content"
-        style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
+        style={{
+          height: `${
+            prevSongDefaul && !miniatureVideo ? "" : "calc(100vh - 70px)"
+          }`,
+        }}
       >
         <div className="title__library">
           Thư viện
@@ -38,7 +44,7 @@ const Personal = () => {
           </div>
           <div className="list__playlist__library">
             <div className="item__list__library">
-              <a href="#">
+              <div>
                 <div className="img__playlist__selection">
                   <img
                     src="https://photo-playlist-zmp3.zmdcdn.me/s1/user-playlist?src=HavwqN7EvKCI1oYSFOdq0r9DOvnjYVi30bipXMc1-0PHNs23FTNvK5q6OzOosQXUKW5dY3pQg5fBMtQDC9pwKG0PFzLxoBC6JLLun3lQ-KnD27Z5EuVkJ5jQ8SuqWhn72rvmm3E0kaLJNIB3FD2yG01VSvDfchTJLrCrmMBHzHe86668CfovNHbOBi9rdBXT6LWls7Y6j5172NlJ9zRYLay4ATvmsR1NI05uWIRRuG0T267QD8JjHay3AfXzsgOI1b9dr3hBvb9CGMU0EfBc1W8RSD8-bRjHNaicr3wIx0TU67RKOP2wN0aPSevXaEGGKWijWdq&size=thumb/240_240"
@@ -62,7 +68,7 @@ const Personal = () => {
                     </div>
                   </div>
                 </div>
-              </a>
+              </div>
               <div className="title__playlist__selection">
                 <NavLink
                   to="/album/Top-100-Bai-Hat-Nhac-Tre-Hay-Nhat-Hong-Thanh-DJ-Mie-Dinh-Tung-Huy-Thieu-Bao-Tram/ZWZB969E.html"

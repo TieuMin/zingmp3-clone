@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { VideoContext } from "../../context/GetVideoProvider";
 
 const DiscoveryLoader = () => {
+  const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
+  const { miniatureVideo } = useContext(VideoContext);
   const [run, setRun] = useState(true);
+
   useEffect(() => {
     let animation;
     let unAnimation;
@@ -23,7 +27,14 @@ const DiscoveryLoader = () => {
   }, []);
 
   return (
-    <div className="content">
+    <div
+      className="content"
+      style={{
+        height: `${
+          prevSongDefaul && !miniatureVideo ? "" : "calc(100vh - 70px)"
+        }`,
+      }}
+    >
       <div className="gallery">
         <div className="gallery__container">
           <div className={`gallery__item loader ${!run && "run"}`}></div>

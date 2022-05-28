@@ -5,6 +5,7 @@ import NameSinger from "../../pages/NameSinger/NameSinger";
 import { GetSongContext } from "../../context/GetSongProvider";
 import { PlaylistContext } from "../../context/GetPlaylistProvider";
 import loading from "../../assets/images/loading.gif";
+import { useNavigate } from "react-router-dom";
 
 let useClickOutSide = (handler) => {
   let domNote = useRef();
@@ -27,8 +28,8 @@ let useClickOutSide = (handler) => {
 };
 
 function Header() {
-  const { key, setKey, dataSearch } = useContext(SearchContext);
-  const { setIdPlaylist } = useContext(PlaylistContext);
+  const { key, setKey, dataSearch, setEnterSearch } = useContext(SearchContext);
+  const { setIdPlaylist, setDataPlaylist } = useContext(PlaylistContext);
   const {
     setIdSong,
     btnPlay,
@@ -46,6 +47,7 @@ function Header() {
   const [enableSearch, setEnableSearch] = useState(false);
   const [value, setValue] = useState("");
   const [idPlay, setIdPlay] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (idSong) {
@@ -99,6 +101,13 @@ function Header() {
               value={value}
               onChange={(e) => setValue(e.target.value)}
               onFocus={(e) => setEnableSearch(true)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  navigate(`/tim-kiem/tat-ca/${value.replace(" ", "%20")}`);
+                  setEnterSearch(true);
+                  setEnableSearch(false);
+                }
+              }}
             />
             {value && (
               <div className="delete__text__search">
@@ -172,10 +181,11 @@ function Header() {
                                           className="option__selection"
                                           onClick={() => {
                                             setIdSong(item.encodeId);
-                                            item.album &&
-                                              setIdPlaylist(
-                                                item.album.encodeId
-                                              );
+                                            item.album
+                                              ? setIdPlaylist(
+                                                  item.album.encodeId
+                                                )
+                                              : setDataPlaylist("");
                                           }}
                                         >
                                           {btnPlay &&
@@ -191,10 +201,7 @@ function Header() {
                                               />
                                             </span>
                                           ) : (
-                                            <i
-                                              className="fa-solid fa-play"
-                                              onClick={() => setBtnPlay(true)}
-                                            ></i>
+                                            <i className="fa-solid fa-play"></i>
                                           )}
                                         </div>
                                       )}

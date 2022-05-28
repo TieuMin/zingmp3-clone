@@ -6,10 +6,12 @@ import TopZingChart from "./TopZingChart/TopZingChart";
 import WeeklyRanking from "./WeeklyRanking/WeeklyRanking";
 import { HomeContext } from "../../context/HomeProvider";
 import DiscoveryLoader from "../Discovery/DiscoveryLoader";
+import { VideoContext } from "../../context/GetVideoProvider";
 
 const ZingChart = () => {
   const { loader, rank, animation } = useContext(HomeContext);
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
+  const { miniatureVideo } = useContext(VideoContext);
 
   return (
     <MainLayout>
@@ -18,7 +20,11 @@ const ZingChart = () => {
       ) : (
         <div
           className="content"
-          style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
+          style={{
+            height: `${
+              prevSongDefaul && !miniatureVideo ? "" : "calc(100vh - 70px)"
+            }`,
+          }}
         >
           <div className="content__item zingchart__size">
             <div className="chart__title">

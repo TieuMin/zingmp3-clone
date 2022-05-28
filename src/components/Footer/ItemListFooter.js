@@ -24,11 +24,13 @@ const ItemListFooter = ({ item, idSong, setIdSong, setBtnPlay }) => {
             <div className="subtitle__list__ft">
               <div className="item__title__album">{item.title}</div>
               <nav className="subsinger__music__library item__title__album1">
-                {item
-                  ? item.artists.map((artist, index) => {
-                      return <NameSinger key={index} artist={artist} />;
-                    })
-                  : ""}
+                {item.artists ? (
+                  item.artists.map((artist, index) => {
+                    return <NameSinger key={index} artist={artist} />;
+                  })
+                ) : (
+                  <a href="#">{item.artistsNames}</a>
+                )}
               </nav>
             </div>
           </div>

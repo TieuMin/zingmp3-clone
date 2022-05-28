@@ -6,10 +6,12 @@ import MusicCountry from "./MusicCountry/MusicCountry";
 import ItemPlaylist from "../ItemPlaylist/ItemPlaylist";
 import { HomeContext } from "../../context/HomeProvider";
 import LoaderPage from "../Discovery/LoaderPage";
+import { VideoContext } from "../../context/GetVideoProvider";
 
 const Category = () => {
   const { loader, animation } = useContext(HomeContext);
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
+  const { miniatureVideo } = useContext(VideoContext);
   return (
     <MainLayout>
       {animation ? (
@@ -17,7 +19,11 @@ const Category = () => {
       ) : (
         <div
           className="content"
-          style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
+          style={{
+            height: `${
+              prevSongDefaul && !miniatureVideo ? "" : "calc(100vh - 70px)"
+            }`,
+          }}
         >
           <div className="banner__vip">
             <figure>

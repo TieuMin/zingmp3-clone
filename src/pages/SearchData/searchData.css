@@ -1,0 +1,66 @@
+.all__search {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.all__search > i {
+  font-size: 13px;
+  margin-left: 8px;
+}
+
+.name__song__search {
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--spotlight-item);
+}
+
+.top__search {
+  margin-top: 80px;
+}
+
+.top__search > .list__item__ft {
+  width: 380px;
+  margin: 0;
+  background-color: var(--hover-box-chart);
+  box-shadow: 0 1px 8px 0 var(--hover-box-chart);
+}
+
+.img__top__search {
+  height: 80px;
+  width: 90px;
+}
+
+.subtitle__top__search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 260px;
+}
+
+.subtitle__top__search > .item__title__album {
+  display: -webkit-box;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: unset;
+  color: var(--white);
+  text-transform: capitalize;
+}
+
+.keyword__search {
+  font-size: 20px;
+  margin: 15px 0;
+  font-weight: 700;
+  cursor: default;
+}
+
+.image__vip {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}

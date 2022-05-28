@@ -1,15 +1,16 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import "./mv.css";
 import MainLayout from "../../layouts/MainLayout";
 import { HomeContext } from "../../context/HomeProvider";
 import MvLoader from "./ItemMv/MvLoader";
-import PlayMv from "./PlayMv/PlayMv";
+import { VideoContext } from "../../context/GetVideoProvider";
 
 const Mv = () => {
   const { setIdMv, animation } = useContext(HomeContext);
   const location = useLocation();
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
+  const { miniatureVideo } = useContext(VideoContext);
 
   return (
     <>
@@ -19,7 +20,11 @@ const Mv = () => {
         ) : (
           <div
             className="content"
-            style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
+            style={{
+              height: `${
+                prevSongDefaul && !miniatureVideo ? "" : "calc(100vh - 70px)"
+              }`,
+            }}
           >
             <div className="navbar__mv">
               <h3>mv</h3>
@@ -63,7 +68,6 @@ const Mv = () => {
           </div>
         )}
       </MainLayout>
-      {animation ? "" : <PlayMv />}
     </>
   );
 };

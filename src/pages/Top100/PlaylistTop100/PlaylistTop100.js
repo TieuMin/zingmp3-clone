@@ -75,9 +75,15 @@ const PlaylistTop100 = ({ lists, p = true }) => {
               </NavLink>
               <div className="name__singer__all">
                 {p ? (
-                  item.artists.map((artist, index) => {
-                    return <NameSinger key={index} artist={artist} />;
-                  })
+                  <>
+                    {item.artists ? (
+                      item.artists.map((artist, index) => {
+                        return <NameSinger key={index} artist={artist} />;
+                      })
+                    ) : (
+                      <a href="#">{item.artistsNames}</a>
+                    )}
+                  </>
                 ) : (
                   <p className="subtitle">{item.sortDescription}</p>
                 )}

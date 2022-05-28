@@ -4,7 +4,7 @@ import { GetSongContext } from "../../../context/GetSongProvider";
 import { PlaylistContext } from "../../../context/GetPlaylistProvider";
 import loading from "../../../assets/images/loading.gif";
 
-const MusicItem = ({ datas }) => {
+const SearchItem = ({ datas }) => {
   const { setIndexListIdSong } = useContext(PlaylistContext);
   const {
     setIdSong,
@@ -43,7 +43,7 @@ const MusicItem = ({ datas }) => {
 
   return (
     <>
-      {datas.items.map((item, index) => {
+      {datas.map((item, index) => {
         return (
           <li
             key={index}
@@ -53,13 +53,10 @@ const MusicItem = ({ datas }) => {
           >
             <div>
               <div className="title__sumenu__left">
-                <div className="icon__music__library">
-                  <i className="fa-solid fa-music"></i>
-                </div>
-                <div className="checkbox__music__library">
-                  <input type="checkbox" className="select__all__music" />
-                </div>
-                <div className="img__music__library">
+                <div
+                  className="img__music__library"
+                  style={{ marginLeft: "10px" }}
+                >
                   <img src={item.thumbnail} alt="" />
                   <div className="option__playlist__selection">
                     {item.artists && item.streamingStatus === 1 ? (
@@ -185,4 +182,4 @@ const MusicItem = ({ datas }) => {
   );
 };
 
-export default MusicItem;
+export default SearchItem;

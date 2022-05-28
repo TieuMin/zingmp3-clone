@@ -11,11 +11,13 @@ import LoveSinger from "../LoveSinger/LoveSinger";
 import ZingChartHome from "../ZingChartHome/ZingChartHome";
 import DiscoveryLoader from "./DiscoveryLoader";
 import { HomeContext } from "../../context/HomeProvider";
+import { VideoContext } from "../../context/GetVideoProvider";
 import "./discovery.css";
 
 const Discovery = () => {
   const { loader, handleScroll, animation } = useContext(HomeContext);
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
+  const { miniatureVideo } = useContext(VideoContext);
 
   return (
     <MainLayout>
@@ -24,7 +26,11 @@ const Discovery = () => {
       ) : (
         <div
           className="content"
-          style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
+          style={{
+            height: `${
+              prevSongDefaul && !miniatureVideo ? "" : "calc(100vh - 70px)"
+            }`,
+          }}
           onScroll={(event) => handleScroll(event)}
         >
           <div className="gallery">

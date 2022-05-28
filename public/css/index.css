@@ -462,7 +462,6 @@
   display: flex;
   padding: 0 20px;
   min-width: 768px;
-  display: flex;
   align-items: center;
 }
 
@@ -914,7 +913,6 @@
   color: var(--spotlight-item);
   border-radius: 50px;
   cursor: pointer;
-  transition: 0.5s;
 }
 
 .mv__item {

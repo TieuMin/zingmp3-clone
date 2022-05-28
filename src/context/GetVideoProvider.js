@@ -8,16 +8,20 @@ const VideoProvider = ({ children }) => {
   const [dataVideo, setDataVideo] = useState("");
   const [loadVideo, setLoadVideo] = useState(false);
   const [activePlayVideo, setActivePlayVideo] = useState(false);
-  const [videoPlay, setVideoPlay] = useState(false);
   const [repeat, setRepeat] = useState("repeatAll");
   const [listVideo, setListVideo] = useState("");
   const [loadList, setLoadList] = useState(false);
   const [indexVideo, setIndexVideo] = useState(0);
   const [fullWidthScreen, setFullWidthScreen] = useState(false);
+  const [miniatureVideo, setMiniatureVideo] = useState(false);
+  const [timeStart, setTimeStart] = useState("00:00");
+  const [stepTime, setStepTime] = useState("0");
+  const [currentTime, setCurrentTime] = useState(0);
 
   const video = async (id) => {
     await getVideo(id).then((item) => {
       setDataVideo(item.data.data);
+      setCurrentTime(0);
     });
     setLoadVideo(true);
   };
@@ -40,6 +44,7 @@ const VideoProvider = ({ children }) => {
             thumbnail: dataVideo.thumbnail,
             title: dataVideo.title,
             artists: dataVideo.artists,
+            streamingStatus: dataVideo.streamingStatus,
           },
           ...dataVideo.recommends,
         ],
@@ -57,8 +62,6 @@ const VideoProvider = ({ children }) => {
     loadVideo,
     setActivePlayVideo,
     activePlayVideo,
-    setVideoPlay,
-    videoPlay,
     setLoadVideo,
     setDataVideo,
     setRepeat,
@@ -70,6 +73,14 @@ const VideoProvider = ({ children }) => {
     loadList,
     fullWidthScreen,
     setFullWidthScreen,
+    miniatureVideo,
+    setMiniatureVideo,
+    timeStart,
+    setTimeStart,
+    stepTime,
+    setStepTime,
+    currentTime,
+    setCurrentTime,
   };
   return (
     <VideoContext.Provider value={datas}>{children}</VideoContext.Provider>

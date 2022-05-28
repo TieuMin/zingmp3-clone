@@ -99,8 +99,7 @@ const HomeProvider = ({ children }) => {
   }, [loader.stores, mv.stores]);
 
   const handleScroll = (event) => {
-    if (event.target.scrollTop >= 1000)
-      setLoader({ ...loader, loadPage: true });
+    if (event.target.scrollTop >= 800) setLoader({ ...loader, loadPage: true });
   };
 
   const datas = {

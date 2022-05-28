@@ -1074,19 +1074,19 @@
   min-width: 308px;
 }
 
-.item__favorite__artist > a {
+.item__favorite__artist > div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .item__thumb__mix > img,
-.item__favorite__artist > a > img {
+.item__favorite__artist > div > img {
   border-radius: 5px;
   transition: 0.5s;
 }
 
-.item__favorite__artist:hover > a > img {
+.item__favorite__artist:hover > div > img {
   transform: scale(1.1);
 }
 
@@ -1096,11 +1096,12 @@
   font-size: 28px;
 }
 
-.item__favorite__artist > a > .option__playlist__selection {
+.item__favorite__artist > div > .option__playlist__selection {
   top: -30px;
+  padding-bottom: 30px;
 }
 
-.item__favorite__artist:hover > a > .option__playlist__selection {
+.item__favorite__artist:hover > div > .option__playlist__selection {
   opacity: 1;
 }
 

@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import NameSinger from "../NameSinger/NameSinger";
-import { PlaylistContext } from "../../context/GetPlaylistProvider";
-import { GetSongContext } from "../../context/GetSongProvider";
+import { NavLink } from "react-router-dom";
+import NameSinger from "../../NameSinger/NameSinger";
+import { PlaylistContext } from "../../../context/GetPlaylistProvider";
+import { GetSongContext } from "../../../context/GetSongProvider";
 
-const ItemPlaylist = ({ lists, p = true }) => {
+const SearchPlaylist = ({ lists, p = true }) => {
   const { idPlaylist, setIdPlaylist, setIndexListIdSong } =
     useContext(PlaylistContext);
   const { btnPlay, setBtnPlay } = useContext(GetSongContext);
 
   return (
     <>
-      {lists.items.map((item, index) => {
+      {lists.map((item, index) => {
         if (index < 5) {
           return (
             <div key={index} className="item__playlist__selection">
@@ -93,4 +93,4 @@ const ItemPlaylist = ({ lists, p = true }) => {
   );
 };
 
-export default ItemPlaylist;
+export default SearchPlaylist;

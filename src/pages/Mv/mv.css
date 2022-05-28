@@ -170,6 +170,7 @@
 .columns__mv {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 .column__mv {
   width: 30.35%;

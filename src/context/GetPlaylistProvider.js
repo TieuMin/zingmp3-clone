@@ -7,7 +7,7 @@ const PlaylistProvider = ({ children }) => {
   const idPrevList = JSON.parse(localStorage.getItem("idPlaylist"));
   const listId = JSON.parse(localStorage.getItem("listIdSong"));
   const indexListId = JSON.parse(localStorage.getItem("indexListIdSong"));
-  const [idPlaylist, setIdPlaylist] = useState(idPrevList ? idPrevList.id : "");
+  const [idPlaylist, setIdPlaylist] = useState("");
   const [dataPlaylist, setDataPlaylist] = useState("");
   const [loadDataList, setLoadDataList] = useState(true);
   const [listIdSong, setListIdSong] = useState(listId ? listId.encodeId : "");
@@ -25,7 +25,6 @@ const PlaylistProvider = ({ children }) => {
   useEffect(() => {
     if (idPlaylist !== "") {
       playlist();
-      localStorage.setItem("idPlaylist", JSON.stringify({ id: idPlaylist }));
     }
   }, [idPlaylist]);
 
@@ -72,6 +71,7 @@ const PlaylistProvider = ({ children }) => {
     listIdSong,
     setIndexListIdSong,
     indexListIdSong,
+    setDataPlaylist,
   };
   return (
     <PlaylistContext.Provider value={datas}>

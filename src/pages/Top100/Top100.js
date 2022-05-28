@@ -5,10 +5,12 @@ import ItemPlaylist from "../ItemPlaylist/ItemPlaylist";
 import PlaylistTop100 from "./PlaylistTop100/PlaylistTop100";
 import { HomeContext } from "../../context/HomeProvider";
 import LoaderPage from "../Discovery/LoaderPage";
+import { VideoContext } from "../../context/GetVideoProvider";
 
 const Top100 = () => {
   const { loader, animation } = useContext(HomeContext);
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
+  const { miniatureVideo } = useContext(VideoContext);
 
   return (
     <MainLayout>
@@ -17,7 +19,11 @@ const Top100 = () => {
       ) : (
         <div
           className="content"
-          style={{ height: `${prevSongDefaul ? "" : "calc(100vh - 70px)"}` }}
+          style={{
+            height: `${
+              prevSongDefaul && !miniatureVideo ? "" : "calc(100vh - 70px)"
+            }`,
+          }}
         >
           <div className="bg-blur2"></div>
           <div className="bg-alpha2"></div>

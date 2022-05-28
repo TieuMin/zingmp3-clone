@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { VideoContext } from "../../context/GetVideoProvider";
 
-const LoadList = () => {
+const LoadSearch = () => {
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
   const { miniatureVideo } = useContext(VideoContext);
 
@@ -36,23 +36,6 @@ const LoadList = () => {
       }}
     >
       <div className="List__song__main">
-        <div className="List__song__right">
-          <span
-            className={`name__loader loader ${!run && "run"} img__load`}
-          ></span>
-          <div className="header__playlist__selection title__load">
-            <span className={`name__loader loader ${!run && "run"}`}></span>
-          </div>
-          <div className="header__playlist__selection title__load1">
-            <span className={`name__loader loader ${!run && "run"}`}></span>
-          </div>
-          <div className="header__playlist__selection title__load1">
-            <span className={`name__loader loader ${!run && "run"}`}></span>
-          </div>
-          <div className="header__playlist__selection title__load2">
-            <span className={`name__loader loader ${!run && "run"}`}></span>
-          </div>
-        </div>
         <div className="List__song__left">
           <div className="playlist__selection">
             <div className="item__load">
@@ -419,4 +402,4 @@ const LoadList = () => {
   );
 };
 
-export default LoadList;
+export default LoadSearch;

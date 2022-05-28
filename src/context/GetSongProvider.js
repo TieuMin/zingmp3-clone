@@ -9,7 +9,9 @@ const GetSongProvider = ({ children }) => {
   const [songData, setSongData] = useState(
     prevSongDefaul ? prevSongDefaul.songData : ""
   );
-  const [infoSong, setInfoSong] = useState("");
+  const [infoSong, setInfoSong] = useState(
+    prevSongDefaul ? prevSongDefaul : ""
+  );
   const [idSong, setIdSong] = useState("");
   const [loaderSong, setLoaderSong] = useState(false);
   const [loaderPlay, setLoaderPlay] = useState(false);
@@ -18,48 +20,51 @@ const GetSongProvider = ({ children }) => {
   const [enableFooter, setEnableFooter] = useState(false);
   const [close, setclose] = useState(false);
   const [popupNotification, setPopupNotification] = useState(true);
+  const [cloneSong, setCloneSong] = useState();
 
-  useEffect(() => {
-    if (idSong !== "") {
-      setLoaderSong(false);
-      setLoaderPlay(true);
+  const getSongData = async () => {
+    setCloneSong(songData);
+    await getSong(idSong).then((item) => {
+      if (!item.data.err && item.data.data[128]) {
+        getInfoData();
+        setSongData(item.data.data[128]);
+      } else {
+        setclose(true);
+        setSongData(cloneSong);
+        setIdSong(prevSongDefaul ? prevSongDefaul.id : "");
+      }
+    });
+  };
 
-      const getSongData = async () => {
-        await getSong(idSong).then((item) => {
-          setSongData(item.data.data[128]);
-        });
-      };
-
-      const getInfoData = async () => {
-        await getInfoSong(idSong).then((item) => {
-          setInfoSong(item.data.data);
-        });
-        setLoaderSong(true);
-        setLoaderPlay(false);
-      };
-      getSongData();
-      getInfoData();
-    }
-  }, [idSong]);
-
-  useEffect(() => {
-    if (songData && infoSong) {
+  const getInfoData = async () => {
+    await getInfoSong(idSong).then((item) => {
+      setInfoSong(item.data.data);
       localStorage.setItem(
         "prevSongDefaul",
         JSON.stringify({
           songData,
-          title: infoSong.title,
-          artists: infoSong.artists,
-          thumbnail: infoSong.thumbnail,
-          duration: infoSong.duration,
-          like: infoSong.like,
-          listen: infoSong.listen,
+          title: item.data.data.title,
+          artists: item.data.data.artists,
+          thumbnail: item.data.data.thumbnail,
+          duration: item.data.data.duration,
+          like: item.data.data.like,
+          listen: item.data.data.listen,
           id: idSong,
         })
       );
+      setLoaderSong(true);
+      setLoaderPlay(false);
       setEnableFooter(true);
+    });
+  };
+
+  useEffect(() => {
+    if (idSong) {
+      setLoaderSong(false);
+      setLoaderPlay(true);
+      getSongData();
     }
-  }, [songData, infoSong]);
+  }, [idSong]);
 
   const datas = {
     songData,
