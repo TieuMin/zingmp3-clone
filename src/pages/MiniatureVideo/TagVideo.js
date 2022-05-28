@@ -23,7 +23,7 @@ const TagVideo = () => {
   const Ref = useRef(null);
   const [video, setVideo] = useState("");
   const volumeMV = JSON.parse(localStorage.getItem("volumeMV"));
-  const [volume, setVolume] = useState(volumeMV ? volumeMV : "50");
+  const [volume, setVolume] = useState(volumeMV ? volumeMV : 50);
   const [videoQuality, setVideoQuality] = useState("");
   const [videoPlay, setVideoPlay] = useState(false);
 
