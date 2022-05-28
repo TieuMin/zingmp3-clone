@@ -533,15 +533,15 @@ const Footer = () => {
                   handleEvent.playAudio();
                 }}
               >
-                <i className="far fa-play-circle"></i>
+                <i class="fa-solid fa-play"></i>
               </span>
               <span
-                className={`controller__itemmedia play__item ${
+                className={`controller__itemmedia pause__item ${
                   !noneBtn && "none__btn"
                 }`}
                 onClick={() => handleEvent.pauseAudio()}
               >
-                <i className="far fa-pause-circle"></i>
+                <i class="fa-solid fa-pause"></i>
               </span>
             </>
           ) : (

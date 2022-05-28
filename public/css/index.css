@@ -784,6 +784,7 @@
   transition: 0.3s;
   cursor: pointer;
   position: relative;
+  padding: 2px;
 }
 
 .repeat::after {
@@ -797,12 +798,19 @@
   color: var(--link-text-hover);
 }
 
+.pause__item > i,
 .play__item > i {
-  font-size: 40px;
+  font-size: 22px;
   background-color: unset;
   transition: 0.1s;
+  border: 1px solid;
 }
 
+.play__item > i {
+  padding: 2px 0px 2px 4px;
+}
+
+.pause__item > i:hover,
 .play__item > i:hover {
   background-color: unset;
   color: var(--main-text-stroke);
