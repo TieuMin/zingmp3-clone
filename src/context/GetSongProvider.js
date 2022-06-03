@@ -21,6 +21,7 @@ const GetSongProvider = ({ children }) => {
   const [close, setclose] = useState(false);
   const [popupNotification, setPopupNotification] = useState(true);
   const [cloneSong, setCloneSong] = useState();
+  const [currentTimeLyric, setCurrentTimeLyric] = useState(0);
 
   const getSongData = async () => {
     setCloneSong(songData);
@@ -46,9 +47,11 @@ const GetSongProvider = ({ children }) => {
           title: item.data.data.title,
           artists: item.data.data.artists,
           thumbnail: item.data.data.thumbnail,
+          thumbnailM: item.data.data.thumbnailM,
           duration: item.data.data.duration,
           like: item.data.data.like,
           listen: item.data.data.listen,
+          artistsNames: item.data.data.artistsNames,
           id: idSong,
         })
       );
@@ -82,6 +85,8 @@ const GetSongProvider = ({ children }) => {
     setclose,
     popupNotification,
     setPopupNotification,
+    currentTimeLyric,
+    setCurrentTimeLyric,
   };
   return (
     <GetSongContext.Provider value={datas}>{children}</GetSongContext.Provider>

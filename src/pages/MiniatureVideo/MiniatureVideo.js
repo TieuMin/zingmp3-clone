@@ -11,7 +11,9 @@ const MiniatureVideo = () => {
       className="miniature__video"
       style={{ display: `${miniatureVideo ? "block" : "none"}` }}
     >
-      <div className="miniature__video__tag">{loadVideo && <TagVideo />}</div>
+      <div className="miniature__video__tag">
+        {loadVideo && miniatureVideo && <TagVideo />}
+      </div>
       <div className="miniature__video__title">
         {dataVideo && (
           <>

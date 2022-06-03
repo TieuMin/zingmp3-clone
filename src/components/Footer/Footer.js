@@ -38,6 +38,7 @@ const Footer = () => {
     idSong,
     setIdSong,
     setPlaySong,
+    setCurrentTimeLyric,
   } = useContext(GetSongContext);
   const {
     setIdPlaylist,
@@ -45,6 +46,8 @@ const Footer = () => {
     setIndexListIdSong,
     indexListIdSong,
     dataPlaylist,
+    detailSong,
+    setDetailSong,
   } = useContext(PlaylistContext);
   const { setMiniatureVideo, setActivePlayVideo, miniatureVideo } =
     useContext(VideoContext);
@@ -163,6 +166,7 @@ const Footer = () => {
         audio.play();
         setPlaySong(true);
         audio.ontimeupdate = () => {
+          setCurrentTimeLyric(audio.currentTime);
           if (audio.duration) {
             setTimePlay(convertMS(Math.round(audio.currentTime)));
             const step = Math.floor((audio.currentTime / audio.duration) * 100);
@@ -261,6 +265,7 @@ const Footer = () => {
       setTimePlay(convertMS(Math.round(seekTime)));
       audio.currentTime = Math.round(seekTime);
       setEnableTimeStep(false);
+      setCurrentTimeLyric(Math.round(seekTime));
     },
     MutedAudio: () => {
       setMutedAudio(!mutedAudio);
@@ -503,6 +508,32 @@ const Footer = () => {
         </div>
       </div>
       <div className="media__content">
+        {detailSong && (
+          <div className="media__duration__bar">
+            <div className="time__start">
+              {enableTimeStep ? timePlayChange : timePlay}
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={`${enableTimeStep ? timeStepChange : stepTime}`}
+              onChange={(e) => handleEvent.ChangeStepTime(e)}
+              onMouseUp={(e) => handleEvent.ChangeTimePlay(e)}
+            />
+            <div className="current__time">
+              <div
+                className="step__time"
+                style={{
+                  width: `${
+                    enableTimeStep ? timeStepChange + "%" : stepTime + "%"
+                  }`,
+                }}
+              ></div>
+            </div>
+            <div className="time__end">{convertMS(timeEnd.toString())}</div>
+          </div>
+        )}
         <div className="controller__media">
           <span
             onClick={() =>
@@ -533,7 +564,7 @@ const Footer = () => {
                   handleEvent.playAudio();
                 }}
               >
-                <i class="fa-solid fa-play"></i>
+                <i className="fa-solid fa-play"></i>
               </span>
               <span
                 className={`controller__itemmedia pause__item ${
@@ -541,7 +572,7 @@ const Footer = () => {
                 }`}
                 onClick={() => handleEvent.pauseAudio()}
               >
-                <i class="fa-solid fa-pause"></i>
+                <i className="fa-solid fa-pause"></i>
               </span>
             </>
           ) : (
@@ -575,36 +606,50 @@ const Footer = () => {
             ></i>
           </span>
         </div>
-        <div className="media__duration__bar">
-          <div className="time__start">
-            {enableTimeStep ? timePlayChange : timePlay}
+
+        {!detailSong && (
+          <div className="media__duration__bar">
+            <div className="time__start">
+              {enableTimeStep ? timePlayChange : timePlay}
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={`${enableTimeStep ? timeStepChange : stepTime}`}
+              onChange={(e) => handleEvent.ChangeStepTime(e)}
+              onMouseUp={(e) => handleEvent.ChangeTimePlay(e)}
+            />
+            <div className="current__time">
+              <div
+                className="step__time"
+                style={{
+                  width: `${
+                    enableTimeStep ? timeStepChange + "%" : stepTime + "%"
+                  }`,
+                }}
+              ></div>
+            </div>
+            <div className="time__end">{convertMS(timeEnd.toString())}</div>
           </div>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value={`${enableTimeStep ? timeStepChange : stepTime}`}
-            onChange={(e) => handleEvent.ChangeStepTime(e)}
-            onMouseUp={(e) => handleEvent.ChangeTimePlay(e)}
-          />
-          <div className="current__time">
-            <div
-              className="step__time"
-              style={{
-                width: `${
-                  enableTimeStep ? timeStepChange + "%" : stepTime + "%"
-                }`,
-              }}
-            ></div>
-          </div>
-          <div className="time__end">{convertMS(timeEnd.toString())}</div>
-        </div>
+        )}
       </div>
       <div className="media__right">
         <div className="media__narrow unclick">
           <div className="mv__item">MV</div>
         </div>
-        <div className="media__narrow">
+        <div
+          className="media__narrow"
+          onClick={() =>
+            dataPlaylist && dataPlaylist.song && setDetailSong(true)
+          }
+          style={{
+            cursor: `${dataPlaylist && !dataPlaylist.song && "no-drop"}`,
+            color: `${
+              dataPlaylist && !dataPlaylist.song && "hsla(0, 0%, 100%, 0.2)"
+            }`,
+          }}
+        >
           <div>
             <i className="fa fa-microphone"></i>
           </div>

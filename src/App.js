@@ -18,9 +18,9 @@ import Footer from "./components/Footer/Footer";
 import SearchData from "./pages/SearchData/SearchData";
 import React, { useEffect, useContext } from "react";
 import { GetSongContext } from "./context/GetSongProvider";
-import { HomeContext } from "./context/HomeProvider";
 import MiniatureVideo from "./pages/MiniatureVideo/MiniatureVideo";
 import PlayMv from "./pages/Mv/PlayMv/PlayMv";
+import DetailSong from "./pages/DetailSong/DetailSong";
 
 function App() {
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
@@ -56,6 +56,7 @@ function App() {
         <PlayMv />
         <MiniatureVideo />
         {prevSongDefaul && <Footer />}
+        <DetailSong />
       </BrowserRouter>
     </div>
   );

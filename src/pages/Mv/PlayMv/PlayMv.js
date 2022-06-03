@@ -104,7 +104,11 @@ const PlayMv = () => {
                   fullWidthScreen && "fullWidthScreen"
                 }`}
               >
-                {loadVideo ? <Video /> : <LoadVideoMv />}
+                {loadVideo && miniatureVideo === false ? (
+                  <Video />
+                ) : (
+                  <LoadVideoMv />
+                )}
               </div>
               <div
                 className="playmv__right"

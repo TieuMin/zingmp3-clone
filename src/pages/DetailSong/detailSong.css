@@ -1,0 +1,378 @@
+.detail__main {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 887;
+  top: 100vh;
+  left: 0;
+  background-image: url("../../assets/images/bg_lyric.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rosybrown;
+  background-blend-mode: multiply;
+  transition: 0.8s;
+}
+
+.detail__song {
+  width: 100vw;
+  height: calc(100vh - 90px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.detail__song__top {
+  display: flex;
+  padding: 20px 0;
+  position: relative;
+  justify-content: space-between;
+}
+
+.detail__song__center {
+  height: calc(100vh - 90px);
+  overflow-y: scroll;
+  -webkit-mask-image: unset;
+  position: relative;
+}
+
+.detail__top__right,
+.detail__top__left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 890;
+}
+
+.detail__top__right {
+  right: 20px;
+  left: unset;
+}
+
+.detail__logo__top {
+  width: 38px;
+}
+
+.detail__title__top {
+  flex: 1;
+  font-size: 13px;
+  color: var(--artist-layout-bg);
+  font-weight: 500;
+  text-transform: capitalize;
+  padding-left: 8px;
+}
+
+.detail__title__top2 {
+  font-weight: 700;
+  color: var(--spotlight-item);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: unset;
+  color: var(--white);
+  text-transform: capitalize;
+  width: 220px;
+}
+
+.detail__top__center {
+  position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.detail__form__menu {
+  display: inline-block;
+}
+
+.detail__top__menu {
+  display: flex;
+  padding: 3px;
+  border-radius: 50px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
+
+.item__detail__menu {
+  padding: 4px 50px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--spotlight-item);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.active__detail__menu {
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
+
+.item__detail__top__right {
+  width: 38px;
+  height: 38px;
+  background-color: hsla(0, 0%, 100%, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 8px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.item__detail__top__right > i {
+  font-size: 20px;
+  color: var(--spotlight-item);
+}
+
+.detail__center__all__item {
+  display: flex;
+  align-items: flex-end;
+  transition: 0.8s;
+}
+
+.detail__center__item {
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail__center__img {
+  width: 330px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  box-sizing: border-box;
+}
+
+.detail__center__img > img {
+  height: 330px;
+}
+
+.option__detail__song {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-alpha-30);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  display: none;
+}
+
+.option__detail__song > i {
+  font-size: 40px;
+  padding: 10px 12px 10px 18px;
+  border-radius: 50%;
+  border: 2px solid var(--spotlight-item);
+  color: var(--spotlight-item);
+}
+
+.detail__center__img:hover > .option__detail__song {
+  display: flex;
+}
+
+.detail__center__singer,
+.detail__center__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--spotlight-item);
+  text-align: center;
+}
+
+.detail__center__singer {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.active__center__item > .active__center__item2 > .detail__center__img {
+  width: 390px;
+}
+
+.active__center__item > .active__center__item2 > .detail__center__img > img {
+  height: 390px;
+}
+
+.detail__center__description {
+  height: 150px;
+  margin-bottom: 15px;
+  visibility: hidden;
+}
+
+.detail__song__lyric {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  overflow: hidden;
+}
+
+.detail__lyric__img {
+  flex: 1;
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.detail__lyric__img > img {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.detail__lyric {
+  flex: 2;
+  height: 100%;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 0),
+    hsla(0, 0%, 100%, 0.8) 10%,
+    #fff 25%,
+    #fff 75%,
+    hsla(0, 0%, 100%, 0.8) 90%,
+    hsla(0, 0%, 100%, 0)
+  );
+}
+
+.text__item__lyric > div,
+.detail__lyric__item {
+  margin: 0;
+  padding: 13px 0;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--spotlight-item);
+  letter-spacing: -1px;
+}
+
+.text__item__lyric {
+  white-space: pre-line;
+  line-height: 1.2;
+  padding-right: 10px;
+}
+
+.lyric__item__over {
+  color: var(--contrast-color);
+  opacity: 0.8;
+}
+
+.lyric__item__active {
+  color: var(--yellow);
+}
+.detail__name__song {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  font-size: 14px;
+  color: var(--spotlight-item);
+  white-space: nowrap;
+  padding: 5px 0;
+  font-weight: 600;
+}
+
+.detail__song__karaoke {
+  height: calc(100% - 31px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  color: var(--spotlight-item);
+}
+
+.detail__center__next,
+.detail__center__prev {
+  position: absolute;
+  height: calc(100% - 78px);
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 78px;
+}
+
+.detail__center__next > i,
+.detail__center__prev > i {
+  font-size: 25px;
+  padding: 10px 17px;
+  border-radius: 50%;
+  color: var(--spotlight-item);
+  background-color: var(--kara-btn-bg);
+  cursor: pointer;
+}
+
+.detail__center__prev {
+  left: 20px;
+}
+
+.detail__center__next {
+  right: 20px;
+}
+
+.avtive__index {
+  border: 1px solid var(--spotlight-item);
+}
+
+.detail__center__img:hover ~ .detail__center__description,
+.avtive__index ~ .detail__center__description {
+  visibility: visible;
+}
+
+.lyric__song {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.gif__active__detail {
+  display: flex;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  border: unset;
+}
+
+.gif__active__detail > img {
+  width: 30px;
+  height: 30px;
+}
+
+.word {
+  position: relative;
+  white-space: nowrap;
+}
+
+.word::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: -4px;
+  color: var(--yellow);
+  overflow: hidden;
+  width: 100%;
+}
+
+.karaoke__text {
+  position: relative;
+}
+.animation__test {
+  position: absolute;
+  width: 0%;
+  top: 0;
+  left: 0;
+}
+
+.transition__karaoke {
+  transition: 1s;
+}

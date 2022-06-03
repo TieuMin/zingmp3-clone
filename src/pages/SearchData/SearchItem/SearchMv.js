@@ -49,7 +49,7 @@ const SearchMv = ({ datas }) => {
                           setIdVideo(item.encodeId);
                         }}
                       >
-                        <i class="fa-solid fa-play"></i>
+                        <i className="fa-solid fa-play"></i>
                       </span>
                     ) : (
                       <span

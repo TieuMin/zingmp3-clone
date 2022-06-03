@@ -4,16 +4,20 @@ import getPlaylist from "../apis/PlaylistApi";
 export const PlaylistContext = createContext();
 
 const PlaylistProvider = ({ children }) => {
-  const idPrevList = JSON.parse(localStorage.getItem("idPlaylist"));
   const listId = JSON.parse(localStorage.getItem("listIdSong"));
   const indexListId = JSON.parse(localStorage.getItem("indexListIdSong"));
-  const [idPlaylist, setIdPlaylist] = useState("");
-  const [dataPlaylist, setDataPlaylist] = useState("");
+  const [idPlaylist, setIdPlaylist] = useState(
+    listId && listId.idPlaylist ? listId.idPlaylist : ""
+  );
+  const [dataPlaylist, setDataPlaylist] = useState(
+    listId && listId.listSong ? listId.listSong : ""
+  );
   const [loadDataList, setLoadDataList] = useState(true);
   const [listIdSong, setListIdSong] = useState(listId ? listId.encodeId : "");
   const [indexListIdSong, setIndexListIdSong] = useState(
     indexListId ? indexListId.index : 0
   );
+  const [detailSong, setDetailSong] = useState(false);
 
   const playlist = async () => {
     setLoadDataList(true);
@@ -49,6 +53,7 @@ const PlaylistProvider = ({ children }) => {
             encodeId: listIdSong,
             idPlaylist: idPlaylist,
             link: dataPlaylist.link,
+            listSong: dataPlaylist,
           })
         );
       }
@@ -72,6 +77,8 @@ const PlaylistProvider = ({ children }) => {
     setIndexListIdSong,
     indexListIdSong,
     setDataPlaylist,
+    detailSong,
+    setDetailSong,
   };
   return (
     <PlaylistContext.Provider value={datas}>

@@ -20,6 +20,7 @@ const PopupNotification = () => {
         <div className="popup__title">Thông Báo</div>
         <div className="sidebar__scrollbar popup__notification">
           <div>Zingmin phiên bản 1.0.1 cập nhật các chức năng sau.</div>
+          <div>- Cập nhật tính năng xem lời bài hát.</div>
           <div>- Cập nhật tính năng tìm kiếm.</div>
           <div>- Tối ưu trình phát nhạc.</div>
           <div>- Tối ưu hóa trình phát MV.</div>

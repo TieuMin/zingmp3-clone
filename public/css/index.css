@@ -455,7 +455,7 @@
 
 .footer {
   height: 90px;
-  width: calc(100% - 40px);
+  width: calc(100vw - 40px);
   background-color: var(--footer-bg);
   position: absolute;
   bottom: 0;
@@ -540,6 +540,7 @@
 
 .media__content {
   width: 60%;
+  z-index: 888;
 }
 
 .np__menu,

@@ -83,9 +83,11 @@ const ListSong = () => {
                       })
                     : dataPlaylist.artistsNames}
                 </div>
-                <div className="description__count__like">
-                  {convertLike(dataPlaylist.like)} người yêu thích
-                </div>
+                {dataPlaylist && dataPlaylist.like && (
+                  <div className="description__count__like">
+                    {convertLike(dataPlaylist.like)} người yêu thích
+                  </div>
+                )}
                 {btnPlay && playSong ? (
                   <div
                     className="description__play__song"

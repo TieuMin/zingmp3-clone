@@ -10,3 +10,4 @@ export const GET_PLAYLIST =
 export const GET_VIDEO = "https://music-player-pink.vercel.app/api/video?id=";
 export const SEARCH =
   "https://music-player-pink.vercel.app/api/search?keyword=";
+export const GETLYRIC = "https://music-player-pink.vercel.app/api/lyric?id=";
