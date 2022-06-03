@@ -4,17 +4,45 @@ import Lyric from "./ItemDetail/Lyric";
 import ListSongDetail from "./ItemDetail/ListSongDetail";
 import { PlaylistContext } from "../../context/GetPlaylistProvider";
 import { LyricContext } from "../../context/GetLyricProvider";
-
+import { GetSongContext } from "../../context/GetSongProvider";
+import axios from "axios";
 import "./detailSong.css";
 
 const DetailSong = () => {
-  const { lyric } = useContext(LyricContext);
+  const { infoSong, loaderSong, idSong } = useContext(GetSongContext);
+  const { lyric, setIdLyric, setDataLyric } = useContext(LyricContext);
   const [karaoke, setKaraoke] = useState(false);
   const [lyricBtn, setLyricBtn] = useState(true);
   const [listSongDetail, setListSongDetail] = useState(false);
   const { dataPlaylist, detailSong, setDetailSong } =
     useContext(PlaylistContext);
   const [fullScreen, setFullScreen] = useState(false);
+
+  useEffect(() => {
+    console.log(lyric);
+    if (lyric && lyric.file) {
+      async function GetLyricApi(link) {
+        return await axios
+          .get(`${link}`)
+          .then((response) => {
+            setDataLyric(response.data);
+          })
+          .catch((err) => {
+            console.error(err.message);
+          });
+      }
+
+      GetLyricApi(lyric.file);
+    } else {
+      setDataLyric("");
+    }
+  }, [lyric, loaderSong]);
+
+  useEffect(() => {
+    if (idSong) {
+      setIdLyric(idSong);
+    }
+  }, [infoSong, idSong]);
 
   useEffect(() => {
     if (fullScreen) {
@@ -59,32 +87,20 @@ const DetailSong = () => {
                   >
                     Danh sách phát
                   </div>
-                  {lyric && lyric.sentences ? (
-                    <div
-                      className={`item__detail__menu ${
-                        karaoke && "active__detail__menu"
-                      }`}
-                      onClick={() => {
-                        {
-                          setListSongDetail(false);
-                          setLyricBtn(false);
-                          setKaraoke(true);
-                        }
-                      }}
-                    >
-                      Karaoke
-                    </div>
-                  ) : (
-                    <div
-                      className="item__detail__menu"
-                      style={{
-                        color: "hsla(0, 0%, 100%, 0.2)",
-                        cursor: "no-drop",
-                      }}
-                    >
-                      Karaoke
-                    </div>
-                  )}
+                  <div
+                    className={`item__detail__menu ${
+                      karaoke && "active__detail__menu"
+                    }`}
+                    onClick={() => {
+                      {
+                        setListSongDetail(false);
+                        setLyricBtn(false);
+                        setKaraoke(true);
+                      }
+                    }}
+                  >
+                    Karaoke
+                  </div>
                   <div
                     className={`item__detail__menu ${
                       lyricBtn && "active__detail__menu"

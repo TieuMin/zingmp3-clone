@@ -1,39 +1,14 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { GetSongContext } from "../../../context/GetSongProvider";
 import { LyricContext } from "../../../context/GetLyricProvider";
-import axios from "axios";
 import { Lrc } from "react-lrc";
 
 const Lyric = () => {
-  const { infoSong, loaderSong, btnPlay, idSong, currentTimeLyric } =
-    useContext(GetSongContext);
-  const { lyric, setIdLyric } = useContext(LyricContext);
+  const { infoSong, btnPlay, currentTimeLyric } = useContext(GetSongContext);
+  const { lyric, dataLyric } = useContext(LyricContext);
   const [indexLyric, setIndexLyric] = useState("");
-  const [dataLyric, setDataLyric] = useState("");
+
   const RefIndex = useRef();
-
-  useEffect(() => {
-    if (lyric && lyric.file) {
-      async function GetLyricApi(link) {
-        return await axios
-          .get(`${link}`)
-          .then((response) => {
-            setDataLyric(response.data);
-          })
-          .catch((err) => {
-            console.error(err.message);
-          });
-      }
-
-      GetLyricApi(lyric.file);
-    }
-  }, [lyric, loaderSong]);
-
-  useEffect(() => {
-    if (idSong) {
-      setIdLyric(idSong);
-    }
-  }, [infoSong]);
 
   useEffect(() => {
     if (RefIndex && RefIndex.current) {
@@ -80,7 +55,19 @@ const Lyric = () => {
           </>
         ) : (
           <div className="sidebar__scrollbar detail__lyric detail__lyric__item text__item__lyric">
-            {lyric.lyric}
+            {lyric && lyric.lyric ? (
+              lyric.lyric
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  height: "90%",
+                  alignItems: "center",
+                }}
+              >
+                Lời bài hát đang được cập nhật
+              </div>
+            )}
           </div>
         )}
       </div>

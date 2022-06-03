@@ -9,6 +9,7 @@ const GetLyricProvider = ({ children }) => {
     prevSongDefaul ? prevSongDefaul.id : ""
   );
   const [lyric, setLyric] = useState("");
+  const [dataLyric, setDataLyric] = useState("");
 
   const getApiLyric = async () => {
     await GetLyricApi(idLyric).then((items) => {
@@ -25,6 +26,8 @@ const GetLyricProvider = ({ children }) => {
   const datas = {
     lyric,
     setIdLyric,
+    dataLyric,
+    setDataLyric,
   };
 
   return (
