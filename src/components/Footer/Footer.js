@@ -177,7 +177,7 @@ const Footer = () => {
           setIndexListIdSong(i);
           handleEvent.playAudio();
         } else {
-          handleEvent.pauseAudio();
+          handleEvent.playAudio();
         }
         break;
       case "repeat":
