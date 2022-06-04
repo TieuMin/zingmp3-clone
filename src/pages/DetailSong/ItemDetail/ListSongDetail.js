@@ -17,8 +17,6 @@ const ListSongDetail = () => {
   const playId = JSON.parse(localStorage.getItem("prevSongDefaul"));
   const [translate, setTranslate] = useState("480");
   const [indexActive, setIndexActive] = useState(1);
-  const [endList, setEndList] = useState();
-  const [widthRef, setWidthRef] = useState();
   const Ref = useRef();
 
   useEffect(() => {
@@ -33,12 +31,6 @@ const ListSongDetail = () => {
       setIndexActive(indexSong ? indexSong + 1 : 1);
     }
   }, [dataPlaylist, idSong]);
-
-  useEffect(() => {
-    if (Ref && Ref.current) {
-      setEndList(-(Ref.current.scrollWidth - 360 * 3));
-    }
-  }, []);
 
   const handleEvent = {
     nextList: () => {
@@ -180,19 +172,17 @@ const ListSongDetail = () => {
           <i className="fa-solid fa-angle-left"></i>
         </div>
       )}
-      {endList && translate < endList ? (
-        <></>
+      {dataPlaylist.song &&
+      dataPlaylist.song.items.length > 1 &&
+      indexActive <= dataPlaylist.song.items.length - 1 ? (
+        <div
+          className="detail__center__next"
+          onClick={() => handleEvent.nextList()}
+        >
+          <i className="fa-solid fa-angle-right"></i>
+        </div>
       ) : (
-        <>
-          {dataPlaylist.song && dataPlaylist.song.items.length > 1 && (
-            <div
-              className="detail__center__next"
-              onClick={() => handleEvent.nextList()}
-            >
-              <i className="fa-solid fa-angle-right"></i>
-            </div>
-          )}
-        </>
+        <></>
       )}
     </>
   );

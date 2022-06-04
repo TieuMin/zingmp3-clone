@@ -5,7 +5,8 @@ import { PlaylistContext } from "../../../context/GetPlaylistProvider";
 import loading from "../../../assets/images/loading.gif";
 
 const SearchItem = ({ datas }) => {
-  const { setIndexListIdSong } = useContext(PlaylistContext);
+  const { setIndexListIdSong, setIdPlaylist, setDataPlaylist } =
+    useContext(PlaylistContext);
   const {
     setIdSong,
     btnPlay,
@@ -103,6 +104,9 @@ const SearchItem = ({ datas }) => {
                             onClick={() => {
                               setIdSong(item.encodeId);
                               setIndexListIdSong(index);
+                              if (item.album) {
+                                setIdPlaylist(item.album.encodeId);
+                              } else setDataPlaylist("");
                             }}
                           >
                             {btnPlay && playSong && idPlay === item.encodeId ? (

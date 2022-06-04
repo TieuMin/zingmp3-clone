@@ -7,7 +7,7 @@ import { VideoContext } from "../../context/GetVideoProvider";
 import LoadList from "./LoadList";
 import NameSinger from "../NameSinger/NameSinger";
 import MusicItem from "./MusicItem/MusicItem";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const ListSong = () => {
   const { loadDataList, dataPlaylist, setIdPlaylist } =
@@ -18,6 +18,7 @@ const ListSong = () => {
   const params = useParams();
   const { miniatureVideo } = useContext(VideoContext);
   const RefScroll = useRef();
+  const navigate = useNavigate();
 
   const convertLike = (likes) => {
     const like = likes.toString();
@@ -31,6 +32,12 @@ const ListSong = () => {
     if (like >= 1000000000 && like < 10000000000)
       return like.slice(0, 4) + "tr";
   };
+
+  useEffect(() => {
+    if (loadDataList) {
+      navigate(dataPlaylist.link);
+    }
+  }, [dataPlaylist]);
 
   useEffect(() => {
     if (dataPlaylist === "") {

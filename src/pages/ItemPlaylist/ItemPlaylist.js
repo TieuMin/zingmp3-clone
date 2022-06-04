@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import NameSinger from "../NameSinger/NameSinger";
 import { PlaylistContext } from "../../context/GetPlaylistProvider";
 import { GetSongContext } from "../../context/GetSongProvider";

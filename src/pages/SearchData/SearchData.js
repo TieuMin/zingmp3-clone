@@ -29,7 +29,8 @@ const SearchData = () => {
     playSong,
     setclose,
   } = useContext(GetSongContext);
-  const { setIndexListIdSong } = useContext(PlaylistContext);
+  const { setIndexListIdSong, setIdPlaylist, setDataPlaylist } =
+    useContext(PlaylistContext);
   const { miniatureVideo } = useContext(VideoContext);
   const location = useLocation();
   const params = useParams();
@@ -152,6 +153,12 @@ const SearchData = () => {
                                           dataEnterSearch.songs[0].encodeId
                                         );
                                         setIndexListIdSong(0);
+                                        dataEnterSearch.songs[0].album
+                                          ? setIdPlaylist(
+                                              dataEnterSearch.songs[0].album
+                                                .encodeId
+                                            )
+                                          : setDataPlaylist("");
                                       }}
                                     >
                                       {btnPlay &&

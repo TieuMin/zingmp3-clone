@@ -181,11 +181,11 @@ function Header() {
                                           className="option__selection"
                                           onClick={() => {
                                             setIdSong(item.encodeId);
-                                            item.album
-                                              ? setIdPlaylist(
-                                                  item.album.encodeId
-                                                )
-                                              : setDataPlaylist("");
+                                            if (item.album) {
+                                              setIdPlaylist(
+                                                item.album.encodeId
+                                              );
+                                            } else setDataPlaylist("");
                                           }}
                                         >
                                           {btnPlay &&

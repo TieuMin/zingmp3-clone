@@ -587,7 +587,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="media__content">
+      <div
+        className="media__content"
+        style={{ zIndex: `${detailSong ? "888" : "unset"}` }}
+      >
         {detailSong && (
           <div className="media__duration__bar">
             <div className="time__start">

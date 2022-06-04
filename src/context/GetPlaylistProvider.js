@@ -35,28 +35,24 @@ const PlaylistProvider = ({ children }) => {
   useEffect(() => {
     if (dataPlaylist) {
       setLoadDataList(false);
-      if (dataPlaylist.artists) {
-        const itemslist = dataPlaylist.song.items.filter(
-          (item) => item.streamingStatus === 1
-        );
-        setListIdSong(itemslist.map((item) => item.encodeId));
-      }
+      const itemslist = dataPlaylist.song.items.filter(
+        (item) => item.streamingStatus === 1
+      );
+      setListIdSong(itemslist.map((item) => item.encodeId));
     }
   }, [dataPlaylist]);
 
   useEffect(() => {
     if (dataPlaylist) {
-      if (dataPlaylist.artists) {
-        localStorage.setItem(
-          "listIdSong",
-          JSON.stringify({
-            encodeId: listIdSong,
-            idPlaylist: idPlaylist,
-            link: dataPlaylist.link,
-            listSong: dataPlaylist,
-          })
-        );
-      }
+      localStorage.setItem(
+        "listIdSong",
+        JSON.stringify({
+          encodeId: listIdSong,
+          idPlaylist: idPlaylist,
+          link: dataPlaylist.link,
+          listSong: dataPlaylist,
+        })
+      );
     }
   }, [listIdSong]);
 
