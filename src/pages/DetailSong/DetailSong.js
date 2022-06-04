@@ -19,7 +19,6 @@ const DetailSong = () => {
   const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
-    console.log(lyric);
     if (lyric && lyric.file) {
       async function GetLyricApi(link) {
         return await axios
@@ -43,14 +42,6 @@ const DetailSong = () => {
       setIdLyric(idSong);
     }
   }, [infoSong, idSong]);
-
-  useEffect(() => {
-    if (fullScreen) {
-      document.body.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
-  }, [fullScreen]);
 
   return (
     <>
@@ -120,16 +111,29 @@ const DetailSong = () => {
             </div>
             <div className="detail__top__right">
               <div
-                className="item__detail__top__right"
-                onClick={() => setFullScreen(!fullScreen)}
+                className="item__detail__top__right bdt__after tdt__after__47 tdt__before__55"
+                data-title={fullScreen ? "Tắt toàn màn hình" : "Toàn màn hình"}
+                onClick={() => {
+                  if (!fullScreen) {
+                    setFullScreen(true);
+                    document.body.requestFullscreen();
+                  } else {
+                    document.exitFullscreen();
+                    setFullScreen(false);
+                  }
+                }}
               >
                 <i className="fa-solid fa-up-right-and-down-left-from-center"></i>
               </div>
               <div
-                className="item__detail__top__right"
+                className="item__detail__top__right bdt__after tdt__after__47 tdt__before__55"
+                data-title="Đóng"
                 onClick={() => {
                   setDetailSong(false);
-                  setFullScreen(false);
+                  if (fullScreen) {
+                    document.exitFullscreen();
+                    setFullScreen(false);
+                  }
                 }}
               >
                 <i className="fa-solid fa-angle-down"></i>

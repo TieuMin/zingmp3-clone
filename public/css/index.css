@@ -579,6 +579,7 @@
   box-shadow: var(--chart-logo-color) 0px 0px 0px,
     var(--chart-logo-color) 0px 0px 4px;
   border-radius: 8px;
+  z-index: 10;
 }
 
 .option__chindren__one {
@@ -771,6 +772,7 @@
   height: 50px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .controller__itemmedia > i {
@@ -823,6 +825,86 @@
 
 .controller__itemmedia > i:hover {
   background-color: var(--kara-btn-bg);
+}
+
+.controller__itemmedia > i:hover ~ .hover__next__song {
+  visibility: visible;
+}
+
+.hover__next__song {
+  position: absolute;
+  width: 270px;
+  padding: 15px;
+  background-color: var(--queue-player-popup-bg);
+  border-radius: 12px;
+  left: -130px;
+  padding-top: unset;
+  bottom: 52px;
+  z-index: 888;
+  visibility: hidden;
+}
+
+.hover__next__song::after {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--queue-player-popup-bg);
+  left: 143px;
+  z-index: 888;
+  bottom: -8px;
+}
+
+.hover__next__title {
+  font-size: 12px;
+  color: var(--text-opacity);
+  line-height: 40px;
+  font-weight: 600;
+}
+
+.hover__next__item {
+  display: flex;
+  align-items: center;
+}
+
+.hover__next__img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  margin-right: 8px;
+}
+
+.hover__next__img > img {
+  border-radius: 5px;
+}
+
+.hover__next__subtitle {
+  font-weight: 600;
+  display: -webkit-box;
+  font-size: 14px;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: unset;
+  text-transform: capitalize;
+  color: var(--spotlight-item);
+}
+
+.hover__next__singer {
+  font-size: 13px;
+  display: -webkit-box;
+  color: var(--text-opacity);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: unset;
+  text-transform: capitalize;
+  font-weight: 500;
 }
 
 .media__duration__bar {
@@ -1465,4 +1547,68 @@ input:checked + .slider:before {
 
 .play__mv > i:hover {
   background-color: var(--kara-btn-bg);
+}
+
+[data-title] {
+  position: relative;
+}
+
+[data-title]:hover::before {
+  content: attr(data-title);
+  position: absolute;
+  white-space: nowrap;
+  top: -34px;
+  padding: 3px 15px;
+  font-size: 12px;
+  border-radius: 5px;
+  background-color: var(--setting-icon-text);
+  color: var(--spotlight-item);
+  z-index: 9999;
+  text-transform: initial;
+  font-weight: 500;
+}
+
+[data-title]:hover::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 0px;
+  height: 0px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--setting-icon-text);
+  z-index: 9999;
+}
+
+.rdt__before__0:hover::before {
+  right: 0;
+}
+
+.rdt__after__0:hover::after {
+  right: 6px;
+}
+
+.ldt__before__-40::before {
+  left: -40px !important;
+}
+
+.ldt__before__-20::before {
+  left: -20px !important;
+}
+
+.ldt__after__10::after {
+  left: 10px !important;
+}
+
+.bdt__after::after {
+  border-top: unset !important;
+  border-bottom: 8px solid var(--setting-icon-text);
+}
+
+.tdt__after__47::after {
+  top: 47px !important;
+}
+
+.tdt__before__55::before {
+  top: 55px !important;
 }

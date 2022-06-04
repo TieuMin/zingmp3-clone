@@ -26,6 +26,7 @@ const PopupNotification = () => {
           <div>- Tối ưu hóa trình phát MV.</div>
           <div>- Tối ưu danh sách phát nhạc.</div>
           <div>- Cập nhật trình phát thu nhỏ MV.</div>
+          <div>- Cải thiện UI.</div>
 
           <div className="popup__version"></div>
 

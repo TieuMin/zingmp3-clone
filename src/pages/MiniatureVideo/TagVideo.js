@@ -160,13 +160,19 @@ const TagVideo = () => {
 
       <div className="full__option__mini">
         <div className="option1__mini__video">
-          <div className="unmini__video">
+          <div
+            className="unmini__video ldt__before__-20 ldt__after__10"
+            data-title="Phóng to"
+          >
             <i
               className="fa-solid fa-up-right-and-down-left-from-center"
               onClick={() => setMiniatureVideo(false)}
             ></i>
           </div>
-          <div className="close__video">
+          <div
+            className="close__video ldt__before__-20 ldt__after__10"
+            data-title="Đóng"
+          >
             <i
               className="fa-solid fa-xmark"
               onClick={() => {

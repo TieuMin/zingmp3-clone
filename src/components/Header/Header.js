@@ -255,20 +255,34 @@ function Header() {
           </div>
         </div>
         <div className="header__right">
-          <div className="item__header">
+          <div
+            className="item__header bdt__after tdt__after__47 tdt__before__55"
+            data-title="Chủ đề"
+          >
             <i className="fa-solid fa-shirt"></i>
           </div>
-          <div className="item__header">
+          <div
+            className="item__header bdt__after tdt__after__47 tdt__before__55"
+            data-title="Nâng cấp VIP"
+          >
             <i className="fa-solid fa-gem"></i>
           </div>
-          <div className="item__header">
+          <div
+            className="item__header bdt__after tdt__after__47 tdt__before__55"
+            data-title="Tải lên"
+          >
             <i className="fa-solid fa-arrow-up-from-bracket"></i>
           </div>
-          <div className="item__header item__header__setting" ref={domNote}>
+          <div
+            className="item__header item__header__setting  bdt__after tdt__after__47 tdt__before__55"
+            data-title="Cài đặt"
+            ref={domNote}
+          >
             <i
               className="fa-solid fa-gear"
               onClick={() => setIsClickMenu(!isClickMenu)}
             ></i>
+            <span></span>
             {isClickMenu && (
               <div className="setting">
                 <ul className="setting__one">

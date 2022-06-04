@@ -48,6 +48,7 @@ const Footer = () => {
     dataPlaylist,
     detailSong,
     setDetailSong,
+    idPlaylist,
   } = useContext(PlaylistContext);
   const { setMiniatureVideo, setActivePlayVideo, miniatureVideo } =
     useContext(VideoContext);
@@ -76,6 +77,8 @@ const Footer = () => {
     repeat_random ? repeat_random.random : "noRandom"
   );
   const [displayList, setDisplayList] = useState(false);
+  const [nextSong, setNextSong] = useState("");
+  const [indexRandom, setIndexRandom] = useState(0);
 
   function convertMS(value) {
     const sec = parseInt(value, 10); // convert value to number if it's string
@@ -113,6 +116,7 @@ const Footer = () => {
     if (Audio !== null) {
       setAudio(Audio.current);
     }
+    randomIndex();
   }, []);
 
   useEffect(() => {
@@ -155,10 +159,127 @@ const Footer = () => {
     }
   }, [loaderSong, audio]);
 
+  const repeatEvent = () => {
+    switch (repeat) {
+      case "repeatAll":
+        if (listIdSong) {
+          let i;
+          const length = listIdSong.length;
+          if (indexListIdSong >= length - 1) {
+            i = 0;
+          } else {
+            i = indexListIdSong + 1;
+          }
+          setIdSong(listIdSong[i]);
+          setIndexListIdSong(i);
+          handleEvent.playAudio();
+        } else {
+          handleEvent.pauseAudio();
+        }
+        break;
+      case "repeat":
+        handleEvent.playAudio();
+        break;
+      default:
+        if (listIdSong) {
+          let i;
+          const length = listIdSong.length;
+          if (indexListIdSong >= length - 1) {
+            handleEvent.pauseAudio();
+          } else {
+            i = indexListIdSong + 1;
+            setIdSong(listIdSong[i]);
+            setIndexListIdSong(i);
+            handleEvent.playAudio();
+          }
+        } else {
+          handleEvent.pauseAudio();
+        }
+        break;
+    }
+  };
+
+  const randomIndex = () => {
+    if (listIdSong) {
+      const length = listIdSong.length;
+      if (indexListIdSong >= length - 1) {
+        return setIndexRandom(0);
+      } else {
+        do {
+          return setIndexRandom(Math.floor(Math.random() * length));
+        } while (indexRandom === indexListIdSong);
+      }
+    }
+  };
+
+  const randomEvent = () => {
+    switch (random) {
+      case "random":
+        switch (repeat) {
+          case "repeat":
+            if (listIdSong) {
+              handleEvent.playAudio();
+            }
+            break;
+          default:
+            if (listIdSong) {
+              setIdSong(listIdSong[indexRandom]);
+              setIndexListIdSong(indexRandom);
+              handleEvent.playAudio();
+            } else {
+              handleEvent.pauseAudio();
+            }
+            break;
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     setIdSong(listIdSong[indexListIdSong]);
     setIndexListIdSong(indexListIdSong);
   }, [listIdSong]);
+
+  useEffect(() => {
+    if (songData) {
+      setMiniatureVideo(false);
+      setActivePlayVideo(false);
+    }
+  }, [songData]);
+
+  useEffect(() => {
+    if (idPlaylist && listId) {
+      let length = listId.encodeId.length;
+      let id;
+      if (length < 1) {
+        setNextSong("");
+      } else {
+        if (random === "noRandom") {
+          if (indexListIdSong < length) {
+            id = listId.encodeId[indexListIdSong + 1];
+          } else {
+            id = listId.encodeId[0];
+          }
+          if (id) {
+            let data = listId.listSong.song.items.find(
+              (item) => item.encodeId === id
+            );
+            data && setNextSong(data);
+          }
+        } else {
+          id = listId.encodeId[indexRandom];
+          if (id) {
+            let data = listId.listSong.song.items.find(
+              (item) => item.encodeId === id
+            );
+            data && setNextSong(data);
+          }
+        }
+      }
+    }
+  }, [indexListIdSong, idPlaylist, random, indexRandom]);
 
   const handleEvent = {
     playAudio: () => {
@@ -173,74 +294,11 @@ const Footer = () => {
             setStepTime(step);
           }
           audio.onended = () => {
-            switch (repeat) {
-              case "repeatAll":
-                if (listIdSong) {
-                  let i;
-                  const length = listIdSong.length;
-                  if (indexListIdSong >= length - 1) {
-                    i = 0;
-                  } else {
-                    i = indexListIdSong + 1;
-                  }
-                  setIdSong(listIdSong[i]);
-                  setIndexListIdSong(i);
-                  handleEvent.playAudio();
-                } else {
-                  handleEvent.pauseAudio();
-                }
-                break;
-              case "repeat":
-                handleEvent.playAudio();
-                break;
-              default:
-                if (listIdSong) {
-                  let i;
-                  const length = listIdSong.length;
-                  if (indexListIdSong >= length - 1) {
-                    handleEvent.pauseAudio();
-                  } else {
-                    i = indexListIdSong + 1;
-                    setIdSong(listIdSong[i]);
-                    setIndexListIdSong(i);
-                    handleEvent.playAudio();
-                  }
-                } else {
-                  handleEvent.pauseAudio();
-                }
-                break;
+            if (random !== "noRandom") {
+              randomIndex();
             }
-            switch (random) {
-              case "random":
-                switch (repeat) {
-                  case "repeat":
-                    if (listIdSong) {
-                      handleEvent.playAudio();
-                    }
-                    break;
-                  default:
-                    if (listIdSong) {
-                      let i;
-                      const length = listIdSong.length;
-                      if (indexListIdSong >= length - 1) {
-                        i = 0;
-                      } else {
-                        do {
-                          i = Math.floor(Math.random() * length);
-                        } while (i === indexListIdSong);
-                      }
-                      setIdSong(listIdSong[i]);
-                      setIndexListIdSong(i);
-                      handleEvent.playAudio();
-                    } else {
-                      handleEvent.pauseAudio();
-                    }
-                    break;
-                }
-                break;
-              default:
-                break;
-            }
+            repeatEvent();
+            randomEvent();
           };
         };
         setNoneBtn(true);
@@ -292,40 +350,45 @@ const Footer = () => {
     },
     NextSong: () => {
       if (listIdSong) {
-        let i;
-        const length = listIdSong.length;
-        if (indexListIdSong >= length - 1) {
-          i = 0;
+        if (repeat !== "noRepeat" && random !== "noRandom") {
+          let i;
+          const length = listIdSong.length;
+          if (indexListIdSong >= length - 1) {
+            i = 0;
+          } else {
+            i = indexListIdSong + 1;
+          }
+          setIdSong(listIdSong[i]);
+          setIndexListIdSong(i);
+          handleEvent.playAudio();
         } else {
-          i = indexListIdSong + 1;
+          randomIndex();
+          repeatEvent();
+          randomEvent();
         }
-        setIdSong(listIdSong[i]);
-        setIndexListIdSong(i);
-        handleEvent.playAudio();
       }
     },
     PrevSong: () => {
       if (listIdSong) {
-        let i;
-        const length = listIdSong.length;
-        if (indexListIdSong === 0) {
-          i = length - 1;
+        if (repeat !== "noRepeat" && random !== "noRandom") {
+          let i;
+          const length = listIdSong.length;
+          if (indexListIdSong === 0) {
+            i = length - 1;
+          } else {
+            i = indexListIdSong - 1;
+          }
+          setIdSong(listIdSong[i]);
+          setIndexListIdSong(i);
+          handleEvent.playAudio();
         } else {
-          i = indexListIdSong - 1;
+          randomIndex();
+          repeatEvent();
+          randomEvent();
         }
-        setIdSong(listIdSong[i]);
-        setIndexListIdSong(i);
-        handleEvent.playAudio();
       }
     },
   };
-
-  useEffect(() => {
-    if (songData) {
-      setMiniatureVideo(false);
-      setActivePlayVideo(false);
-    }
-  }, [songData]);
 
   return (
     <div
@@ -370,10 +433,10 @@ const Footer = () => {
             </div>
           </div>
           <div className="options__left">
-            <div className="media__heart">
+            <div className="media__heart" data-title="Thêm vào thư viện">
               <i className="fa-regular fa-heart"></i>
             </div>
-            <div className="np__menu" ref={domNote}>
+            <div className="np__menu" ref={domNote} data-title="Xem thêm">
               <div
                 className="np__menu__option"
                 onClick={() => setIsClickOption(!isClickOption)}
@@ -536,13 +599,16 @@ const Footer = () => {
         )}
         <div className="controller__media">
           <span
+            data-title={`${
+              random === "noRandom" ? "Phát nhẫu nhiên" : "Tắt phát nhẫu nhiên"
+            }`}
             onClick={() =>
               setRandom(
                 (random === "noRandom" && "random") ||
                   (random === "random" && "noRandom")
               )
             }
-            className={`controller__itemmedia ${
+            className={`controller__itemmedia ldt__after__10 ldt__before__-40  ${
               random === "random" && "active__redo"
             } `}
           >
@@ -586,8 +652,31 @@ const Footer = () => {
             onClick={() => handleEvent.NextSong()}
           >
             <i className="fas fa-step-forward"></i>
+            {idPlaylist && nextSong && (
+              <div className="hover__next__song">
+                <div className="hover__next__title">Phát tiếp theo</div>
+                <div className="hover__next__item">
+                  <div className="hover__next__img">
+                    <img src={nextSong.thumbnail} />
+                  </div>
+                  <div className="hover__next__description">
+                    <div className="hover__next__subtitle">
+                      {nextSong.title}
+                    </div>
+                    <div className="hover__next__singer">
+                      {nextSong.artistsNames}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </span>
           <span
+            data-title={`${
+              (repeat === "noRepeat" && "Bật phát lại tất cả") ||
+              (repeat === "repeatAll" && "Bật phát lại một bài") ||
+              (repeat === "repeat" && "Tắt phát lại")
+            }`}
             onClick={() =>
               setRepeat(
                 (repeat === "noRepeat" && "repeatAll") ||
@@ -595,7 +684,7 @@ const Footer = () => {
                   (repeat === "repeat" && "noRepeat")
               )
             }
-            className={`controller__itemmedia ${
+            className={`controller__itemmedia ldt__after__10 ldt__before__-40 ${
               (repeat === "repeat" && "active__redo") ||
               (repeat === "repeatAll" && "active__redo") ||
               (repeat === "noRepeat" && "")
@@ -635,11 +724,12 @@ const Footer = () => {
         )}
       </div>
       <div className="media__right">
-        <div className="media__narrow unclick">
+        <div className="media__narrow unclick" data-title="MV">
           <div className="mv__item">MV</div>
         </div>
         <div
           className="media__narrow"
+          data-title="Xem lời bài hát"
           onClick={() =>
             dataPlaylist && dataPlaylist.song && setDetailSong(true)
           }
@@ -654,7 +744,11 @@ const Footer = () => {
             <i className="fa fa-microphone"></i>
           </div>
         </div>
-        <div className="media__narrow">
+        <div
+          style={{ color: "hsla(0, 0%, 100%, 0.3)", cursor: "no-drop" }}
+          className="media__narrow"
+          data-title="Chế độ cửa sổ"
+        >
           <div>
             <i className="fa fa-window-restore"></i>
           </div>
@@ -691,7 +785,7 @@ const Footer = () => {
         <div className="media__divide">
           <span className="divide"></span>
         </div>
-        <div className="media__narrow media__list__item">
+        <div className="media__narrow media__list__item ">
           <div
             style={{
               padding: "7px",
@@ -699,6 +793,8 @@ const Footer = () => {
               backgroundColor: `${displayList ? "#7200a1" : ""}`,
             }}
             onClick={() => setDisplayList(!displayList)}
+            className="rdt__before__0 rdt__after__0"
+            data-title="Danh sách phát"
           >
             <i className="fa fa-align-right"></i>
           </div>

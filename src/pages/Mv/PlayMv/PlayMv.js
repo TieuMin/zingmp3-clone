@@ -65,14 +65,23 @@ const PlayMv = () => {
                       })}
                     </div>
                   </div>
-                  <div className="playmv__option__left">
-                    <div className="playmv__option__item">
+                  <div className="playmv__option__left ">
+                    <div
+                      className="playmv__option__item bdt__after tdt__after__47 tdt__before__55"
+                      data-title="Thêm vào thư viện"
+                    >
                       <i className="fa-regular fa-heart"></i>
                     </div>
-                    <div className="playmv__option__item">
+                    <div
+                      className="playmv__option__item bdt__after tdt__after__47 tdt__before__55"
+                      data-title="Nghe audio"
+                    >
                       <i className="fa-solid fa-music"></i>
                     </div>
-                    <div className="playmv__option__item">
+                    <div
+                      className="playmv__option__item bdt__after tdt__after__47 tdt__before__55"
+                      data-title="Khác"
+                    >
                       <i className="fa fa-ellipsis-h"></i>
                     </div>
                   </div>
@@ -82,13 +91,15 @@ const PlayMv = () => {
               )}
               <div className="playmv__top__right">
                 <div
-                  className="playmv__option__item"
+                  className="playmv__option__item bdt__after tdt__after__47 tdt__before__55"
+                  data-title="Thu nhỏ"
                   onClick={() => setMiniatureVideo(true)}
                 >
                   <i className="fa-solid fa-minimize"></i>
                 </div>
                 <div
-                  className="playmv__option__item"
+                  className="playmv__option__item bdt__after tdt__after__47 tdt__before__55"
+                  data-title="Đóng"
                   onClick={() => setActivePlayVideo(false)}
                 >
                   <i className="fa-solid fa-xmark"></i>

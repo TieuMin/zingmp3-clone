@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import MainLayout from "../../layouts/MainLayout";
 import "./listSong.css";
 import { PlaylistContext } from "../../context/GetPlaylistProvider";
@@ -10,12 +10,14 @@ import MusicItem from "./MusicItem/MusicItem";
 import { useParams } from "react-router-dom";
 
 const ListSong = () => {
-  const { loadDataList, dataPlaylist, playlist, setIdPlaylist } =
+  const { loadDataList, dataPlaylist, setIdPlaylist } =
     useContext(PlaylistContext);
-  const { btnPlay, setBtnPlay, playSong } = useContext(GetSongContext);
+  const { btnPlay, setBtnPlay, playSong, idSong } = useContext(GetSongContext);
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
+  const listId = JSON.parse(localStorage.getItem("listIdSong"));
   const params = useParams();
   const { miniatureVideo } = useContext(VideoContext);
+  const RefScroll = useRef();
 
   const convertLike = (likes) => {
     const like = likes.toString();
@@ -36,12 +38,25 @@ const ListSong = () => {
     }
   }, [dataPlaylist]);
 
+  useEffect(() => {
+    if (RefScroll && RefScroll.current && dataPlaylist && idSong) {
+      let heightScroll;
+      dataPlaylist.song.items.forEach((item, index) => {
+        if (item.encodeId === idSong) {
+          heightScroll = 60 * index - 49;
+          RefScroll.current.scrollTop = heightScroll;
+        }
+      });
+    }
+  }, [idSong]);
+
   return (
     <MainLayout>
       {loadDataList ? (
         <LoadList />
       ) : (
         <div
+          ref={RefScroll}
           className="content"
           style={{
             height: `${
