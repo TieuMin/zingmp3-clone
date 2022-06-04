@@ -747,9 +747,12 @@ const Footer = () => {
         <div
           className="media__narrow"
           data-title="Xem lời bài hát"
-          onClick={() =>
-            dataPlaylist && dataPlaylist.song && setDetailSong(true)
-          }
+          onClick={() => {
+            if (dataPlaylist && dataPlaylist.song) {
+              setDetailSong(true);
+              setDisplayList(false);
+            }
+          }}
           style={{
             cursor: `${dataPlaylist && !dataPlaylist.song && "no-drop"}`,
             color: `${
