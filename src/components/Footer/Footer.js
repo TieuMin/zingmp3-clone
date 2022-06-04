@@ -59,8 +59,11 @@ const Footer = () => {
   const [stepTime, setStepTime] = useState("0");
   const [timeStepChange, setTimeStepChange] = useState("0");
   const [enableTimeStep, setEnableTimeStep] = useState(false);
+  const volumeLocal = JSON.parse(localStorage.getItem("volume"));
   const [mutedAudio, setMutedAudio] = useState(true);
-  const [volume, setVolume] = useState("100");
+  const [volume, setVolume] = useState(
+    volumeLocal ? volumeLocal.volume : "100"
+  );
   const [prevVolume, setPrevVolume] = useState("100");
   const Audio = useRef(null);
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
@@ -280,6 +283,20 @@ const Footer = () => {
       }
     }
   }, [indexListIdSong, idPlaylist, random, indexRandom]);
+
+  useEffect(() => {
+    localStorage.setItem("volume", JSON.stringify({ volume: volume }));
+    if (audio) {
+      const stepVolume = (1 / 100) * volume;
+      if (volume == "0") {
+        audio.volume = stepVolume;
+        setMutedAudio(false);
+      } else {
+        audio.volume = stepVolume;
+        setMutedAudio(true);
+      }
+    }
+  }, [volume, audio]);
 
   const handleEvent = {
     playAudio: () => {
