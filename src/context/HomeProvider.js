@@ -91,7 +91,7 @@ const HomeProvider = ({ children }) => {
     if (loader.stores !== "") {
       setAnimation(false);
       //rank
-      loader.stores[8].items.forEach((a, index) => {
+      loader.stores[7].items.forEach((a, index) => {
         if (index < 3) ab += a.score;
       });
       setRank(ab);

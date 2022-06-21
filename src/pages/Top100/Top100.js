@@ -37,7 +37,7 @@ const Top100 = () => {
                 <span>Nổi bật</span>
               </div>
               <div className="list__playlist__selection">
-                <ItemPlaylist lists={loader.stores[4]} />
+                <ItemPlaylist lists={loader.stores[3]} />
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@ const Top100 = () => {
               <h3>nhạc việt nam</h3>
             </div>
             <div className="columns">
-              <PlaylistTop100 lists={loader.stores[3]} />
+              <PlaylistTop100 lists={loader.stores[7]} />
             </div>
           </div>
           <div className="topic-category mb-40">
@@ -54,7 +54,7 @@ const Top100 = () => {
               <h3>nhạc châu á</h3>
             </div>
             <div className="columns">
-              <PlaylistTop100 lists={loader.stores[11]} />
+              <PlaylistTop100 lists={loader.stores[10]} />
             </div>
           </div>
           <div className="topic-top__100__item">
@@ -62,7 +62,7 @@ const Top100 = () => {
               <h3>nhạc âu mỹ</h3>
             </div>
             <div className="columns">
-              <PlaylistTop100 lists={loader.stores[4]} />
+              <PlaylistTop100 lists={loader.stores[3]} />
             </div>
           </div>
           <div className="topic-category">
@@ -70,7 +70,7 @@ const Top100 = () => {
               <h3>nhạc hòa tấu</h3>
             </div>
             <div className="columns">
-              <PlaylistTop100 lists={loader.stores[3]} />
+              <PlaylistTop100 lists={loader.stores[4]} />
             </div>
           </div>
         </div>

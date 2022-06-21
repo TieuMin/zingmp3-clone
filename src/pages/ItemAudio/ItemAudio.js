@@ -18,12 +18,6 @@ const ItemAudio = ({ lists }) => {
                   <div className="option__playlist__audio">
                     <div className="option__audio">
                       <i className="fa-solid fa-play"></i>
-                      {/* <span className="gif__play">
-                      <img
-                        src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
-                        alt=""
-                      />
-                    </span> */}
                     </div>
                   </div>
                   <svg

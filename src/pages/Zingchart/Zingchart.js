@@ -33,9 +33,9 @@ const ZingChart = () => {
                 <i className="fa-solid fa-play"></i>
               </button>
             </div>
-            <LibraryZingChart data={loader.stores[8]} rank={rank} />
+            <LibraryZingChart data={loader.stores[7]} rank={rank} />
           </div>
-          <TopZingChart />
+          <TopZingChart datas={loader.stores[7]} />
           <WeeklyRanking />
         </div>
       )}

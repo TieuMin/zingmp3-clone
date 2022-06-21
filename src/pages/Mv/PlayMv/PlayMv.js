@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { VideoContext } from "../../../context/GetVideoProvider";
 import "./playmv.css";
 import NameSinger from "../../NameSinger/NameSinger";

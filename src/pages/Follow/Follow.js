@@ -68,7 +68,7 @@ const Follow = () => {
                     }}
                   >
                     <span className="controller__itemmedia play__item center">
-                      <i className="far fa-play-circle"></i>
+                      <i class="fa-solid fa-play"></i>
                     </span>
                   </div>
                 </div>
@@ -117,7 +117,7 @@ const Follow = () => {
                     }}
                   >
                     <span className="controller__itemmedia play__item center">
-                      <i className="far fa-play-circle"></i>
+                      <i class="fa-solid fa-play"></i>
                     </span>
                   </div>
                 </div>
@@ -168,7 +168,7 @@ const Follow = () => {
                     }}
                   >
                     <span className="controller__itemmedia play__item center">
-                      <i className="far fa-play-circle"></i>
+                      <i class="fa-solid fa-play"></i>
                     </span>
                   </div>
                 </div>
@@ -216,7 +216,7 @@ const Follow = () => {
                     }}
                   >
                     <span className="controller__itemmedia play__item center">
-                      <i className="far fa-play-circle"></i>
+                      <i class="fa-solid fa-play"></i>
                     </span>
                   </div>
                 </div>

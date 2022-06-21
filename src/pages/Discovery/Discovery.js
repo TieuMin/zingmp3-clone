@@ -41,7 +41,7 @@ const Discovery = () => {
                 <span>Lựa Chọn Hôm Nay</span>
               </div>
               <div className="list__playlist__selection">
-                <ItemPlaylist lists={loader.stores[4]} p={false} />
+                <ItemPlaylist lists={loader.stores[3]} p={false} />
               </div>
             </div>
 
@@ -50,7 +50,7 @@ const Discovery = () => {
                 <span>Có Thể Bạn Muốn Nghe</span>
               </div>
               <div className="list__playlist__selection">
-                <ItemPlaylist lists={loader.stores[3]} />
+                <ItemPlaylist lists={loader.stores[6]} />
               </div>
             </div>
 
@@ -59,7 +59,7 @@ const Discovery = () => {
                 <span>XONE's CORNER</span>
               </div>
               <div className="list__playlist__selection">
-                <ItemPlaylist lists={loader.stores[5]} p={false} />
+                <ItemPlaylist lists={loader.stores[4]} p={false} />
               </div>
             </div>
 
@@ -71,7 +71,7 @@ const Discovery = () => {
                 </div>
               </div>
               <div className="list__playlist__selection">
-                <ItemAudio lists={loader.stores[6]} />
+                <ItemAudio lists={loader.stores[5]} />
               </div>
             </div>
 
@@ -95,7 +95,7 @@ const Discovery = () => {
                     </div>
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader.stores[4]} />
+                    <ItemPlaylist lists={loader.stores[14]} />
                   </div>
                 </div>
 
@@ -104,12 +104,12 @@ const Discovery = () => {
                     <span>Nhạc Mới Mỗi Ngày</span>
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader.stores[7]} />
+                    <ItemPlaylist lists={loader.stores[6]} />
                   </div>
                 </div>
 
                 <div className="chart__home">
-                  <ZingChartHome lists={loader.stores[8]} />
+                  <ZingChartHome lists={loader.stores[7]} />
                 </div>
 
                 <div className="option__zingchart">
@@ -153,12 +153,12 @@ const Discovery = () => {
                     </div>
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader.stores[11]} />
+                    <ItemPlaylist lists={loader.stores[10]} />
                   </div>
                 </div>
 
                 <div className="playlist__selection">
-                  <ItemChannel lists={loader.stores[12]} />
+                  <ItemChannel lists={loader.stores[11]} />
                 </div>
 
                 <div className="playlist__selection">
@@ -178,10 +178,10 @@ const Discovery = () => {
                     </div>
                   </div>
                   <div className="new__release">
-                    <NewRelease lists={loader.stores[13]} />
+                    <NewRelease lists={loader.stores[12]} />
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader.stores[15]} />
+                    <ItemPlaylist lists={loader.stores[14]} />
                   </div>
                 </div>
 
@@ -191,7 +191,7 @@ const Discovery = () => {
                   </div>
                   <div className="list__playlist__selection">
                     <div className="favorite__artist">
-                      <LoveSinger lists={loader.stores[16]} />
+                      <LoveSinger lists={loader.stores[15]} />
                     </div>
                   </div>
                 </div>
