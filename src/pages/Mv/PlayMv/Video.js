@@ -79,8 +79,8 @@ const Video = () => {
 
   useEffect(() => {
     if (dataVideo) {
-      if (dataVideo.streamingStatus === 1 && dataVideo.streaming.mp4) {
-        setVideoQuality(dataVideo.streaming.mp4["720p"]);
+      if (dataVideo?.streamingStatus === 1 && dataVideo?.streaming?.mp4) {
+        setVideoQuality(dataVideo?.streaming?.mp4["720p"]);
       } else {
         setclose(true);
       }
@@ -89,13 +89,13 @@ const Video = () => {
 
   useEffect(() => {
     if (video) {
-      video.paused ? setVideoPlay(false) : setVideoPlay(true);
+      video?.paused ? setVideoPlay(false) : setVideoPlay(true);
     }
   });
 
   useEffect(() => {
     if (video) {
-      handleEvent.playVideo();
+      handleEvent?.playVideo();
       setVideoPlay(true);
       setBtnPlay(false);
     }
@@ -103,7 +103,7 @@ const Video = () => {
 
   useEffect(() => {
     if (video && activeQuality) {
-      handleEvent.playVideo();
+      handleEvent?.playVideo();
     }
   }, [video, activeQuality]);
 
@@ -111,22 +111,22 @@ const Video = () => {
     if (video) {
       video.currentTime = currentTime;
       if (miniatureVideo) {
-        handleEvent.pauseVideo();
+        handleEvent?.pauseVideo();
       } else {
-        handleEvent.playVideo();
+        handleEvent?.playVideo();
       }
     }
   }, [video, miniatureVideo]);
 
   useEffect(() => {
     if (!videoPlay) {
-      handleEvent.pauseVideo();
+      handleEvent?.pauseVideo();
     }
   }, [videoPlay]);
 
   useEffect(() => {
     if (videoPlay) {
-      localStorage.setItem("volumeMV", JSON.stringify(volume));
+      localStorage?.setItem("volumeMV", JSON?.stringify(volume));
     }
   }, [videoPlay, volume]);
 
@@ -138,45 +138,45 @@ const Video = () => {
         video.play();
         setVideoPlay(true);
         video.ontimeupdate = () => {
-          setCurrentTime(video.currentTime);
-          if (video.duration) {
-            setTimeStart(convertMS(Math.round(video.currentTime)));
-            const step = Math.floor((video.currentTime / video.duration) * 100);
+          setCurrentTime(video?.currentTime);
+          if (video?.duration) {
+            setTimeStart(convertMS(Math?.round(video?.currentTime)));
+            const step = Math?.floor((video?.currentTime / video?.duration) * 100);
             setStepTime(step);
           }
         };
         video.onended = () => {
           if (repeat === "repeatAll") {
             let i;
-            let length = listVideo.listId.length;
+            let length = listVideo?.listId?.length;
             if (indexVideo >= length - 1) {
-              handleEvent.pauseVideo();
+              handleEvent?.pauseVideo();
             } else {
               i = indexVideo + 1;
               setIndexVideo(i);
-              setIdVideo(listVideo.listId[i]);
+              setIdVideo(listVideo?.listId[i]);
             }
           } else {
-            handleEvent.playVideo();
+            handleEvent?.playVideo();
           }
         };
       }
     },
     pauseVideo: () => {
       if (video) {
-        video.pause();
+        video?.pause();
         setVideoPlay(false);
       }
     },
     changeTimeVideo: (e) => {
-      setStepTime(e.target.value);
-      const step = Math.floor((video.duration / 100) * e.target.value);
-      video.currentTime = Math.round(step);
+      setStepTime(e?.target?.value);
+      const step = Math?.floor((video?.duration / 100) * e?.target?.value);
+      video.currentTime = Math?.round(step);
     },
     changeVolume: (e) => {
-      video.volume = (1 / 100) * e.target.value;
-      setVolume(e.target.value);
-      if (e.target.value === "0") {
+      video.volume = (1 / 100) * e?.target?.value;
+      setVolume(e?.target?.value);
+      if (e?.target?.value === "0") {
         setMuntedAudio(true);
       } else {
         setMuntedAudio(false);
@@ -195,25 +195,25 @@ const Video = () => {
     },
     PrevVideo: () => {
       let i;
-      let length = listVideo.listId.length;
+      let length = listVideo?.listId?.length;
       if (indexVideo < 1) {
         i = length - 1;
       } else {
         i = indexVideo - 1;
       }
       setIndexVideo(i);
-      setIdVideo(listVideo.listId[i]);
+      setIdVideo(listVideo?.listId[i]);
     },
     NextVideo: () => {
       let i;
-      let length = listVideo.listId.length;
+      let length = listVideo?.listId?.length;
       if (indexVideo >= length - 1) {
         i = 0;
       } else {
         i = indexVideo + 1;
       }
       setIndexVideo(i);
-      setIdVideo(listVideo.listId[i]);
+      setIdVideo(listVideo?.listId[i]);
     },
   };
 
@@ -232,7 +232,7 @@ const Video = () => {
         className="playmv__btn__video"
         onClick={() => {
           setTimeOutPlay(true);
-          videoPlay ? handleEvent.pauseVideo() : handleEvent.playVideo();
+          videoPlay ? handleEvent?.pauseVideo() : handleEvent?.playVideo();
           setEnableOptionVideo(true);
         }}
       >
@@ -261,7 +261,7 @@ const Video = () => {
             min="0"
             max="100"
             value={stepTime}
-            onChange={(e) => handleEvent.changeTimeVideo(e)}
+            onChange={(e) => handleEvent?.changeTimeVideo(e)}
           />
           <div className="current__time">
             <div
@@ -276,14 +276,14 @@ const Video = () => {
           <div className="btn__option__bottom">
             <div
               className="item__btn__bottom"
-              onClick={() => handleEvent.PrevVideo()}
+              onClick={() => handleEvent?.PrevVideo()}
             >
               <i className="fa-solid fa-backward-step"></i>
             </div>
             <div
               className="item__btn__bottom item__btn__play"
               onClick={() =>
-                videoPlay ? handleEvent.pauseVideo() : handleEvent.playVideo()
+                videoPlay ? handleEvent?.pauseVideo() : handleEvent?.playVideo()
               }
             >
               {videoPlay ? (
@@ -294,7 +294,7 @@ const Video = () => {
             </div>
             <div
               className="item__btn__bottom"
-              onClick={() => handleEvent.NextVideo()}
+              onClick={() => handleEvent?.NextVideo()}
             >
               <i className="fa-solid fa-forward-step"></i>
             </div>
@@ -304,8 +304,8 @@ const Video = () => {
                   className="icont__volume"
                   onClick={() =>
                     muntedAudio
-                      ? handleEvent.UnMutedAudio()
-                      : handleEvent.MutedAudio()
+                      ? handleEvent?.UnMutedAudio()
+                      : handleEvent?.MutedAudio()
                   }
                 >
                   {muntedAudio ? (
@@ -320,7 +320,7 @@ const Video = () => {
                     min="0"
                     max="100"
                     value={volume}
-                    onChange={(e) => handleEvent.changeVolume(e)}
+                    onChange={(e) => handleEvent?.changeVolume(e)}
                   />
                   <div className="current__volume">
                     <div
@@ -334,7 +334,7 @@ const Video = () => {
             <div className="item__btn__bottom playmv__time__item">
               {timeStart}
               <nav>|</nav>
-              {convertMS(dataVideo.duration)}
+              {convertMS(dataVideo?.duration)}
             </div>
           </div>
           <div className="btn__option__bottom">
@@ -371,9 +371,9 @@ const Video = () => {
                   <div
                     className="item__quality__video"
                     onClick={() => {
-                      setVideoQuality(dataVideo.streaming.mp4["720p"]);
+                      setVideoQuality(dataVideo?.streaming?.mp4["720p"]);
                       setActiveQuality("720");
-                      handleEvent.pauseVideo();
+                      handleEvent?.pauseVideo();
                     }}
                   >
                     {activeQuality === "720" && (
@@ -386,9 +386,9 @@ const Video = () => {
                   <div
                     className="item__quality__video"
                     onClick={() => {
-                      setVideoQuality(dataVideo.streaming.mp4["480p"]);
+                      setVideoQuality(dataVideo?.streaming?.mp4["480p"]);
                       setActiveQuality("480");
-                      handleEvent.pauseVideo();
+                      handleEvent?.pauseVideo();
                     }}
                   >
                     {activeQuality === "480" && (
@@ -401,9 +401,9 @@ const Video = () => {
                   <div
                     className="item__quality__video"
                     onClick={() => {
-                      setVideoQuality(dataVideo.streaming.mp4["360p"]);
+                      setVideoQuality(dataVideo?.streaming?.mp4["360p"]);
                       setActiveQuality("360");
-                      handleEvent.pauseVideo();
+                      handleEvent?.pauseVideo();
                     }}
                   >
                     {activeQuality === "360" && (
@@ -416,7 +416,7 @@ const Video = () => {
                   <div
                     className="item__quality__video"
                     onClick={() => {
-                      setVideoQuality(dataVideo.streaming.mp4["720p"]);
+                      setVideoQuality(dataVideo?.streaming?.mp4["720p"]);
                       setActiveQuality("auto");
                     }}
                   >
@@ -438,7 +438,7 @@ const Video = () => {
             </div>
             <div
               className="item__btn__bottom"
-              onClick={() => video && video.requestFullscreen()}
+              onClick={() => video && video?.requestFullscreen()}
             >
               <i className="fa-solid fa-expand"></i>
             </div>

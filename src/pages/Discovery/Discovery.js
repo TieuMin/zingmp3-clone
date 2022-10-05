@@ -34,23 +34,23 @@ const Discovery = () => {
           onScroll={(event) => handleScroll(event)}
         >
           <div className="gallery">
-            <SliderGalleyry banners={loader.stores[0]} />
+            <SliderGalleyry banners={loader?.stores?.[0]} />
 
             <div className="playlist__selection">
               <div className="header__playlist__selection">
-                <span>Lựa Chọn Hôm Nay</span>
+                <span>Mới phát hành</span>
               </div>
               <div className="list__playlist__selection">
-                <ItemPlaylist lists={loader.stores[3]} p={false} />
+                <ItemPlaylist lists={loader?.stores?.[3]} p={false} newSong={true} />
               </div>
             </div>
 
             <div className="playlist__selection">
               <div className="header__playlist__selection">
-                <span>Có Thể Bạn Muốn Nghe</span>
+                <span>Cứ Chill Thôi</span>
               </div>
               <div className="list__playlist__selection">
-                <ItemPlaylist lists={loader.stores[6]} />
+                <ItemPlaylist lists={loader?.stores?.[4]} />
               </div>
             </div>
 
@@ -59,7 +59,7 @@ const Discovery = () => {
                 <span>XONE's CORNER</span>
               </div>
               <div className="list__playlist__selection">
-                <ItemPlaylist lists={loader.stores[4]} p={false} />
+                <ItemPlaylist lists={loader?.stores?.[13]} p={false} />
               </div>
             </div>
 
@@ -71,7 +71,7 @@ const Discovery = () => {
                 </div>
               </div>
               <div className="list__playlist__selection">
-                <ItemAudio lists={loader.stores[5]} />
+                <ItemAudio lists={loader?.stores?.[14]} />
               </div>
             </div>
 
@@ -95,7 +95,7 @@ const Discovery = () => {
                     </div>
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader.stores[14]} />
+                    <ItemPlaylist lists={loader?.stores?.[9]} />
                   </div>
                 </div>
 
@@ -104,12 +104,12 @@ const Discovery = () => {
                     <span>Nhạc Mới Mỗi Ngày</span>
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader.stores[6]} />
+                    <ItemPlaylist lists={loader?.stores?.[6]} />
                   </div>
                 </div>
 
                 <div className="chart__home">
-                  <ZingChartHome lists={loader.stores[7]} />
+                  <ZingChartHome lists={loader?.stores?.[7]} />
                 </div>
 
                 <div className="option__zingchart">
@@ -153,12 +153,12 @@ const Discovery = () => {
                     </div>
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader.stores[10]} />
+                    <ItemPlaylist lists={loader?.stores?.[10]} />
                   </div>
                 </div>
 
                 <div className="playlist__selection">
-                  <ItemChannel lists={loader.stores[11]} />
+                  <ItemChannel lists={loader?.stores?.[15]} />
                 </div>
 
                 <div className="playlist__selection">
@@ -178,10 +178,10 @@ const Discovery = () => {
                     </div>
                   </div>
                   <div className="new__release">
-                    <NewRelease lists={loader.stores[12]} />
+                    <NewRelease lists={loader?.stores?.[3]} />
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader.stores[14]} />
+                    <ItemPlaylist lists={loader?.stores?.[3]} p={false} newSong={true}/>
                   </div>
                 </div>
 
@@ -191,7 +191,7 @@ const Discovery = () => {
                   </div>
                   <div className="list__playlist__selection">
                     <div className="favorite__artist">
-                      <LoveSinger lists={loader.stores[15]} />
+                      <LoveSinger lists={loader?.stores?.[5]} newSong={true}/>
                     </div>
                   </div>
                 </div>

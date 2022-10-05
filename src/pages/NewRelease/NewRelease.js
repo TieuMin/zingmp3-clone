@@ -66,7 +66,7 @@ const NewRelease = ({ lists }) => {
 
   return (
     <div className="animation__new__release" ref={newRelease}>
-      {lists?.items.map((item, index) => {
+      {lists?.items?.[0]?.album?.map((item, index) => {
         return (
           <div key={index} className="item__new__release">
             <div className="item__release__child">
@@ -74,12 +74,12 @@ const NewRelease = ({ lists }) => {
                 <div className="media__left__release">
                   <div className="img__media">
                     <img
-                      src={item.album ? item.album.thumbnail : item.thumbnail}
+                      src={item?.album ? item.album?.thumbnail : item?.thumbnail}
                       alt=""
                     />
                     <div className="option__playlist__selection">
                       <div className="option__selection item__play__selection">
-                        {idSong === item.encodeId ? (
+                        {idSong === item?.encodeId ? (
                           <>
                             {btnPlay && playSong ? (
                               <span
@@ -102,9 +102,9 @@ const NewRelease = ({ lists }) => {
                           <i
                             className="fa-solid fa-play"
                             onClick={() => {
-                              setIdSong(item.encodeId);
+                              setIdSong(item?.encodeId);
                               item.album
-                                ? setIdPlaylist(item.album.encodeId)
+                                ? setIdPlaylist(item?.album?.encodeId)
                                 : setDataPlaylist("");
                               setBtnPlay(true);
                             }}
@@ -117,21 +117,21 @@ const NewRelease = ({ lists }) => {
                 <div className="media__reight__release">
                   <div className="subtitle__release">
                     <a href="#" className="title__one__line">
-                      {item.title}
+                      {item?.title}
                     </a>
                     <div className="name__singer__all">
-                      {item.album ? (
-                        item.album.artists.map((artist, index) => {
+                      {item?.album ? (
+                        item?.album?.artists.map((artist, index) => {
                           return <NameSinger key={index} artist={artist} />;
                         })
                       ) : (
                         <>
-                          {item.artists ? (
-                            item.artists.map((artist, index) => {
+                          {item?.artists ? (
+                            item?.artists.map((artist, index) => {
                               return <NameSinger key={index} artist={artist} />;
                             })
                           ) : (
-                            <a href="#">{item.artistsNames}</a>
+                            <a href="#">{item?.artistsNames}</a>
                           )}
                         </>
                       )}
@@ -154,7 +154,7 @@ const NewRelease = ({ lists }) => {
         </a>
       </div>
 
-      {lists.items.map((item, index) => {
+      {lists?.items?.[0]?.album?.map((item, index) => {
         if (index < 3) {
           return (
             <div key={index} className="item__new__release">
@@ -162,7 +162,7 @@ const NewRelease = ({ lists }) => {
                 <div className="media__release">
                   <div className="media__left__release">
                     <div className="img__media">
-                      <img src={item.album.thumbnail} alt="" />
+                      <img src={item?.thumbnail} alt="" />
                       <div className="option__playlist__selection">
                         <div className="option__selection item__play__selection">
                           <i className="fa-solid fa-play"></i>
@@ -177,10 +177,10 @@ const NewRelease = ({ lists }) => {
                   <div className="media__reight__release">
                     <div className="subtitle__release">
                       <a href="#" className="title__one__line">
-                        {item.title}
+                        {item?.title}
                       </a>
                       <div className="name__singer__all">
-                        {item.album.artists.map((artist, index) => {
+                        {item?.artists?.map((artist, index) => {
                           return <NameSinger key={index} artist={artist} />;
                         })}
                       </div>

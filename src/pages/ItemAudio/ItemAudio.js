@@ -9,12 +9,12 @@ const ItemAudio = ({ lists }) => {
         className="slide__radio__list"
         style={{ transform: `${isActive ? "translate3d(-450px, 0 ,0)" : ""}` }}
       >
-        {lists.items.map((item, index) => {
+        {lists?.items?.map((item, index) => {
           return (
             <div key={index} className="item__playlist__audio">
               <a href="#">
                 <div className="img__playlist__audio">
-                  <img src={item.program.thumbnail} alt="" />
+                  <img src={item?.program?.thumbnail} alt="" />
                   <div className="option__playlist__audio">
                     <div className="option__audio">
                       <i className="fa-solid fa-play"></i>
@@ -51,7 +51,7 @@ const ItemAudio = ({ lists }) => {
                   </svg>
                 </div>
                 <div className="band__name__audio">
-                  <img src={item.host.thumbnail} alt="" />
+                  <img src={item?.host?.thumbnail} alt="" />
                 </div>
                 <div className="icon__live__audio">
                   <img
@@ -61,8 +61,8 @@ const ItemAudio = ({ lists }) => {
                 </div>
               </a>
               <div className="title__playlist__audio">
-                <span className="title_audio">{item.host.name}</span>
-                <p className="count__listens">{item.activeUsers} đang nghe</p>
+                <span className="title_audio">{item?.host?.name}</span>
+                <p className="count__listens">{item?.activeUsers} đang nghe</p>
               </div>
             </div>
           );

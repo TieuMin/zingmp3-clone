@@ -11,25 +11,25 @@ const SearchPlaylist = ({ lists, p = true }) => {
 
   return (
     <>
-      {lists.map((item, index) => {
+      {lists?.map((item, index) => {
         if (index < 5) {
           return (
             <div key={index} className="item__playlist__selection">
               <div
                 className={`img__playlist__selection ${
-                  btnPlay && idPlaylist === item.encodeId
+                  btnPlay && idPlaylist === item?.encodeId
                     ? "active__playlist__home"
                     : ""
                 }`}
               >
-                <img src={item.thumbnail} alt="" />
+                <img src={item?.thumbnail} alt="" />
 
                 <div className="option__playlist__selection">
                   <div className="option__selection library__add__selection">
                     <i className="fa-regular fa-heart"></i>
                   </div>
                   <div className="option__selection item__play__selection">
-                    {idPlaylist === item.encodeId ? (
+                    {idPlaylist === item?.encodeId ? (
                       <>
                         {btnPlay ? (
                           <span
@@ -69,19 +69,19 @@ const SearchPlaylist = ({ lists, p = true }) => {
               </div>
               <div className="title__playlist__selection">
                 <a href="#" className="title__one__line">
-                  {item.title}
+                  {item?.title}
                 </a>
                 <div className="name__singer__all">
                   {p ? (
-                    item.artists ? (
-                      item.artists.map((artist, index) => {
+                    item?.artists ? (
+                      item?.artists?.map((artist, index) => {
                         return <NameSinger key={index} artist={artist} />;
                       })
                     ) : (
-                      <a href="#">{item.artistsNames}</a>
+                      <a href="#">{item?.artistsNames}</a>
                     )
                   ) : (
-                    <p className="subtitle">{item.sortDescription}</p>
+                    <p className="subtitle">{item?.sortDescription}</p>
                   )}
                 </div>
               </div>

@@ -55,12 +55,12 @@ const PlayMv = () => {
               {loadVideo ? (
                 <div className="playmv__top__left">
                   <div className="playmv__img">
-                    <img src={dataVideo.artist.thumbnail} alt="" />
+                    <img src={dataVideo?.artist?.thumbnail} alt="" />
                   </div>
                   <div className="playmv__title___singer">
-                    <div className="playmv__title">{dataVideo.title}</div>
+                    <div className="playmv__title">{dataVideo?.title}</div>
                     <div className="playmv__singer">
-                      {dataVideo.artists.map((artist, index) => {
+                      {dataVideo?.artists?.map((artist, index) => {
                         return <NameSinger key={index} artist={artist} />;
                       })}
                     </div>
@@ -154,18 +154,18 @@ const PlayMv = () => {
                   </div>
                   <div className="sidebar__scrollbar playmv__right__bottom">
                     {listVideo && loadList === false ? (
-                      listVideo.recommends.map((item, index) => {
+                      listVideo?.recommends?.map((item, index) => {
                         return (
                           <div
                             key={index}
                             className={`playmv__list__item ${
-                              idVideo === item.encodeId &&
+                              idVideo === item?.encodeId &&
                               "active__playmv__list"
                             }`}
                           >
                             <div className="playmv__list__img">
-                              <img src={item.thumbnail} alt="" />
-                              {item.artists && item.streamingStatus === 1 ? (
+                              <img src={item?.thumbnail} alt="" />
+                              {item?.artists && item?.streamingStatus === 1 ? (
                                 ""
                               ) : (
                                 <img
@@ -174,7 +174,7 @@ const PlayMv = () => {
                                   style={{ width: "23px" }}
                                 />
                               )}
-                              {idVideo === item.encodeId ? (
+                              {idVideo === item?.encodeId ? (
                                 <div
                                   className="option__playlist__selection"
                                   style={{ opacity: "1", cursor: "default" }}
@@ -189,12 +189,12 @@ const PlayMv = () => {
                                 </div>
                               ) : (
                                 <>
-                                  {item.artists &&
-                                  item.streamingStatus === 1 ? (
+                                  {item?.artists &&
+                                  item?.streamingStatus === 1 ? (
                                     <div
                                       className="option__playlist__selection"
                                       onClick={() => {
-                                        setIdVideo(item.encodeId);
+                                        setIdVideo(item?.encodeId);
                                         setIndexVideo(index);
                                       }}
                                     >
@@ -220,30 +220,30 @@ const PlayMv = () => {
                               )}
                             </div>
                             <div className="playmv__list__title__singer">
-                              {idVideo === item.encodeId ? (
+                              {idVideo === item?.encodeId ? (
                                 <div className="playmv__list__title">
-                                  {item.title}
+                                  {item?.title}
                                 </div>
                               ) : (
                                 <div
                                   className="playmv__list__title"
                                   onClick={() => {
-                                    setIdVideo(item.encodeId);
+                                    setIdVideo(item?.encodeId);
                                     setIndexVideo(index);
                                   }}
                                 >
-                                  {item.title}
+                                  {item?.title}
                                 </div>
                               )}
                               <div className="playmv__list__singer">
-                                {item.artists ? (
-                                  item.artists.map((artist, index) => {
+                                {item?.artists ? (
+                                  item?.artists?.map((artist, index) => {
                                     return (
                                       <NameSinger key={index} artist={artist} />
                                     );
                                   })
                                 ) : (
-                                  <a href="#">{item.artistsNames}</a>
+                                  <a href="#">{item?.artistsNames}</a>
                                 )}
                               </div>
                             </div>
@@ -287,12 +287,12 @@ const PlayMv = () => {
                 </div>
                 <div className="playmv__all__list">
                   {listVideo && loadList === false ? (
-                    listVideo.recommends.map((item, index) => {
+                    listVideo?.recommends?.map((item, index) => {
                       return (
                         <div key={index} className="playmv__list__item2">
                           <div className="playmv__list__img playmv__list__img2">
-                            <img src={item.thumbnail} alt="" />
-                            {item.artists && item.streamingStatus === 1 ? (
+                            <img src={item?.thumbnail} alt="" />
+                            {item?.artists && item?.streamingStatus === 1 ? (
                               ""
                             ) : (
                               <img
@@ -301,7 +301,7 @@ const PlayMv = () => {
                                 style={{ width: "23px" }}
                               />
                             )}
-                            {idVideo === item.encodeId ? (
+                            {idVideo === item?.encodeId ? (
                               <div
                                 className="option__playlist__selection"
                                 style={{ opacity: "1", cursor: "default" }}
@@ -316,11 +316,11 @@ const PlayMv = () => {
                               </div>
                             ) : (
                               <>
-                                {item.artists && item.streamingStatus === 1 ? (
+                                {item?.artists && item?.streamingStatus === 1 ? (
                                   <div
                                     className="option__playlist__selection"
                                     onClick={() => {
-                                      setIdVideo(item.encodeId);
+                                      setIdVideo(item?.encodeId);
                                       setIndexVideo(index);
                                     }}
                                   >
@@ -346,31 +346,31 @@ const PlayMv = () => {
                             )}
                           </div>
                           <div className="playmv__list__title__singer playmv__title__singer2">
-                            {idVideo === item.encodeId ? (
+                            {idVideo === item?.encodeId ? (
                               <div className="playmv__list__title">
-                                {item.title}
+                                {item?.title}
                               </div>
                             ) : (
                               <div
                                 className="playmv__list__title"
                                 onClick={() => {
-                                  setIdVideo(item.encodeId);
+                                  setIdVideo(item?.encodeId);
                                   setIndexVideo(index);
                                 }}
                               >
-                                {item.title}
+                                {item?.title}
                               </div>
                             )}
 
                             <div className="playmv__list__singer">
-                              {item.artists ? (
-                                item.artists.map((artist, index) => {
+                              {item?.artists ? (
+                                item?.artists?.map((artist, index) => {
                                   return (
                                     <NameSinger key={index} artist={artist} />
                                   );
                                 })
                               ) : (
-                                <a href="#">{item.artistsNames}</a>
+                                <a href="#">{item?.artistsNames}</a>
                               )}
                             </div>
                           </div>

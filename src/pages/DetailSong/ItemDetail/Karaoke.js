@@ -10,8 +10,8 @@ const Karaoke = () => {
 
   useEffect(() => {
     if (lyric && lyric.sentences) {
-      lyric.sentences.forEach((sentence, index) => {
-        if (currentTimeLyric * 1000 + 1500 >= sentence.words[0].startTime) {
+      lyric.sentences?.forEach((sentence, index) => {
+        if (currentTimeLyric * 1000 + 1500 >= sentence?.words?.[0]?.startTime) {
           if (index % 2 === 0) {
             setIndexLyric1(index);
             if (indexLyric1 === 0) {
@@ -26,14 +26,14 @@ const Karaoke = () => {
   }, [currentTimeLyric]);
 
   const lyric1 = () => {
-    let length = lyric.sentences[indexLyric1].words.length;
+    let length = lyric?.sentences?.[indexLyric1]?.words?.length;
     if (
       currentTimeLyric * 1000 + 1500 >=
-      lyric.sentences[indexLyric1].words[0].startTime
+      lyric?.sentences[indexLyric1]?.words?.[0]?.startTime
     ) {
       if (
         currentTimeLyric * 1000 >=
-        lyric.sentences[indexLyric1].words[length - 2].startTime
+        lyric?.sentences?.[indexLyric1]?.words?.[length - 2]?.startTime
       ) {
         setIndexLyric2(indexLyric1 + 1);
       }
@@ -41,7 +41,7 @@ const Karaoke = () => {
   };
 
   useEffect(() => {
-    if (lyric && lyric.sentences) {
+    if (lyric && lyric?.sentences) {
       lyric1();
     }
   }, [lyric, indexLyric1, currentTimeLyric]);
@@ -51,51 +51,51 @@ const Karaoke = () => {
       <div className="detail__song__center">
         <div className="detail__song__karaoke">
           <div>
-            {lyric && lyric.sentences ? (
+            {lyric && lyric?.sentences ? (
               <>
                 {lyric &&
                 currentTimeLyric * 1000 <=
-                  lyric.sentences[0].words[0].startTime - 1500 ? (
+                  lyric?.sentences?.[0]?.words?.[0]?.startTime - 1500 ? (
                   <>
                     <div
                       className="lyric__song"
                       style={{ fontSize: "65px", fontWeight: "700" }}
                     >
-                      <span>{infoSong && infoSong.title}</span>
+                      <span>{infoSong && infoSong?.title}</span>
                     </div>
                     <div className="lyric__song">
-                      <span>{infoSong && infoSong.artistsNames}</span>
+                      <span>{infoSong && infoSong?.artistsNames}</span>
                     </div>
                   </>
                 ) : (
                   <>
                     <div className="lyric__song">
-                      {lyric.sentences[indexLyric1].words.map((word, index) => {
+                      {lyric?.sentences?.[indexLyric1]?.words?.map((word, index) => {
                         let time = "0";
                         if (
-                          currentTimeLyric * 1000 >= word.startTime &&
-                          currentTimeLyric * 1000 <= word.endTime
+                          currentTimeLyric * 1000 >= word?.startTime &&
+                          currentTimeLyric * 1000 <= word?.endTime
                         ) {
                           time =
-                            ((currentTimeLyric * 1000 - word.startTime) * 100) /
-                            (word.endTime - word.startTime);
+                            ((currentTimeLyric * 1000 - word?.startTime) * 100) /
+                            (word?.endTime - word?.startTime);
                         }
                         return (
                           <span key={index}>
                             <span className="karaoke__text">
-                              {word.data}
+                              {word?.data}
                               <div
                                 className={`animation__test word ${
                                   time == 0 ? "" : "transition__karaoke"
                                 }`}
                                 style={{
                                   width: `${
-                                    currentTimeLyric * 1000 >= word.endTime
+                                    currentTimeLyric * 1000 >= word?.endTime
                                       ? 100
                                       : time
                                   }%`,
                                 }}
-                                data-text={word.data}
+                                data-text={word?.data}
                               ></div>
                             </span>
                             <> </>
@@ -104,30 +104,30 @@ const Karaoke = () => {
                       })}
                     </div>
                     <div className="lyric__song">
-                      {lyric.sentences[indexLyric2].words.map((word, index) => {
+                      {lyric?.sentences[indexLyric2]?.words?.map((word, index) => {
                         let time = "0";
                         if (
-                          currentTimeLyric * 1000 >= word.startTime &&
-                          currentTimeLyric * 1000 <= word.endTime
+                          currentTimeLyric * 1000 >= word?.startTime &&
+                          currentTimeLyric * 1000 <= word?.endTime
                         ) {
                           time =
-                            ((currentTimeLyric * 1000 - word.startTime) * 100) /
-                            (word.endTime - word.startTime);
+                            ((currentTimeLyric * 1000 - word?.startTime) * 100) /
+                            (word?.endTime - word?.startTime);
                         }
                         return (
                           <span key={index}>
                             <span className="karaoke__text">
-                              {word.data}
+                              {word?.data}
                               <div
                                 className="animation__test word"
                                 style={{
                                   width: `${
-                                    currentTimeLyric * 1000 >= word.endTime
+                                    currentTimeLyric * 1000 >= word?.endTime
                                       ? 100
                                       : time
                                   }%`,
                                 }}
-                                data-text={word.data}
+                                data-text={word?.data}
                               ></div>
                             </span>
                             <> </>
@@ -149,9 +149,9 @@ const Karaoke = () => {
           </div>
         </div>
         <div className="detail__name__song">
-          {infoSong && infoSong.title} {" - "}
+          {infoSong && infoSong?.title} {" - "}
           <span style={{ marginLeft: "8px", color: "hsla(0, 0%, 100%, 0.4)" }}>
-            {infoSong && infoSong.artistsNames}
+            {infoSong && infoSong?.artistsNames}
           </span>
         </div>
       </div>

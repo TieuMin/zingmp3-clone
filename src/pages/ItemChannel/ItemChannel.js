@@ -36,31 +36,31 @@ const ItemChannel = ({ lists }) => {
             transform: `${isActive ? "translate3d(-352px, 0px, 0px)" : ""}`,
           }}
         >
-          {lists.items.map((item, index) => {
+          {lists?.items?.map((item, index) => {
             if (index < 4) {
               return (
                 <div key={index} className="item__channel__selection">
                   <div className="img__channel__selection">
-                    <img src={item.coverH} alt="" />
+                    <img src={item?.coverH} alt="" />
                     <span className="opacity__img__channel"></span>
                     <div className="item__tag__title">
                       <div
                         className="tag__channel"
                         style={{ cursor: "pointer" }}
                       >
-                        {item.label}
+                        {item?.label}
                       </div>
                       <div
                         className="title__channel"
                         style={{ cursor: "pointer" }}
                       >
-                        {item.title}
+                        {item?.title}
                       </div>
                       <div
                         className="subtitle__channel"
                         style={{ cursor: "pointer" }}
                       >
-                        {item.startText}
+                        {item?.startText}
                       </div>
                     </div>
                   </div>
@@ -68,11 +68,11 @@ const ItemChannel = ({ lists }) => {
                     <div className="event__follow__left">
                       <div className="subtitle__follow">Lượt quan tâm</div>
                       <div className="user__follow">
-                        <div className="count__follow">+{item.totalFollow}</div>
-                        {item.followers.map((user, index) => {
+                        <div className="count__follow">+{item?.totalFollow}</div>
+                        {item?.followers?.map((user, index) => {
                           return (
                             <div key={index} className="user__item">
-                              <img src={user.avatar} alt="" />
+                              <img src={user?.avatar} alt="" />
                             </div>
                           );
                         })}

@@ -45,7 +45,7 @@ const PopupNotification = () => {
         </div>
         <div className="messenger__popup">
           Quan trọng: Trang web được tạo ra để học tập cá nhân và không có mục
-          đích thương mại.
+          đích thương mại. Dev: Tieumin
         </div>
       </div>
     </div>

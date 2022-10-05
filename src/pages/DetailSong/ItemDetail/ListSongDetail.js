@@ -20,10 +20,10 @@ const ListSongDetail = () => {
   const Ref = useRef();
 
   useEffect(() => {
-    if (dataPlaylist.song) {
+    if (dataPlaylist?.song) {
       let indexSong;
-      dataPlaylist.song.items.find((item, index) => {
-        if (item.encodeId === idSong) {
+      dataPlaylist?.song?.items?.find((item, index) => {
+        if (item?.encodeId === idSong) {
           indexSong = index;
         }
       });
@@ -34,13 +34,13 @@ const ListSongDetail = () => {
 
   const handleEvent = {
     nextList: () => {
-      if (Ref && Ref.current) {
+      if (Ref && Ref?.current) {
         setTranslate(translate - 360);
         setIndexActive((prev) => prev + 1);
       }
     },
     prevList: () => {
-      if (Ref && Ref.current) {
+      if (Ref && Ref?.current) {
         setTranslate(translate + 360);
         setIndexActive((prev) => (prev >= 1 ? prev - 1 : 1));
       }
@@ -56,12 +56,12 @@ const ListSongDetail = () => {
           ref={Ref}
         >
           {dataPlaylist
-            ? dataPlaylist.song.items.map((item, index) => {
+            ? dataPlaylist?.song?.items?.map((item, index) => {
                 return (
                   <div
                     key={index}
                     className={`detail__center__item ${
-                      idSong === item.encodeId && "active__center__item2"
+                      idSong === item?.encodeId && "active__center__item2"
                     }`}
                   >
                     <div
@@ -71,8 +71,8 @@ const ListSongDetail = () => {
                         "avtive__index"
                       }`}
                     >
-                      <img src={item.thumbnailM} />
-                      {item.artists && item.streamingStatus === 1 ? (
+                      <img src={item?.thumbnailM} />
+                      {item?.artists && item?.streamingStatus === 1 ? (
                         ""
                       ) : (
                         <img
@@ -81,9 +81,9 @@ const ListSongDetail = () => {
                           style={{ width: "35px", top: "-150px" }}
                         />
                       )}
-                      {item.artists && item.streamingStatus === 1 ? (
+                      {item?.artists && item?.streamingStatus === 1 ? (
                         <>
-                          {btnPlay && idSong === item.encodeId && (
+                          {btnPlay && idSong === item?.encodeId && (
                             <span className="gif__play gif__active__detail">
                               <img
                                 src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/icons/icon-playing.gif"
@@ -91,13 +91,13 @@ const ListSongDetail = () => {
                               />
                             </span>
                           )}
-                          {idSong === item.encodeId ? (
+                          {idSong === item?.encodeId ? (
                             <div className="option__detail__song">
                               {loaderPlay === false ? (
                                 <>
                                   {btnPlay &&
                                   playSong &&
-                                  idSong === item.encodeId ? (
+                                  idSong === item?.encodeId ? (
                                     <i
                                       style={{ padding: "11px 18px" }}
                                       className="fa-solid fa-pause"
@@ -126,13 +126,13 @@ const ListSongDetail = () => {
                             <div
                               className="option__detail__song"
                               onClick={() => {
-                                setIdSong(item.encodeId);
+                                setIdSong(item?.encodeId);
                                 setIndexListIdSong(index);
                               }}
                             >
                               {btnPlay &&
                               playSong &&
-                              idSong === item.encodeId ? (
+                              idSong === item?.encodeId ? (
                                 <i
                                   style={{ padding: "11px 18px" }}
                                   className="fa-solid fa-pause"
@@ -153,9 +153,9 @@ const ListSongDetail = () => {
                       )}
                     </div>
                     <div className="detail__center__description">
-                      <div className="detail__center__title">{item.title}</div>
+                      <div className="detail__center__title">{item?.title}</div>
                       <div className="detail__center__singer">
-                        {item.artistsNames}
+                        {item?.artistsNames}
                       </div>
                     </div>
                   </div>
@@ -167,17 +167,17 @@ const ListSongDetail = () => {
       {translate < 480 && (
         <div
           className="detail__center__prev"
-          onClick={() => handleEvent.prevList()}
+          onClick={() => handleEvent?.prevList()}
         >
           <i className="fa-solid fa-angle-left"></i>
         </div>
       )}
-      {dataPlaylist.song &&
-      dataPlaylist.song.items.length > 1 &&
-      indexActive <= dataPlaylist.song.items.length - 1 ? (
+      {dataPlaylist?.song &&
+      dataPlaylist?.song?.items?.length > 1 &&
+      indexActive <= dataPlaylist?.song?.items?.length - 1 ? (
         <div
           className="detail__center__next"
-          onClick={() => handleEvent.nextList()}
+          onClick={() => handleEvent?.nextList()}
         >
           <i className="fa-solid fa-angle-right"></i>
         </div>

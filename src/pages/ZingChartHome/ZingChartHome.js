@@ -21,7 +21,7 @@ const ZingChartHome = ({ lists }) => {
       </div>
       <div className="list__chart__selection">
         <div className="list__zingchart">
-          {lists.items.map((item, index) => {
+          {lists?.items?.map((item, index) => {
             if (index < 3) {
               return (
                 <div key={index} className="item__list__zingchart">
@@ -35,10 +35,10 @@ const ZingChartHome = ({ lists }) => {
                         <span>{index + 1}</span>
                       </div>
                       <div className="song__thumb">
-                        <img src={item.album.thumbnail} alt="" />
+                        <img src={item?.album?.thumbnail} alt="" />
                         <div
                           className="play__zingchart"
-                          onClick={() => setIdSong(item.encodeId)}
+                          onClick={() => setIdSong(item?.encodeId)}
                         >
                           <i className="fa-solid fa-play"></i>
                         </div>
@@ -46,11 +46,11 @@ const ZingChartHome = ({ lists }) => {
                       <div className="cart__infor">
                         <div className="subtitle__zingchart">
                           <a href="#" className="title__one__line">
-                            {item.album.title}
+                            {item?.album?.title}
                           </a>
                         </div>
                         <div className="name__singer__all singer__zingchart">
-                          {item.album.artists.map((artist, index) => {
+                          {item?.album?.artists?.map((artist, index) => {
                             return <NameSinger key={index} artist={artist} />;
                           })}
                         </div>
@@ -58,7 +58,7 @@ const ZingChartHome = ({ lists }) => {
                     </div>
                   </div>
                   <div className="list__zingchart__right">
-                    <span>{Math.round((item.score / rank) * 100)}%</span>
+                    <span>{Math?.round((item?.score / rank) * 100)}%</span>
                   </div>
                 </div>
               );

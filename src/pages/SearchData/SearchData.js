@@ -41,14 +41,14 @@ const SearchData = () => {
     if (idSong) {
       setIdPlay(idSong);
     } else {
-      setIdPlay(playId ? playId.id : "");
+      setIdPlay(playId ? playId?.id : "");
     }
   }, [idSong]);
 
   useEffect(() => {
-    setKey(params.keyword.replace("%20", " "));
+    setKey(params?.keyword?.replace("%20", " "));
     setEnterSearch(true);
-  }, [params.keyword]);
+  }, [params?.keyword]);
 
   return (
     <>
@@ -88,34 +88,34 @@ const SearchData = () => {
             </div>
             {dataEnterSearch ? (
               <>
-                {dataEnterSearch.songs && (
+                {dataEnterSearch?.songs && (
                   <>
                     <div className="top__search">
                       <div className="keyword__search">
-                        Top Kết Quả "<i>{params.keyword.replace("%20", " ")}</i>
+                        Top Kết Quả "<i>{params?.keyword?.replace("%20", " ")}</i>
                         "
                       </div>
                       <div className="list__item__ft active__playlist__ft">
                         <div className="item__list__ft">
                           <div className="img__list__ft img__top__search">
                             <img
-                              src={dataEnterSearch.songs[0].thumbnail}
+                              src={dataEnterSearch?.songs[0]?.thumbnail}
                               alt="thumbnail"
                             />
                             <div className="option__playlist__selection">
-                              {dataEnterSearch.songs[0].artists &&
-                              dataEnterSearch.songs[0].streamingStatus === 1 ? (
+                              {dataEnterSearch?.songs[0]?.artists &&
+                              dataEnterSearch?.songs[0]?.streamingStatus === 1 ? (
                                 <>
                                   {idPlay ===
-                                  dataEnterSearch.songs[0].encodeId ? (
+                                  dataEnterSearch?.songs[0]?.encodeId ? (
                                     <div className="option__selection">
                                       {loaderPlay === false ? (
                                         <>
                                           {btnPlay &&
                                           playSong &&
                                           idPlay ===
-                                            dataEnterSearch.songs[0]
-                                              .encodeId ? (
+                                            dataEnterSearch?.songs[0]
+                                              ?.encodeId ? (
                                             <span
                                               style={{ border: "unset" }}
                                               className="gif__play"
@@ -150,13 +150,13 @@ const SearchData = () => {
                                       className="option__selection"
                                       onClick={() => {
                                         setIdSong(
-                                          dataEnterSearch.songs[0].encodeId
+                                          dataEnterSearch?.songs[0]?.encodeId
                                         );
                                         setIndexListIdSong(0);
-                                        dataEnterSearch.songs[0].album
+                                        dataEnterSearch?.songs[0]?.album
                                           ? setIdPlaylist(
-                                              dataEnterSearch.songs[0].album
-                                                .encodeId
+                                              dataEnterSearch?.songs[0]?.album
+                                                ?.encodeId
                                             )
                                           : setDataPlaylist("");
                                       }}
@@ -164,7 +164,7 @@ const SearchData = () => {
                                       {btnPlay &&
                                       playSong &&
                                       idPlay ===
-                                        dataEnterSearch.songs[0].encodeId ? (
+                                        dataEnterSearch?.songs[0]?.encodeId ? (
                                         <span
                                           style={{ border: "unset" }}
                                           className="gif__play"
@@ -193,9 +193,9 @@ const SearchData = () => {
                           <div className="subtitle__list__ft subtitle__top__search">
                             <div className="item__title__album">
                               <div style={{ cursor: "default" }}>
-                                {dataEnterSearch.songs[0].title}{" "}
-                                {dataEnterSearch.songs[0].artists &&
-                                dataEnterSearch.songs[0].streamingStatus ===
+                                {dataEnterSearch?.songs[0]?.title}{" "}
+                                {dataEnterSearch?.songs[0]?.artists &&
+                                dataEnterSearch?.songs[0]?.streamingStatus ===
                                   1 ? (
                                   ""
                                 ) : (
@@ -255,15 +255,15 @@ const SearchData = () => {
                         </div>
                       </div>
                       <div className="list__playlist__selection">
-                        <SearchPlaylist lists={dataEnterSearch.playlists} />
+                        <SearchPlaylist lists={dataEnterSearch?.playlists} />
                       </div>
                     </div>
 
-                    {dataEnterSearch.videos && (
+                    {dataEnterSearch?.videos && (
                       <div
                         className={`playlist__selection ${
-                          !dataEnterSearch.songs &&
-                          !dataEnterSearch.playlists &&
+                          !dataEnterSearch?.songs &&
+                          !dataEnterSearch?.playlists &&
                           "top__search"
                         }`}
                       >
@@ -274,7 +274,7 @@ const SearchData = () => {
                           </div>
                         </div>
                         <div className="list__playlist__selection">
-                          <SearchMv datas={dataEnterSearch.videos} />
+                          <SearchMv datas={dataEnterSearch?.videos} />
                         </div>
                       </div>
                     )}

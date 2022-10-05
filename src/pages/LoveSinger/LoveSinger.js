@@ -15,16 +15,16 @@ const LoveSinger = ({ lists }) => {
             <div key={index} className="item__favorite__artist">
               <div
                 className={` ${
-                  btnPlay && idPlaylist === item.encodeId
+                  btnPlay && idPlaylist === item?.encodeId
                     ? "active__playlist__home"
                     : ""
                 }`}
               >
-                <img src={item.thumbnail} alt="" />
+                <img src={item?.thumbnail} alt="" />
                 <span className="opacity__img__channel"></span>
                 <div className="option__playlist__selection">
                   <div className="option__selection item__play__selection favorite__artist__option">
-                    {idPlaylist === item.encodeId ? (
+                    {idPlaylist === item?.encodeId ? (
                       <>
                         {btnPlay ? (
                           <span
@@ -46,11 +46,11 @@ const LoveSinger = ({ lists }) => {
                         )}
                       </>
                     ) : (
-                      <NavLink to={item.link}>
+                      <NavLink to={item?.link}>
                         <i
                           className="fa-solid fa-play"
                           onClick={() => {
-                            setIdPlaylist(item.encodeId);
+                            setIdPlaylist(item?.encodeId);
                             setIndexListIdSong(0);
                           }}
                         ></i>
@@ -66,12 +66,12 @@ const LoveSinger = ({ lists }) => {
                       ? "vì bạn nghe nhiều"
                       : "vì bạn yêu thích"}
                   </div>
-                  <div className="title__mix__content">{item.artistsNames}</div>
+                  <div className="title__mix__content">{item?.artistsNames}</div>
                   <div className="thumbs__mix__content">
-                    {item.song.items.map((song, index) => {
+                    {item?.song?.items?.map((song, index) => {
                       return (
                         <div key={index} className="item__thumb__mix">
-                          <img src={song.thumbnail} alt="" />
+                          <img src={song?.thumbnail} alt="" />
                         </div>
                       );
                     })}

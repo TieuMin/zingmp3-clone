@@ -22,14 +22,14 @@ const MusicItem = ({ datas }) => {
     if (idSong) {
       setIdPlay(idSong);
     } else {
-      setIdPlay(playId ? playId.id : "");
+      setIdPlay(playId ? playId?.id : "");
     }
   }, [idSong]);
 
   function convertMS(value) {
     const sec = parseInt(value, 10); // convert value to number if it's string
-    let hours = Math.floor(sec / 3600); // get hours
-    let minutes = Math.floor((sec - hours * 3600) / 60); // get minutes
+    let hours = Math?.floor(sec / 3600); // get hours
+    let minutes = Math?.floor((sec - hours * 3600) / 60); // get minutes
     let seconds = sec - hours * 3600 - minutes * 60; //  get seconds
     // add 0 if value < 10; Example: 2 => 02
     if (minutes < 10) {
@@ -43,12 +43,12 @@ const MusicItem = ({ datas }) => {
 
   return (
     <>
-      {datas.items.map((item, index) => {
+      {datas?.items?.map((item, index) => {
         return (
           <li
             key={index}
             className={`music__library ${
-              idPlay === item.encodeId ? "forcus__playlist" : ""
+              idPlay === item?.encodeId ? "forcus__playlist" : ""
             }`}
           >
             <div>
@@ -60,17 +60,17 @@ const MusicItem = ({ datas }) => {
                   <input type="checkbox" className="select__all__music" />
                 </div>
                 <div className="img__music__library">
-                  <img src={item.thumbnail} alt="" />
+                  <img src={item?.thumbnail} alt="" />
                   <div className="option__playlist__selection">
-                    {item.artists && item.streamingStatus === 1 ? (
+                    {item?.artists && item?.streamingStatus === 1 ? (
                       <>
-                        {idPlay === item.encodeId ? (
+                        {idPlay === item?.encodeId ? (
                           <div className="option__selection">
                             {loaderPlay === false ? (
                               <>
                                 {btnPlay &&
                                 playSong &&
-                                idPlay === item.encodeId ? (
+                                idPlay === item?.encodeId ? (
                                   <span
                                     style={{ border: "unset" }}
                                     className="gif__play"
@@ -104,11 +104,11 @@ const MusicItem = ({ datas }) => {
                           <div
                             className="option__selection"
                             onClick={() => {
-                              setIdSong(item.encodeId);
+                              setIdSong(item?.encodeId);
                               setIndexListIdSong(index);
                             }}
                           >
-                            {btnPlay && playSong && idPlay === item.encodeId ? (
+                            {btnPlay && playSong && idPlay === item?.encodeId ? (
                               <span
                                 style={{ border: "unset" }}
                                 className="gif__play"
@@ -139,8 +139,8 @@ const MusicItem = ({ datas }) => {
                   style={{ width: "150px" }}
                 >
                   <div className="item__title__album">
-                    {item.title}{" "}
-                    {item.artists && item.streamingStatus === 1 ? (
+                    {item?.title}{" "}
+                    {item?.artists && item?.streamingStatus === 1 ? (
                       ""
                     ) : (
                       <img
@@ -150,18 +150,18 @@ const MusicItem = ({ datas }) => {
                     )}
                   </div>
                   <nav className="subsinger__music__library item__title__album1">
-                    {item.artists ? (
-                      item.artists.map((artist, index) => {
+                    {item?.artists ? (
+                      item?.artists?.map((artist, index) => {
                         return <NameSinger key={index} artist={artist} />;
                       })
                     ) : (
-                      <a href="#">{item.artistsNames}</a>
+                      <a href="#">{item?.artistsNames}</a>
                     )}
                   </nav>
                 </div>
               </div>
               <div className="subtitle__sumenu__content">
-                <a href="#">{item.album ? item.album.title : ""}</a>
+                <a href="#">{item?.album ? item?.album?.title : ""}</a>
               </div>
               <div className="option__sumenu__right">
                 <div className="icon__mic_library">
@@ -174,7 +174,7 @@ const MusicItem = ({ datas }) => {
                   <div>● ● ●</div>
                 </div>
                 <div className="time__music__library">
-                  {convertMS(item.duration)}
+                  {convertMS(item?.duration)}
                 </div>
               </div>
             </div>

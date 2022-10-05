@@ -3,8 +3,8 @@ import React from "react";
 const TopZingChart = ({ datas }) => {
   return (
     <div className="list__zing__chart">
-      {datas && datas.items ? (
-        datas.items.map((data, index) => {
+      {datas && datas?.items ? (
+        datas?.items?.map((data, index) => {
           return (
             <div key={index} className="top__song">
               <div className="top__song__left">
@@ -12,20 +12,20 @@ const TopZingChart = ({ datas }) => {
                 <div className="line__">-</div>
                 <div className="song__content">
                   <div className="thumbnail__children">
-                    <img src={data.thumbnail} alt="thumbnail" />
+                    <img src={data?.thumbnail} alt="thumbnail" />
                     <i className="fa-solid fa-play"></i>
                   </div>
                   <div className="song__track__singer">
-                    <div className="item__song">{data.title}</div>
+                    <div className="item__song">{data?.title}</div>
                     <a href="#" className="item__single">
-                      {data.artistsNames}
+                      {data?.artistsNames}
                     </a>
                   </div>
                 </div>
               </div>
               <div className="top__song__content">
                 <a href="#" className="item__single">
-                  {data.title}
+                  {data?.title}
                 </a>
               </div>
               <div className="top__song_right">
@@ -47,11 +47,11 @@ const TopZingChart = ({ datas }) => {
                         <div className="option__chindren__one">
                           <div className="option__chindren__img">
                             <div>
-                              <img src={data.thumbnail} alt="" />
+                              <img src={data?.thumbnail} alt="" />
                             </div>
                           </div>
                           <div className="option__chindren__sub">
-                            <h2>{data.title}</h2>
+                            <h2>{data?.title}</h2>
                             <div>
                               <span>
                                 <i className="fa-regular fa-heart"></i> 6K

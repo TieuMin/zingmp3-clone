@@ -35,23 +35,23 @@ const ListSong = () => {
 
   useEffect(() => {
     if (loadDataList) {
-      navigate(dataPlaylist.link);
+      navigate(dataPlaylist?.link);
     }
   }, [dataPlaylist]);
 
   useEffect(() => {
     if (dataPlaylist === "") {
-      setIdPlaylist(params.id.split(".")[0]);
+      setIdPlaylist(params?.id?.split(".")[0]);
     }
   }, [dataPlaylist]);
 
   useEffect(() => {
-    if (RefScroll && RefScroll.current && dataPlaylist && idSong) {
+    if (RefScroll && RefScroll?.current && dataPlaylist && idSong) {
       let heightScroll;
-      dataPlaylist.song.items.forEach((item, index) => {
+      dataPlaylist?.song?.items?.forEach((item, index) => {
         if (item.encodeId === idSong) {
-          heightScroll = 60 * index - 49;
-          RefScroll.current.scrollTop = heightScroll;
+          heightScroll = 60 * index - 49
+          RefScroll.current.scrollTop = heightScroll
         }
       });
     }
@@ -74,7 +74,7 @@ const ListSong = () => {
           <div className="List__song__main">
             <div className="List__song__right">
               <div className="List__song__img">
-                <img src={dataPlaylist.thumbnail} alt="" />
+                <img src={dataPlaylist?.thumbnail} alt="" />
                 <div
                   className="option__playlist__selection"
                   onClick={() =>
@@ -96,18 +96,18 @@ const ListSong = () => {
                 </div>
               </div>
               <div className="List__song__description">
-                <div className="description__name">{dataPlaylist.title}</div>
+                <div className="description__name">{dataPlaylist?.title}</div>
                 <div className="description__date">Cập nhật: 5/11/2020</div>
                 <div className="description__singer">
-                  {dataPlaylist.artists
-                    ? dataPlaylist.artists.map((artist, index) => {
+                  {dataPlaylist?.artists
+                    ? dataPlaylist?.artists?.map((artist, index) => {
                         return <NameSinger key={index} artist={artist} />;
                       })
-                    : dataPlaylist.artistsNames}
+                    : dataPlaylist?.artistsNames}
                 </div>
-                {dataPlaylist && dataPlaylist.like && (
+                {dataPlaylist && dataPlaylist?.like && (
                   <div className="description__count__like">
-                    {convertLike(dataPlaylist.like)} người yêu thích
+                    {convertLike(dataPlaylist?.like)} người yêu thích
                   </div>
                 )}
                 {btnPlay && playSong ? (
@@ -132,9 +132,9 @@ const ListSong = () => {
               </div>
             </div>
             <div className="List__song__left">
-              {dataPlaylist.sortDescription ? (
+              {dataPlaylist?.sortDescription ? (
                 <div className="List__song__subTitle">
-                  lời tựa <span>{dataPlaylist.sortDescription}</span>
+                  lời tựa <span>{dataPlaylist?.sortDescription}</span>
                 </div>
               ) : (
                 <></>
@@ -167,7 +167,7 @@ const ListSong = () => {
                   <div className="title__sumenu__content">album</div>
                   <div className="title__sumenu__right">thời gian</div>
                 </li>
-                <MusicItem datas={dataPlaylist.song} />
+                <MusicItem datas={dataPlaylist?.song} />
               </ul>
             </div>
           </div>

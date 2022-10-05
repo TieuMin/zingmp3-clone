@@ -50,8 +50,8 @@ const TagVideo = () => {
 
   useEffect(() => {
     if (dataVideo) {
-      if (dataVideo.streamingStatus === 1 && dataVideo.streaming.mp4) {
-        setVideoQuality(dataVideo.streaming.mp4["720p"]);
+      if (dataVideo?.streamingStatus === 1 && dataVideo?.streaming?.mp4) {
+        setVideoQuality(dataVideo?.streaming?.mp4["720p"]);
       } else {
         setclose(true);
       }
@@ -64,22 +64,22 @@ const TagVideo = () => {
       if (miniatureVideo) {
         setVideoPlay(true);
         setBtnPlay(false);
-        handleEvent.playVideo();
+        handleEvent?.playVideo();
       } else {
-        handleEvent.pauseVideo();
+        handleEvent?.pauseVideo();
       }
     }
   }, [video, miniatureVideo]);
 
   useEffect(() => {
     if (video) {
-      video.paused ? setVideoPlay(false) : setVideoPlay(true);
+      video?.paused ? setVideoPlay(false) : setVideoPlay(true);
     }
   });
 
   useEffect(() => {
     if (!videoPlay) {
-      handleEvent.pauseVideo();
+      handleEvent?.pauseVideo();
     }
   }, [videoPlay]);
 
@@ -91,62 +91,62 @@ const TagVideo = () => {
         video.play();
         setVideoPlay(true);
         video.ontimeupdate = () => {
-          setCurrentTime(video.currentTime);
-          if (video.duration) {
-            setTimeStart(convertMS(Math.round(video.currentTime)));
-            const step = Math.floor((video.currentTime / video.duration) * 100);
+          setCurrentTime(video?.currentTime);
+          if (video?.duration) {
+            setTimeStart(convertMS(Math?.round(video?.currentTime)));
+            const step = Math?.floor((video?.currentTime / video?.duration) * 100);
             setStepTime(step);
           }
         };
         video.onended = () => {
           if (repeat === "repeatAll") {
             let i;
-            let length = listVideo.listId.length;
+            let length = listVideo?.listId?.length;
             if (indexVideo >= length - 1) {
-              handleEvent.pauseVideo();
+              handleEvent?.pauseVideo();
             } else {
               i = indexVideo + 1;
               setIndexVideo(i);
-              setIdVideo(listVideo.listId[i]);
+              setIdVideo(listVideo?.listId[i]);
             }
           } else {
-            handleEvent.playVideo();
+            handleEvent?.playVideo();
           }
         };
       }
     },
     pauseVideo: () => {
       if (video) {
-        video.pause();
+        video?.pause();
         setVideoPlay(false);
       }
     },
     changeTimeVideo: (e) => {
-      setStepTime(e.target.value);
-      const step = Math.floor((video.duration / 100) * e.target.value);
-      video.currentTime = Math.round(step);
+      setStepTime(e?.target?.value);
+      const step = Math?.floor((video?.duration / 100) * e?.target?.value);
+      video.currentTime = Math?.round(step);
     },
     PrevVideo: () => {
       let i;
-      let length = listVideo.listId.length;
+      let length = listVideo?.listId?.length;
       if (indexVideo < 1) {
         i = length - 1;
       } else {
         i = indexVideo - 1;
       }
       setIndexVideo(i);
-      setIdVideo(listVideo.listId[i]);
+      setIdVideo(listVideo?.listId[i]);
     },
     NextVideo: () => {
       let i;
-      let length = listVideo.listId.length;
+      let length = listVideo?.listId?.length;
       if (indexVideo >= length - 1) {
         i = 0;
       } else {
         i = indexVideo + 1;
       }
       setIndexVideo(i);
-      setIdVideo(listVideo.listId[i]);
+      setIdVideo(listVideo?.listId[i]);
     },
   };
 
@@ -186,14 +186,14 @@ const TagVideo = () => {
           <div className="btn__option__bottom">
             <div
               className="item__btn__bottom"
-              onClick={() => handleEvent.PrevVideo()}
+              onClick={() => handleEvent?.PrevVideo()}
             >
               <i className="fa-solid fa-backward-step"></i>
             </div>
             <div
               className="item__btn__bottom item__btn__play"
               onClick={() =>
-                videoPlay ? handleEvent.pauseVideo() : handleEvent.playVideo()
+                videoPlay ? handleEvent?.pauseVideo() : handleEvent?.playVideo()
               }
             >
               {videoPlay ? (
@@ -204,7 +204,7 @@ const TagVideo = () => {
             </div>
             <div
               className="item__btn__bottom"
-              onClick={() => handleEvent.NextVideo()}
+              onClick={() => handleEvent?.NextVideo()}
             >
               <i className="fa-solid fa-forward-step"></i>
             </div>
@@ -218,7 +218,7 @@ const TagVideo = () => {
               min="0"
               max="100"
               value={stepTime}
-              onChange={(e) => handleEvent.changeTimeVideo(e)}
+              onChange={(e) => handleEvent?.changeTimeVideo(e)}
             />
             <div className="current__time">
               <div

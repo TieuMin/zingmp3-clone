@@ -14,19 +14,19 @@ const PlaylistTop100 = ({ lists, p = true }) => {
           <div key={index} className="top__100__item mt-20">
             <div
               className={`cate ${
-                btnPlay && idPlaylist === item.encodeId ? "active__100" : ""
+                btnPlay && idPlaylist === item?.encodeId ? "active__100" : ""
               }`}
-              onClick={() => setIdPlaylist(item.encodeId)}
+              onClick={() => setIdPlaylist(item?.encodeId)}
             >
               <figure className="figure-cate">
-                <img src={item.thumbnail} alt="" />
+                <img src={item?.thumbnail} alt="" />
                 <div className="icon__top__song">
                   <div className="media__narrow">
                     <div>
                       <i className="fa-regular fa-heart"></i>
                     </div>
                   </div>
-                  {idPlaylist === item.encodeId ? (
+                  {idPlaylist === item?.encodeId ? (
                     <>
                       {btnPlay ? (
                         <span
@@ -50,7 +50,7 @@ const PlaylistTop100 = ({ lists, p = true }) => {
                     <span className="controller__itemmedia play__100">
                       <NavLink
                         to={item.link}
-                        onClick={() => setIdPlaylist(item.encodeId)}
+                        onClick={() => setIdPlaylist(item?.encodeId)}
                       >
                         <i className="fa-solid fa-play"></i>
                       </NavLink>
@@ -66,26 +66,26 @@ const PlaylistTop100 = ({ lists, p = true }) => {
             </div>
             <div className="cate-song-singer title__playlist__selection">
               <NavLink
-                to={item.link}
+                to={item?.link}
                 className="cate-song"
                 style={{ display: "block" }}
-                onClick={() => setIdPlaylist(item.encodeId)}
+                onClick={() => setIdPlaylist(item?.encodeId)}
               >
-                {item.title}
+                {item?.title}
               </NavLink>
               <div className="name__singer__all">
                 {p ? (
                   <>
-                    {item.artists ? (
-                      item.artists.map((artist, index) => {
+                    {item?.artists ? (
+                      item?.artists?.map((artist, index) => {
                         return <NameSinger key={index} artist={artist} />;
                       })
                     ) : (
-                      <a href="#">{item.artistsNames}</a>
+                      <a href="#">{item?.artistsNames}</a>
                     )}
                   </>
                 ) : (
-                  <p className="subtitle">{item.sortDescription}</p>
+                  <p className="subtitle">{item?.sortDescription}</p>
                 )}
               </div>
             </div>

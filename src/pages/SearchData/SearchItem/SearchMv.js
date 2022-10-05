@@ -10,13 +10,13 @@ const SearchMv = ({ datas }) => {
 
   return (
     <div className="columns__mv">
-      {datas.map((item, index) => {
+      {datas?.map((item, index) => {
         if (index < 6) {
           return (
             <div key={index} className="column__mv mt-20">
               <div className="image__mv">
-                <img src={item.thumbnail} alt="" />
-                {item.artists && item.streamingStatus === 1 ? (
+                <img src={item?.thumbnail} alt="" />
+                {item?.artists && item?.streamingStatus === 1 ? (
                   ""
                 ) : (
                   <img
@@ -25,7 +25,7 @@ const SearchMv = ({ datas }) => {
                     style={{ width: "30px" }}
                   />
                 )}
-                {idVideo === item.encodeId ? (
+                {idVideo === item?.encodeId ? (
                   <div
                     className="option__playlist__selection"
                     style={{ opacity: "1", cursor: "default" }}
@@ -40,13 +40,13 @@ const SearchMv = ({ datas }) => {
                   </div>
                 ) : (
                   <>
-                    {item.artists && item.streamingStatus === 1 ? (
+                    {item?.artists && item?.streamingStatus === 1 ? (
                       <span
                         className="controller__itemmedia play__mv"
                         onClick={() => {
                           setActivePlayVideo(true);
                           setLoadList(true);
-                          setIdVideo(item.encodeId);
+                          setIdVideo(item?.encodeId);
                         }}
                       >
                         <i className="fa-solid fa-play"></i>
@@ -65,21 +65,21 @@ const SearchMv = ({ datas }) => {
               <div className="profile">
                 <div className="avatar__profile">
                   <img
-                    src={item.artist ? item.artist.thumbnail : item.thumbnail}
+                    src={item?.artist ? item?.artist?.thumbnail : item?.thumbnail}
                     alt=""
                   />
                 </div>
                 <div className="profle__content">
                   <p>
-                    <a href="#">{item.title}</a>
+                    <a href="#">{item?.title}</a>
                   </p>
                   <div>
-                    {item.artists ? (
-                      item.artists.map((artist, index) => {
+                    {item?.artists ? (
+                      item?.artists?.map((artist, index) => {
                         return <NameSinger key={index} artist={artist} />;
                       })
                     ) : (
-                      <a href="#">{item.artistsNames}</a>
+                      <a href="#">{item?.artistsNames}</a>
                     )}
                   </div>
                 </div>

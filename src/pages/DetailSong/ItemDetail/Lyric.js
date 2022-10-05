@@ -11,9 +11,9 @@ const Lyric = () => {
   const RefIndex = useRef();
 
   useEffect(() => {
-    if (RefIndex && RefIndex.current) {
-      const CurrentLine = RefIndex.current.getCurrentLine();
-      setIndexLyric(CurrentLine.index);
+    if (RefIndex && RefIndex?.current) {
+      const CurrentLine = RefIndex?.current?.getCurrentLine();
+      setIndexLyric(CurrentLine?.index);
     }
   }, [currentTimeLyric]);
 
@@ -21,7 +21,7 @@ const Lyric = () => {
     <>
       <div className="detail__song__lyric">
         <div className="detail__lyric__img">
-          <img src={infoSong && infoSong.thumbnailM} />
+          <img src={infoSong && infoSong?.thumbnailM} />
           {btnPlay && (
             <span
               className="gif__play gif__active__detail"
@@ -55,8 +55,8 @@ const Lyric = () => {
           </>
         ) : (
           <div className="sidebar__scrollbar detail__lyric detail__lyric__item text__item__lyric">
-            {lyric && lyric.lyric ? (
-              lyric.lyric
+            {lyric && lyric?.lyric ? (
+              lyric?.lyric
             ) : (
               <div
                 style={{
@@ -72,9 +72,9 @@ const Lyric = () => {
         )}
       </div>
       <div className="detail__name__song">
-        {infoSong && infoSong.title} {" - "}
+        {infoSong && infoSong?.title} {" - "}
         <span style={{ marginLeft: "8px", color: "hsla(0, 0%, 100%, 0.4)" }}>
-          {infoSong && infoSong.artistsNames}
+          {infoSong && infoSong?.artistsNames}
         </span>
       </div>
     </>

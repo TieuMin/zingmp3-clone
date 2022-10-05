@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 
 const SliderGalleyry = ({ banners }) => {
-  const $ = document.querySelector.bind(document);
+  const $ = document?.querySelector?.bind(document);
   let nextSlideAuto;
   const nextSlide = () => {
     const galleryFirts = $(".gallery__item.gallery__item__firts");
@@ -81,43 +81,43 @@ const SliderGalleyry = ({ banners }) => {
       <div className="prev__slide__galleyry">
         <i
           className="fa-solid fa-chevron-left"
-          onClick={() => HandlerClick.prevSlideBtn()}
+          onClick={() => HandlerClick?.prevSlideBtn()}
         ></i>
       </div>
       <div className="gallery__item gallery__item__add">
         <a href="#">
-          <img src={banners.items[0].banner} alt="" />
+          <img src={banners?.items[0]?.banner} alt="" />
         </a>
       </div>
       <div className="gallery__item gallery__item__firts">
         <a href="#">
-          <img src={banners.items[1].banner} alt="" />
+          <img src={banners?.items[1]?.banner} alt="" />
         </a>
       </div>
       <div className="gallery__item gallery__item__prevous">
         <a href="#">
-          <img src={banners.items[2].banner} alt="" />
+          <img src={banners?.items[2]?.banner} alt="" />
         </a>
       </div>
       <div className="gallery__item gallery__item__selected">
         <a href="#">
-          <img src={banners.items[3].banner} alt="" />
+          <img src={banners?.items[3]?.banner} alt="" />
         </a>
       </div>
       <div className="gallery__item gallery__item__next">
         <a href="#">
-          <img src={banners.items[4].banner} alt="" />
+          <img src={banners?.items[4]?.banner} alt="" />
         </a>
       </div>
       <div className="gallery__item gallery__item__last">
         <a href="#">
-          <img src={banners.items[5].banner} alt="" />
+          <img src={banners?.items[5]?.banner} alt="" />
         </a>
       </div>
       <div className="next__slide__galleyry">
         <i
           className="fa-solid fa-chevron-right"
-          onClick={() => HandlerClick.nextSlideBtn()}
+          onClick={() => HandlerClick?.nextSlideBtn()}
         ></i>
       </div>
     </div>

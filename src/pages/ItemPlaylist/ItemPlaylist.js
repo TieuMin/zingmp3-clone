@@ -4,17 +4,14 @@ import NameSinger from "../NameSinger/NameSinger";
 import { PlaylistContext } from "../../context/GetPlaylistProvider";
 import { GetSongContext } from "../../context/GetSongProvider";
 
-const ItemPlaylist = ({ lists, p = true }) => {
+const ItemPlaylist = ({ lists, p = true, newSong }) => {
   const { idPlaylist, setIdPlaylist, setIndexListIdSong } =
     useContext(PlaylistContext);
   const { btnPlay, setBtnPlay } = useContext(GetSongContext);
 
-  return (
-    <>
-      {lists.items.map((item, index) => {
-        if (index < 5) {
-          return (
-            <div key={index} className="item__playlist__selection">
+  const htmlListSong = (item, index) => {
+    return (
+      <div key={index} className="item__playlist__selection">
               <div
                 className={`img__playlist__selection ${
                   btnPlay && idPlaylist === item.encodeId
@@ -86,7 +83,18 @@ const ItemPlaylist = ({ lists, p = true }) => {
                 </div>
               </div>
             </div>
-          );
+    )
+  }
+
+  return (
+    <>
+      {newSong ? lists.items[0]?.song.map((item, index) => {
+        if (index < 5) {
+          return htmlListSong(item, index);
+        }
+      }) : lists.items.map((item, index) => {
+        if (index < 5) {
+          return htmlListSong(item, index);
         }
       })}
     </>
