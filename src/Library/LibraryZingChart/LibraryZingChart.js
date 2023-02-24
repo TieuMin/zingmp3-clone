@@ -87,13 +87,11 @@ const LibraryZingChart = ({ data, rank }) => {
             ],
             tooltip: {
               //HTML Tooltips
-              text: `<div class='chart__alert'><div class='item__chart__alert' style='background-color: rgb(227, 80, 80);'><div class='chart__alert__left'><div class='list__chart__alert'><div class='chart__alert__thumb' style='margin-right: 10px;'><img src=${
-                data.items[2].album.thumbnail
-              } alt=''></div><div class='chart__alert__infor'><div class='subtitle__chart__alert'><div class='title__chart__alert'>...</div></div><div class='chart__alert__singer'>${
-                data.items[2].artists[0].name
-              }...</div></div></div></div><div class='chart__alert__right'><span>${Math.round(
-                (data.items[2].score / rank) * 100
-              )}%</span></div></div></div>`,
+              text: `<div class='chart__alert'><div class='item__chart__alert' style='background-color: rgb(227, 80, 80);'><div class='chart__alert__left'><div class='list__chart__alert'><div class='chart__alert__thumb' style='margin-right: 10px;'><img src=${data?.items[2]?.album?.thumbnail
+                } alt=''></div><div class='chart__alert__infor'><div class='subtitle__chart__alert'><div class='title__chart__alert'>...</div></div><div class='chart__alert__singer'>${data?.items[2]?.artists[0]?.name
+                }...</div></div></div></div><div class='chart__alert__right'><span>${Math.round(
+                  (data?.items[2]?.score / rank) * 100
+                )}%</span></div></div></div>`,
               "html-mode": true,
               backgroundColor: "none",
             },
@@ -122,13 +120,11 @@ const LibraryZingChart = ({ data, rank }) => {
             ],
             tooltip: {
               //HTML Tooltips
-              text: `<div class='chart__alert'><div class='item__chart__alert' style='background-color: rgb(227, 80, 80);'><div class='chart__alert__left'><div class='list__chart__alert'><div class='chart__alert__thumb' style='margin-right: 10px;'><img src=${
-                data.items[1].album.thumbnail
-              } alt=''></div><div class='chart__alert__infor'><div class='subtitle__chart__alert'><div class='title__chart__alert'>...</div></div><div class='chart__alert__singer'>${
-                data.items[1].artists[0].name
-              }...</div></div></div></div><div class='chart__alert__right'><span>${Math.round(
-                (data.items[1].score / rank) * 100
-              )}%</span></div></div></div>`,
+              text: `<div class='chart__alert'><div class='item__chart__alert' style='background-color: rgb(227, 80, 80);'><div class='chart__alert__left'><div class='list__chart__alert'><div class='chart__alert__thumb' style='margin-right: 10px;'><img src=${data?.items[1]?.album?.thumbnail
+                } alt=''></div><div class='chart__alert__infor'><div class='subtitle__chart__alert'><div class='title__chart__alert'>...</div></div><div class='chart__alert__singer'>${data?.items[1]?.artists[0]?.name
+                }...</div></div></div></div><div class='chart__alert__right'><span>${Math.round(
+                  (data?.items[1]?.score / rank) * 100
+                )}%</span></div></div></div>`,
               "html-mode": true,
               backgroundColor: "none",
             },
@@ -159,13 +155,11 @@ const LibraryZingChart = ({ data, rank }) => {
             ],
             tooltip: {
               //HTML Tooltips
-              text: `<div class='chart__alert'><div class='item__chart__alert' style='background-color: rgb(227, 80, 80);'><div class='chart__alert__left'><div class='list__chart__alert'><div class='chart__alert__thumb' style='margin-right: 10px;'><img src=${
-                data.items[0].album.thumbnail
-              } alt=''></div><div class='chart__alert__infor'><div class='subtitle__chart__alert'><div class='title__chart__alert'>...</div></div><div class='chart__alert__singer'>${
-                data.items[0].artists[0].name
-              }...</div></div></div></div><div class='chart__alert__right'><span>${Math.round(
-                (data.items[0].score / rank) * 100
-              )}%</span></div></div></div>`,
+              text: `<div class='chart__alert'><div class='item__chart__alert' style='background-color: rgb(227, 80, 80);'><div class='chart__alert__left'><div class='list__chart__alert'><div class='chart__alert__thumb' style='margin-right: 10px;'><img src=${data?.items[0]?.album?.thumbnail
+                } alt=''></div><div class='chart__alert__infor'><div class='subtitle__chart__alert'><div class='title__chart__alert'>...</div></div><div class='chart__alert__singer'>${data?.items[0]?.artists[0]?.name
+                }...</div></div></div></div><div class='chart__alert__right'><span>${Math.round(
+                  (data?.items[0]?.score / rank) * 100
+                )}%</span></div></div></div>`,
               "html-mode": true,
               backgroundColor: "none",
             },

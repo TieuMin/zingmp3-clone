@@ -28,9 +28,8 @@ const ZingChartHome = ({ lists }) => {
                   <div className="list__zingchart__left">
                     <div className="list__item__zingchart">
                       <div
-                        className={`song__prefix ${
-                          index === 1 ? "song__prefix2" : "song__prefix3"
-                        }`}
+                        className={`song__prefix ${index === 1 ? "song__prefix2" : "song__prefix3"
+                          }`}
                       >
                         <span>{index + 1}</span>
                       </div>

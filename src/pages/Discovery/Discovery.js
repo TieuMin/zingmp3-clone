@@ -18,7 +18,6 @@ const Discovery = () => {
   const { loader, handleScroll, animation } = useContext(HomeContext);
   const prevSongDefaul = JSON.parse(localStorage.getItem("prevSongDefaul"));
   const { miniatureVideo } = useContext(VideoContext);
-
   return (
     <MainLayout>
       {animation ? (
@@ -27,9 +26,8 @@ const Discovery = () => {
         <div
           className="content"
           style={{
-            height: `${
-              prevSongDefaul && !miniatureVideo ? "" : "calc(100vh - 70px)"
-            }`,
+            height: `${prevSongDefaul && !miniatureVideo ? "" : "calc(100vh - 70px)"
+              }`,
           }}
           onScroll={(event) => handleScroll(event)}
         >
@@ -41,13 +39,13 @@ const Discovery = () => {
                 <span>Mới phát hành</span>
               </div>
               <div className="list__playlist__selection">
-                <ItemPlaylist lists={loader?.stores?.[3]} p={false} newSong={true} />
+                <ItemPlaylist lists={loader?.stores?.[3]?.items?.all} p={false} newSong={true} />
               </div>
             </div>
 
             <div className="playlist__selection">
               <div className="header__playlist__selection">
-                <span>Cứ Chill Thôi</span>
+                <span>{loader?.stores?.[4]?.title}</span>
               </div>
               <div className="list__playlist__selection">
                 <ItemPlaylist lists={loader?.stores?.[4]} />
@@ -56,10 +54,10 @@ const Discovery = () => {
 
             <div className="playlist__selection">
               <div className="header__playlist__selection">
-                <span>XONE's CORNER</span>
+                <span>{loader?.stores?.[5]?.title}</span>
               </div>
               <div className="list__playlist__selection">
-                <ItemPlaylist lists={loader?.stores?.[13]} p={false} />
+                <ItemPlaylist lists={loader?.stores?.[5]} />
               </div>
             </div>
 
@@ -71,45 +69,32 @@ const Discovery = () => {
                 </div>
               </div>
               <div className="list__playlist__selection">
-                <ItemAudio lists={loader?.stores?.[14]} />
+                <ItemAudio lists={loader?.stores?.[6]} />
               </div>
             </div>
 
             {loader.loadPage && (
               <>
-                <div className="playlist__selection">
+                {/* <div className="playlist__selection">
                   <div className="header__playlist__selection">
-                    <div className="fan__playlist__selection">
-                      <a href="#" className="fan__playlist__img">
-                        <img
-                          src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/avatars/b/d/e/c/bdec30800a424a4ab622294453dd31c7.jpg"
-                          alt=""
-                        />
-                      </a>
-                      <div className="fan__playlist__subtitle">
-                        <span>Dành Cho fan</span>
-                        <div className="name__singer__fan">
-                          <a href="#">Anh Quân Idol</a>
-                        </div>
-                      </div>
-                    </div>
+                    <span>XONE's CORNER</span>
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader?.stores?.[9]} />
+                    <ItemPlaylist lists={loader?.stores?.[13]} p={false} />
                   </div>
-                </div>
+                </div> */}
 
                 <div className="playlist__selection">
                   <div className="header__playlist__selection">
                     <span>Nhạc Mới Mỗi Ngày</span>
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader?.stores?.[6]} />
+                    <ItemPlaylist lists={loader?.stores?.[7]} />
                   </div>
                 </div>
 
                 <div className="chart__home">
-                  <ZingChartHome lists={loader?.stores?.[7]} />
+                  <ZingChartHome lists={loader?.stores?.[8]} />
                 </div>
 
                 <div className="option__zingchart">
@@ -153,12 +138,8 @@ const Discovery = () => {
                     </div>
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader?.stores?.[10]} />
+                    <ItemPlaylist lists={loader?.stores?.[11]} />
                   </div>
-                </div>
-
-                <div className="playlist__selection">
-                  <ItemChannel lists={loader?.stores?.[15]} />
                 </div>
 
                 <div className="playlist__selection">
@@ -178,22 +159,26 @@ const Discovery = () => {
                     </div>
                   </div>
                   <div className="new__release">
-                    <NewRelease lists={loader?.stores?.[3]} />
+                    <NewRelease lists={loader?.stores?.[3]?.items?.vPop} />
                   </div>
                   <div className="list__playlist__selection">
-                    <ItemPlaylist lists={loader?.stores?.[3]} p={false} newSong={true}/>
+                    <ItemPlaylist lists={loader?.stores?.[3]?.items?.others} p={false} newSong={true} />
                   </div>
                 </div>
 
-                <div className="playlist__selection">
+                {/* <div className="playlist__selection">
                   <div className="header__playlist__selection">
                     <span>nghệ sĩ Zing Choice</span>
                   </div>
                   <div className="list__playlist__selection">
                     <div className="favorite__artist">
-                      <LoveSinger lists={loader?.stores?.[5]} newSong={true}/>
+                      <LoveSinger lists={loader?.stores?.[5]} newSong={true} />
                     </div>
                   </div>
+                </div> */}
+
+                <div className="playlist__selection">
+                  <ItemChannel lists={loader?.stores?.[15]} />
                 </div>
 
                 <div className="music__partner">

@@ -91,15 +91,15 @@ const HomeProvider = ({ children }) => {
     if (loader.stores !== "") {
       setAnimation(false);
       //rank
-      loader.stores[7].items.forEach((a, index) => {
-        if (index < 3) ab += a.score;
+      loader?.stores[8]?.items?.forEach((a, index) => {
+        if (index < 3) ab += a?.score;
       });
       setRank(ab);
     }
   }, [loader.stores, mv.stores]);
 
   const handleScroll = (event) => {
-    if (event.target.scrollTop >= 800) setLoader({ ...loader, loadPage: true });
+    if (event.target.scrollTop >= 500 && event.target.scrollTop <= 550) setLoader({ ...loader, loadPage: true });
   };
 
   const datas = {

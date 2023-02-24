@@ -66,7 +66,7 @@ const NewRelease = ({ lists }) => {
 
   return (
     <div className="animation__new__release" ref={newRelease}>
-      {lists?.items?.[0]?.album?.map((item, index) => {
+      {lists?.map((item, index) => {
         return (
           <div key={index} className="item__new__release">
             <div className="item__release__child">
